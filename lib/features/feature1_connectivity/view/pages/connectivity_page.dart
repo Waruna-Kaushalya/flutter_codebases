@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_codebase/features/feature1_connectivity/package/cubit/cubut.dart';
+import 'package:flutter_codebase/features/feature1_connectivity/logic/cubit/cubut.dart';
 
 class ConnectivityFeaturePage extends StatefulWidget {
   static const routeName = '/connectivityfeaturepage';
@@ -40,16 +40,35 @@ class _ConnectivityFeaturePageState extends State<ConnectivityFeaturePage> {
                     return const CounterAndNetLabel(
                       internetType: 'WiFi',
                     );
-                  } else if (connectionState
-                      is NetworkConnectedWithoutInternet) {
-                    return const CounterAndNetLabel(
-                      internetType: 'Connected Without Internet',
-                    );
                   } else {
                     return const CounterAndNetLabel(
                       internetType: 'Disconnected',
                     );
                   }
+
+                  //** */
+
+                  // if (connectionState.status == ConnectivityStatus.connected &&
+                  //     connectionState.connectionType == ConnectionType.mobile) {
+                  //   return const CounterAndNetLabel(
+                  //     internetType: 'Mobile',
+                  //   );
+                  // } else if (connectionState.status ==
+                  //         ConnectivityStatus.connected &&
+                  //     connectionState.connectionType == ConnectionType.wifi) {
+                  //   return const CounterAndNetLabel(
+                  //     internetType: 'WiFi',
+                  //   );
+                  // } else if (connectionState.status ==
+                  //     ConnectivityStatus.connectedWithoutInternet) {
+                  //   return const CounterAndNetLabel(
+                  //     internetType: 'Connected Without Internet',
+                  //   );
+                  // } else {
+                  //   return const CounterAndNetLabel(
+                  //     internetType: 'Disconnected',
+                  //   );
+                  // }
                 },
               )
             ],
