@@ -293,3 +293,47 @@ class GradientTextButton extends StatelessWidget {
     );
   }
 }
+
+class InkWellButtonWidget extends StatelessWidget {
+  final String buttonLabel;
+  final VoidCallback onDoubleTap;
+  final VoidCallback onLongPress;
+
+  const InkWellButtonWidget({
+    Key? key,
+    required this.buttonLabel,
+    required this.onDoubleTap,
+    required this.onLongPress,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      padding: const EdgeInsets.all(15),
+      child: InkWell(
+        onHover: (value) {},
+        onDoubleTap: onDoubleTap,
+        onLongPress: onLongPress,
+        onTap: () {},
+        onTapDown: (details) {},
+        borderRadius: BorderRadius.circular(5),
+        focusColor: Colors.amber,
+        hoverColor: Colors.black,
+        child: Container(
+          color: Colors.green,
+          width: 150,
+          height: 50,
+          child: Center(
+            child: Text(
+              buttonLabel.toString(),
+              style: const TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

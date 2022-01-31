@@ -32,6 +32,13 @@ class ButtonsWidget extends StatelessWidget {
           const ElavatedButtonWithIconWidget(),
           const TextButtonWithIconWidget(),
           const OutlinedWithIconWidget(),
+          InkWellButtonWidget(
+            buttonLabel: "InkWell Button",
+            onDoubleTap: () =>
+                Fluttertoast.showToast(msg: "Double taped", fontSize: 15),
+            onLongPress: () =>
+                Fluttertoast.showToast(msg: "Long pressed", fontSize: 15),
+          ),
           GradientTextButton(
             buttonLabel: "Gradiant",
             onCustomButtonPressed: () => Fluttertoast.showToast(
