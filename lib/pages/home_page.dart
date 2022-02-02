@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_codebase/features/feature2_toggle_switch_button/view/pages/toggle_switchlist_button_page.dart';
-import 'package:flutter_codebase/features/feature4_search/view/pages/search_bar_feature_page.dart';
+import 'package:flutter_codebase/features/feature4_search/view/pages/search_bar_exactly_search_feature_page.dart';
+import 'package:flutter_codebase/features/feature4_search/view/pages/search_test.dart';
 import 'package:flutter_codebase/features/features.dart';
 import 'package:flutter_codebase/widgets/buttons/page/buttons_widget_page.dart';
 import 'package:flutter_codebase/widgets/buttons/page/inkwell_button_widget_page.dart';
@@ -76,7 +77,14 @@ class HomePage extends StatelessWidget {
             buttonLabel: "Search Bar Feature",
             onCustomButtonPressed: () => Navigator.pushNamed(
               context,
-              SearchBarPage.routeName,
+              SearchBarExactlySearchPage.routeName,
+            ),
+          ),
+          ElavatedButtonWidget(
+            buttonLabel: "Search Test",
+            onCustomButtonPressed: () => Navigator.pushNamed(
+              context,
+              SearchTest.routeName,
             ),
           ),
         ],

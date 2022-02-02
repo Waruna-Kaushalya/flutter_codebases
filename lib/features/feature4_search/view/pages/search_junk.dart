@@ -82,7 +82,7 @@ class MySearchDelegate extends SearchDelegate {
       matchQuery.add("Not Found");
     }
     return ListView.builder(
-      itemCount: matchQuery.length,
+      itemCount: matchQuery.length < 5 ? matchQuery.length : 5,
       itemBuilder: (context, index) {
         var result = matchQuery[index];
         return ListTile(
@@ -107,7 +107,7 @@ class MySearchDelegate extends SearchDelegate {
     }
 
     return ListView.builder(
-      itemCount: suggestions.length,
+      itemCount: suggestions.length < 5 ? suggestions.length : 5,
       itemBuilder: (context, index) {
         final suggestion = suggestions[index];
         // print("---------context-------------$context");
