@@ -20,6 +20,7 @@ class ElavatedButtonWidget extends StatelessWidget {
       //? of the list view
       alignment: Alignment.center,
       padding: const EdgeInsets.all(5),
+      // color: Colors.green,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           //? Button height and width
@@ -28,8 +29,12 @@ class ElavatedButtonWidget extends StatelessWidget {
             50,
           ),
           textStyle: const TextStyle(fontSize: 20),
-          primary: Colors.orange, //? Backgroud
+          primary: Colors.blue[200], //? Backgroud
           onPrimary: Colors.black, //? Font color
+          //? Button circular boder radiaus a
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
         ),
         child: Text(buttonLabel.toString()),
         onPressed: onCustomButtonPressed,
@@ -64,12 +69,16 @@ class OutLinedButtonWidget extends StatelessWidget {
           // minimumSize: const Size.fromHeight(50),
           textStyle: const TextStyle(fontSize: 20),
           //? Font color
-          primary: Colors.blue,
+          primary: Colors.blue, //? Font color
           side: const BorderSide(
             width: 5, //? outline size
             color: Colors.blue, //? outline color
           ),
-        ), //? Font color
+          //? boder rounded
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
         child: Text(buttonLabel.toString()),
         onPressed: onCustomButtonPressed,
       ),
@@ -290,50 +299,6 @@ class GradientTextButton extends StatelessWidget {
               // ),
             ), //? Font color
           )),
-    );
-  }
-}
-
-class InkWellButtonWidget extends StatelessWidget {
-  final String buttonLabel;
-  final VoidCallback onDoubleTap;
-  final VoidCallback onLongPress;
-
-  const InkWellButtonWidget({
-    Key? key,
-    required this.buttonLabel,
-    required this.onDoubleTap,
-    required this.onLongPress,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      padding: const EdgeInsets.all(15),
-      child: InkWell(
-        onHover: (value) {},
-        onDoubleTap: onDoubleTap,
-        onLongPress: onLongPress,
-        onTap: () {},
-        onTapDown: (details) {},
-        borderRadius: BorderRadius.circular(5),
-        focusColor: Colors.amber,
-        hoverColor: Colors.black,
-        child: Container(
-          color: Colors.green,
-          width: 150,
-          height: 50,
-          child: Center(
-            child: Text(
-              buttonLabel.toString(),
-              style: const TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

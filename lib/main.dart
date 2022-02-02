@@ -4,10 +4,12 @@ import 'package:flutter_codebase/features/feature3_counter/logic/bloc/counter_bl
 import 'package:flutter_codebase/features/feature3_counter/logic/cubit/counter_cubit.dart';
 import 'package:flutter_codebase/pages/pages.dart';
 import 'package:flutter_codebase/routes/routes.dart';
+import 'package:flutter_codebase/utility/app_bloc_observer.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_codebase/features/features.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 Future<void> main() async {
   //?call notice codes
@@ -20,19 +22,28 @@ Future<void> main() async {
     storageDirectory: await getApplicationDocumentsDirectory(),
   );
 
-  // runApp(MyApp(
-  //   appRoutes: AppRoutes(),
-  //   connectivity: Connectivity(),
-  // ));
+  // runApp will run, but not be shown until initialization completes:
+  FlutterNativeSplash.removeAfter(initialization);
+
+  final observer = AppBlocObserver();
 
   HydratedBlocOverrides.runZoned(
-    () => runApp(MyApp(
-      appRoutes: AppRoutes(),
-      connectivity: Connectivity(),
-    )),
-    storage: storage,
-    // blocObserver: observer,
-  );
+      () => runApp(
+            MyApp(
+              appRoutes: AppRoutes(),
+              connectivity: Connectivity(),
+            ),
+          ),
+      storage: storage,
+      blocObserver: observer);
+}
+
+//? for delaied spalsh screen
+void initialization(BuildContext context) async {
+  // This is where you can initialize the resources needed by your app while
+  // the splash screen is displayed.  After this function completes, the
+  // splash screen will be removed.
+  await Future.delayed(const Duration(seconds: 1));
 }
 
 class MyApp extends StatelessWidget {

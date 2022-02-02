@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codebase/features/feature2_toggle_switch_button/view/pages/toggle_switchlist_button_page.dart';
-import 'package:flutter_codebase/features/feature3_counter/view/pages/counter_bloc_page.dart';
+import 'package:flutter_codebase/features/feature4_search/view/pages/search_bar_feature_page.dart';
+
 import 'package:flutter_codebase/pages/pages.dart';
 import 'package:flutter_codebase/widgets/buttons/page/buttons_widget_page.dart';
+import 'package:flutter_codebase/widgets/buttons/page/inkwell_button_widget_page.dart';
 import 'package:flutter_codebase/widgets/widgets.dart';
 import 'package:flutter_codebase/features/features.dart';
 
@@ -49,6 +51,18 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: const RouteSettings(name: 'ButtonsWidget'),
           builder: (context) => const ButtonsWidget(),
+        );
+
+      case InkWellButtonsWidget.routeName:
+        return MaterialPageRoute(
+          settings: const RouteSettings(name: 'InkWellButtonsWidget'),
+          builder: (context) => const InkWellButtonsWidget(),
+        );
+
+      case SearchBarPage.routeName:
+        return MaterialPageRoute(
+          settings: const RouteSettings(name: 'SearchBarPage'),
+          builder: (context) => const SearchBarPage(),
         );
 
       default:

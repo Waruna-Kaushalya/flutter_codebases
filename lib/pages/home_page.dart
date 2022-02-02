@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_codebase/features/feature2_toggle_switch_button/view/pages/toggle_switchlist_button_page.dart';
+import 'package:flutter_codebase/features/feature4_search/view/pages/search_bar_feature_page.dart';
 import 'package:flutter_codebase/features/features.dart';
 import 'package:flutter_codebase/widgets/buttons/page/buttons_widget_page.dart';
+import 'package:flutter_codebase/widgets/buttons/page/inkwell_button_widget_page.dart';
 import 'package:flutter_codebase/widgets/buttons/widgets/widgets.dart';
 import 'package:flutter_codebase/widgets/widgets.dart';
 
@@ -63,55 +65,21 @@ class HomePage extends StatelessWidget {
               ButtonsWidget.routeName,
             ),
           ),
+          ElavatedButtonWidget(
+            buttonLabel: "Inkwell Button widgets",
+            onCustomButtonPressed: () => Navigator.pushNamed(
+              context,
+              InkWellButtonsWidget.routeName,
+            ),
+          ),
+          ElavatedButtonWidget(
+            buttonLabel: "Search Bar Feature",
+            onCustomButtonPressed: () => Navigator.pushNamed(
+              context,
+              SearchBarPage.routeName,
+            ),
+          ),
         ],
-      ),
-    );
-  }
-}
-
-class RoutesButton extends StatelessWidget {
-  final String routeName;
-  final String routeIdentifire;
-  const RoutesButton({
-    Key? key,
-    required this.routeName,
-    required this.routeIdentifire,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 30, right: 30, top: 5, bottom: 5),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: Stack(
-          children: [
-            Positioned.fill(
-              child: Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: <Color>[
-                      Color(0xFF0D47A1),
-                      Color(0xFF1976D2),
-                      Color(0xFF42A5F5),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            TextButton(
-              style: TextButton.styleFrom(
-                padding: const EdgeInsets.all(16.0),
-                primary: Colors.white,
-                textStyle: const TextStyle(fontSize: 20),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, routeIdentifire);
-              },
-              child: Text(routeName.toString()),
-            ),
-          ],
-        ),
       ),
     );
   }
