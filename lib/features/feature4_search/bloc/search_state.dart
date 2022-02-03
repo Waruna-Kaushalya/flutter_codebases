@@ -1,76 +1,85 @@
 part of 'search_bloc.dart';
 
-// @freezed
-// class SearchState with _$SearchState {
-//   //? query must be cleared
-//   //? display suggestionss
-//   //? start typing
-//   //? display suggestions
-//   const factory SearchState.searchQueryInitial(
-//       List<String> suggestions, String queryValue) = _TypeQuery;
-//   //? after hit enter show loading indicator
-//   const factory SearchState.loadingSearch() = _LoadingSearch;
+// @immutable
+// abstract class SearchState extends Equatable {}
 
-//   const factory SearchState.suggestValueToquery(String queryValue) =
-//       _SuggestValueToquer;
-//   //? display search quey in search bar
-//   //? diaplay dearch result in body
-//   const factory SearchState.displaySearchResult() = _DisplaySearchResult;
-//   //? whan search is not available diaply "Not Found" msg in body
-//   const factory SearchState.displayNotFound() = _DisplayNotFound;
+// //!
+// //? query must be cleared
+// //? display suggestionss
+// //? start typing
+// //? display suggestions
+// class SearchQueryInitial extends SearchState {
+//   final List<String> suggestions;
+//   final String queryValue;
+//   SearchQueryInitial({
+//     required this.suggestions,
+//     required this.queryValue,
+//   });
+//   @override
+//   List<Object?> get props => [suggestions, queryValue];
 // }
 
-// //! ==
+// //!
+// //? after hit enter show loading indicator
+// class LoadingSearch extends SearchState {
+//   @override
+//   List<Object?> get props => [];
+// }
 
-@immutable
-abstract class SearchState extends Equatable {}
+// //!
+// //? When user click suggested value upfate text field
+// class SuggestValueToquery extends SearchState {
+//   final String queryValue;
 
-//!
-//? query must be cleared
-//? display suggestionss
-//? start typing
-//? display suggestions
-class SearchQueryInitial extends SearchState {
-  final List<String> suggestions;
-  final String queryValue;
-  SearchQueryInitial({
-    required this.suggestions,
-    required this.queryValue,
-  });
-  @override
-  List<Object?> get props => [suggestions, queryValue];
+//   SuggestValueToquery({
+//     required this.queryValue,
+//   });
+//   @override
+//   List<Object?> get props => [queryValue];
+// }
+
+// //!
+// //? display search quey in search bar
+// //? diaplay dearch result in body
+// class DisplaySearchResult extends SearchState {
+//   @override
+//   List<Object?> get props => [];
+// }
+
+// //!
+// //? whan search is not available diaply "Not Found" msg in body
+// class CityNotDound extends SearchState {
+//   @override
+//   List<Object?> get props => [];
+// }
+
+enum SearchStateStatus {
+  searchInitial,
+  suggestionsDisplay,
+  resultLoading,
+  showResult,
+  cityNotFound,
+  searchEnd,
 }
 
-//!
-//? after hit enter show loading indicator
-class LoadingSearch extends SearchState {
-  @override
-  List<Object?> get props => [];
+extension SearchStatusX on SearchStateStatus {
+  bool get isSearchInitial => this == SearchStateStatus.searchInitial;
+  bool get isSuggestionsDisplay => this == SearchStateStatus.suggestionsDisplay;
+  bool get isResultLoading => this == SearchStateStatus.resultLoading;
+  bool get isShowResult => this == SearchStateStatus.showResult;
+  bool get isCityNotFound => this == SearchStateStatus.cityNotFound;
+  bool get isSearchEnd => this == SearchStateStatus.searchEnd;
 }
 
-//!
-//? When user click suggested value upfate text field
-class SuggestValueToquery extends SearchState {
-  final String queryValue;
+@freezed
+class SearchState with _$SearchState {
+  factory SearchState({
+    @Default(SearchStateStatus.searchInitial) SearchStateStatus status,
+    List<String>? suggestions,
+    List<String>? results,
+    String? queryValue,
+  }) = _SearchState;
 
-  SuggestValueToquery({
-    required this.queryValue,
-  });
-  @override
-  List<Object?> get props => [queryValue];
-}
-
-//!
-//? display search quey in search bar
-//? diaplay dearch result in body
-class DisplaySearchResult extends SearchState {
-  @override
-  List<Object?> get props => [];
-}
-
-//!
-//? whan search is not available diaply "Not Found" msg in body
-class CityNotDound extends SearchState {
-  @override
-  List<Object?> get props => [];
+  factory SearchState.fromJson(Map<String, dynamic> json) =>
+      _$SearchStateFromJson(json);
 }

@@ -24,21 +24,32 @@ class SearchPage extends StatelessWidget {
         ),
         title: BlocListener<SearchBloc, SearchState>(
           listener: (context, state) {
-            if (state is SuggestValueToquery) {
-              _nameHolder.text = state.queryValue;
-            }
+            // if (state is SuggestValueToquery) {
+            //   _nameHolder.text = state.queryValue;
+            // }
           },
           child: TextField(
+            //? Search icon in keyboard
+            textInputAction: TextInputAction.search,
+
+            //? show the Keyboard automatically for a Textfield
+            autofocus: true,
+            // focusNode: runtimeType,
+            // focusNode: ,
+
             controller: _nameHolder,
             onChanged: (value) {
-              final weatherBloc = context.read<SearchBloc>();
-              // weatherCubit.getWeather(cityName.trim());
-              weatherBloc.add(TypeSearchQuery(searchQuery: value));
+              final searchBloc = context.read<SearchBloc>();
+
+              searchBloc.add(SearchEvent(
+                  queryValue: value,
+                  status: SearchEventStatus.typeInTheSearchbar));
             },
             onSubmitted: (value) {
-              final weatherBloc = context.read<SearchBloc>();
-              // weatherCubit.getWeather(cityName.trim());
-              weatherBloc.add(EnterAndHitSearchQuery(enteredQuery: value));
+              final searchBloc = context.read<SearchBloc>();
+
+              searchBloc.add(SearchEvent(
+                  queryValue: value, status: SearchEventStatus.onSubmitted));
             },
             decoration: textFieldDecorationMethod(),
           ),
@@ -58,22 +69,57 @@ class SearchPage extends StatelessWidget {
         alignment: Alignment.topLeft,
         child: BlocBuilder<SearchBloc, SearchState>(
           builder: (context, state) {
-            if (state is SearchQueryInitial) {
+            if (state.status == SearchStateStatus.searchInitial) {
               final queryValue = state.queryValue;
               final suggestions = state.suggestions;
-              return suggetionMListViewMethod(suggestions, queryValue);
-            } else if (state is SuggestValueToquery) {
+              return suggetionMListViewMethod(suggestions!, queryValue!);
+            } else if (state.status == SearchStateStatus.suggestionsDisplay) {
+              final queryValue = state.queryValue;
+              final suggestions = state.suggestions;
+              return suggetionMListViewMethod(suggestions!, queryValue!);
+            } else if (state.status == SearchStateStatus.showResult) {
+              final queryValue = state.queryValue;
+              final resultList = state.results;
+
+              return showResultMethod(queryValue, resultList);
+            } else if (state.status == SearchStateStatus.cityNotFound) {
+              return const CityNotFoundWidget();
+            } else if (state.status == SearchStateStatus.resultLoading) {
               return Container(
-                alignment: Alignment.center,
-                child: Text(
-                  state.queryValue,
-                  style: TextStyle(fontSize: 40),
+                alignment: Alignment.topLeft,
+                child: const LinearProgressIndicator(
+                  backgroundColor: Colors.red,
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
                 ),
               );
+            } else {
+              return Text("dfvdfvd");
             }
-            return Text("df");
           },
         ),
+      ),
+    );
+  }
+
+  Center showResultMethod(String? queryValue, List<String>? resultList) {
+    return Center(
+      child: ListView.builder(
+        //? this two line prevent y=unbounded common error in list view
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        itemCount: resultList!.isEmpty ? 0 : resultList.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(
+              resultList[index],
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 45,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -81,6 +127,7 @@ class SearchPage extends StatelessWidget {
   ListView suggetionMListViewMethod(
       List<String> suggestions, String queryValue) {
     return ListView.builder(
+      //? this two line prevent y=unbounded common error in list view
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       itemCount: suggestions.length < 5 ? suggestions.length : 5,
@@ -98,8 +145,8 @@ class SearchPage extends StatelessWidget {
             // SelectSuggestQuery
             final searchBloc = context.read<SearchBloc>();
             // weatherCubit.getWeather(cityName.trim());
-            searchBloc
-                .add(SelectSuggestQuery(selectedSuggestQuery: suggestion));
+            // searchBloc
+            //     .add(SelectSuggestQuery(selectedSuggestQuery: suggestion));
             //?this line close search bar and resault goese in to varible
             // close(context, suggestion);
             //? directly go in to disply page with updating query
@@ -144,6 +191,38 @@ class SearchPage extends StatelessWidget {
         borderSide: BorderSide(width: 1, color: Colors.black),
       ),
       hintText: 'Search city',
+    );
+  }
+}
+
+class CityNotFoundWidget extends StatelessWidget {
+  const CityNotFoundWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          Icon(
+            Icons.location_city,
+            size: 120,
+          ),
+          SizedBox(
+            height: 40,
+          ),
+          Text(
+            "City Not Found",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 45,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
