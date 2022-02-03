@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codebase/features/feature4_search/bloc/search_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:developer' as developer;
 
 class SearchPage extends StatelessWidget {
   static const routeName = '/searchPage';
@@ -154,7 +155,15 @@ class SearchPage extends StatelessWidget {
             // showResults(context);
           },
           leading: const Icon(
-            Icons.location_city,
+            Icons.schedule,
+          ),
+          trailing: IconButton(
+            icon: Icon(Icons.clear),
+            onPressed: () {
+              //?suggestion
+
+              developer.log(suggestion, name: 'suggestion');
+            },
           ),
           // title: Text(suggestion),
           title: RichText(
