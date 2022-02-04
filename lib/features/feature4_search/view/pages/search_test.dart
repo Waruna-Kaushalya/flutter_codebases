@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_codebase/features/feature4_search/view/pages/search_page.dart';
+
+import '../../bloc/search_bloc.dart';
 
 class SearchTest extends StatelessWidget {
   static const routeName = '/searchTest';

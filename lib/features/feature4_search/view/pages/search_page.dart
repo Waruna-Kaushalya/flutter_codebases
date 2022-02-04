@@ -11,6 +11,7 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _nameHolder = TextEditingController();
+    final searchBloc = context.read<SearchBloc>();
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.black,
@@ -20,14 +21,20 @@ class SearchPage extends StatelessWidget {
             Icons.arrow_back,
           ),
           onPressed: () {
+            // final searchBloc = context.read<SearchBloc>();
+            searchBloc.add(
+                SearchEvent(status: SearchEventStatus.clickedBackArrowButton));
+
             Navigator.pop(context);
           },
         ),
         title: BlocListener<SearchBloc, SearchState>(
           listener: (context, state) {
-            // if (state is SuggestValueToquery) {
-            //   _nameHolder.text = state.queryValue;
-            // }
+            if (state.status == SearchStateStatus.searchInitial) {
+            } else if (state.status == SearchStateStatus.suggestionsDisplay) {
+            } else if (state.status == SearchStateStatus.showResult) {
+            } else if (state.status == SearchStateStatus.cityNotFound) {
+            } else if (state.status == SearchStateStatus.resultLoading) {}
           },
           child: TextField(
             //? Search icon in keyboard
@@ -40,14 +47,14 @@ class SearchPage extends StatelessWidget {
 
             controller: _nameHolder,
             onChanged: (value) {
-              final searchBloc = context.read<SearchBloc>();
+              // final searchBloc = context.read<SearchBloc>();
 
               searchBloc.add(SearchEvent(
                   queryValue: value,
                   status: SearchEventStatus.typeInTheSearchbar));
             },
             onSubmitted: (value) {
-              final searchBloc = context.read<SearchBloc>();
+              // final searchBloc = context.read<SearchBloc>();
 
               searchBloc.add(SearchEvent(
                   queryValue: value, status: SearchEventStatus.onSubmitted));
@@ -61,7 +68,11 @@ class SearchPage extends StatelessWidget {
               Icons.clear,
             ),
             onPressed: () {
-              // _nameHolder.clear();
+              _nameHolder.clear();
+              // final searchBloc = context.read<SearchBloc>();
+
+              searchBloc.add(SearchEvent(
+                  status: SearchEventStatus.clickedClearIconButton));
             },
           ),
         ],
@@ -158,7 +169,7 @@ class SearchPage extends StatelessWidget {
             Icons.schedule,
           ),
           trailing: IconButton(
-            icon: Icon(Icons.clear),
+            icon: const Icon(Icons.clear),
             onPressed: () {
               //?suggestion
 

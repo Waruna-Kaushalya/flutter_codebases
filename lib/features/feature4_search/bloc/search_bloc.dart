@@ -78,6 +78,16 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         // }
         //*
 
+      } else if (event.status == SearchEventStatus.clickedBackArrowButton) {
+        emit(state.copyWith(
+            status: SearchStateStatus.searchInitial,
+            suggestions: cities,
+            queryValue: ""));
+      } else if (event.status == SearchEventStatus.clickedClearIconButton) {
+        emit(state.copyWith(
+            status: SearchStateStatus.suggestionsDisplay,
+            suggestions: cities,
+            queryValue: ""));
       }
     });
   }
