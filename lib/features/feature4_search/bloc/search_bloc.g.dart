@@ -8,7 +8,7 @@ part of 'search_bloc.dart';
 
 _$_SearchEvent _$$_SearchEventFromJson(Map<String, dynamic> json) =>
     _$_SearchEvent(
-      status: $enumDecode(_$SearchEventStatusEnumMap, json['status']),
+      eventStatus: $enumDecode(_$SearchEventStatusEnumMap, json['eventStatus']),
       suggestions: (json['suggestions'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -17,7 +17,7 @@ _$_SearchEvent _$$_SearchEventFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_SearchEventToJson(_$_SearchEvent instance) =>
     <String, dynamic>{
-      'status': _$SearchEventStatusEnumMap[instance.status],
+      'eventStatus': _$SearchEventStatusEnumMap[instance.eventStatus],
       'suggestions': instance.suggestions,
       'queryValue': instance.queryValue,
     };
@@ -32,7 +32,8 @@ const _$SearchEventStatusEnumMap = {
 
 _$_SearchState _$$_SearchStateFromJson(Map<String, dynamic> json) =>
     _$_SearchState(
-      status: $enumDecodeNullable(_$SearchStateStatusEnumMap, json['status']) ??
+      stateStatus: $enumDecodeNullable(
+              _$SearchStateStatusEnumMap, json['stateStatus']) ??
           SearchStateStatus.searchInitial,
       suggestions: (json['suggestions'] as List<dynamic>?)
           ?.map((e) => e as String)
@@ -44,7 +45,7 @@ _$_SearchState _$$_SearchStateFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_SearchStateToJson(_$_SearchState instance) =>
     <String, dynamic>{
-      'status': _$SearchStateStatusEnumMap[instance.status],
+      'stateStatus': _$SearchStateStatusEnumMap[instance.stateStatus],
       'suggestions': instance.suggestions,
       'results': instance.results,
       'queryValue': instance.queryValue,
@@ -52,7 +53,6 @@ Map<String, dynamic> _$$_SearchStateToJson(_$_SearchState instance) =>
 
 const _$SearchStateStatusEnumMap = {
   SearchStateStatus.searchInitial: 'searchInitial',
-  SearchStateStatus.suggestionsDisplay: 'suggestionsDisplay',
   SearchStateStatus.resultLoading: 'resultLoading',
   SearchStateStatus.showResult: 'showResult',
   SearchStateStatus.cityNotFound: 'cityNotFound',

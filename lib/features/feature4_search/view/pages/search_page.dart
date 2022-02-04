@@ -22,20 +22,14 @@ class SearchPage extends StatelessWidget {
           ),
           onPressed: () {
             // final searchBloc = context.read<SearchBloc>();
-            searchBloc.add(
-                SearchEvent(status: SearchEventStatus.clickedBackArrowButton));
+            searchBloc.add(SearchEvent(
+                eventStatus: SearchEventStatus.clickedBackArrowButton));
 
             Navigator.pop(context);
           },
         ),
         title: BlocListener<SearchBloc, SearchState>(
-          listener: (context, state) {
-            if (state.status == SearchStateStatus.searchInitial) {
-            } else if (state.status == SearchStateStatus.suggestionsDisplay) {
-            } else if (state.status == SearchStateStatus.showResult) {
-            } else if (state.status == SearchStateStatus.cityNotFound) {
-            } else if (state.status == SearchStateStatus.resultLoading) {}
-          },
+          listener: (context, state) {},
           child: TextField(
             //? Search icon in keyboard
             textInputAction: TextInputAction.search,
@@ -51,13 +45,14 @@ class SearchPage extends StatelessWidget {
 
               searchBloc.add(SearchEvent(
                   queryValue: value,
-                  status: SearchEventStatus.typeInTheSearchbar));
+                  eventStatus: SearchEventStatus.typeInTheSearchbar));
             },
             onSubmitted: (value) {
               // final searchBloc = context.read<SearchBloc>();
 
               searchBloc.add(SearchEvent(
-                  queryValue: value, status: SearchEventStatus.onSubmitted));
+                  queryValue: value,
+                  eventStatus: SearchEventStatus.onSubmitted));
             },
             decoration: textFieldDecorationMethod(),
           ),
@@ -72,7 +67,7 @@ class SearchPage extends StatelessWidget {
               // final searchBloc = context.read<SearchBloc>();
 
               searchBloc.add(SearchEvent(
-                  status: SearchEventStatus.clickedClearIconButton));
+                  eventStatus: SearchEventStatus.clickedClearIconButton));
             },
           ),
         ],
@@ -81,22 +76,22 @@ class SearchPage extends StatelessWidget {
         alignment: Alignment.topLeft,
         child: BlocBuilder<SearchBloc, SearchState>(
           builder: (context, state) {
-            if (state.status == SearchStateStatus.searchInitial) {
+            if (state.stateStatus == SearchStateStatus.searchInitial) {
               final queryValue = state.queryValue;
               final suggestions = state.suggestions;
               return suggetionMListViewMethod(suggestions!, queryValue!);
-            } else if (state.status == SearchStateStatus.suggestionsDisplay) {
-              final queryValue = state.queryValue;
-              final suggestions = state.suggestions;
-              return suggetionMListViewMethod(suggestions!, queryValue!);
-            } else if (state.status == SearchStateStatus.showResult) {
+              // } else if (state.status == SearchStateStatus.suggestionsDisplay) {
+              //   final queryValue = state.queryValue;
+              //   final suggestions = state.suggestions;
+              //   return suggetionMListViewMethod(suggestions!, queryValue!);
+            } else if (state.stateStatus == SearchStateStatus.showResult) {
               final queryValue = state.queryValue;
               final resultList = state.results;
 
               return showResultMethod(queryValue, resultList);
-            } else if (state.status == SearchStateStatus.cityNotFound) {
+            } else if (state.stateStatus == SearchStateStatus.cityNotFound) {
               return const CityNotFoundWidget();
-            } else if (state.status == SearchStateStatus.resultLoading) {
+            } else if (state.stateStatus == SearchStateStatus.resultLoading) {
               return Container(
                 alignment: Alignment.topLeft,
                 child: const LinearProgressIndicator(

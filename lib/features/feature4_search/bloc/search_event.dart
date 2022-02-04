@@ -73,7 +73,7 @@ extension SearchEventStatusX on SearchEventStatus {
 @freezed
 class SearchEvent with _$SearchEvent {
   factory SearchEvent({
-    required SearchEventStatus status,
+    required SearchEventStatus eventStatus,
     List<String>? suggestions,
     String? queryValue,
   }) = _SearchEvent;

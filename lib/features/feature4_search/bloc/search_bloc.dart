@@ -10,12 +10,15 @@ part 'search_bloc.g.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc()
-      : super(SearchState(
+      : super(
+          SearchState(
             queryValue: "",
-            status: SearchStateStatus.searchInitial,
-            suggestions: cities)) {
+            stateStatus: SearchStateStatus.searchInitial,
+            suggestions: cities,
+          ),
+        ) {
     on<SearchEvent>((event, emit) async {
-      if (event.status == SearchEventStatus.typeInTheSearchbar) {
+      if (event.eventStatus == SearchEventStatus.typeInTheSearchbar) {
         final queryValue = event.queryValue!.trim();
         final suggestions = queryValue.isEmpty
             ? cities
@@ -28,13 +31,13 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               ).toList();
 
         emit(state.copyWith(
-            status: SearchStateStatus.suggestionsDisplay,
+            stateStatus: SearchStateStatus.searchInitial,
             suggestions: suggestions,
             queryValue: queryValue));
 
         developer.log(suggestions.toString(), name: 'suggestions');
-      } else if (event.status == SearchEventStatus.onSubmitted) {
-        emit(state.copyWith(status: SearchStateStatus.resultLoading));
+      } else if (event.eventStatus == SearchEventStatus.onSubmitted) {
+        emit(state.copyWith(stateStatus: SearchStateStatus.resultLoading));
 
         await Future.delayed(const Duration(seconds: 1));
 
@@ -55,13 +58,13 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         //* Two Options
         lsitExactlyValue.isNotEmpty
             ? emit(state.copyWith(
-                status: SearchStateStatus.showResult,
+                stateStatus: SearchStateStatus.showResult,
                 queryValue: queryValueS,
                 results: lsitExactlyValue,
               ))
             : emit(
                 state.copyWith(
-                  status: SearchStateStatus.cityNotFound,
+                  stateStatus: SearchStateStatus.cityNotFound,
                 ),
               );
 
@@ -78,14 +81,16 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         // }
         //*
 
-      } else if (event.status == SearchEventStatus.clickedBackArrowButton) {
+      } else if (event.eventStatus ==
+          SearchEventStatus.clickedBackArrowButton) {
         emit(state.copyWith(
-            status: SearchStateStatus.searchInitial,
+            stateStatus: SearchStateStatus.searchInitial,
             suggestions: cities,
             queryValue: ""));
-      } else if (event.status == SearchEventStatus.clickedClearIconButton) {
+      } else if (event.eventStatus ==
+          SearchEventStatus.clickedClearIconButton) {
         emit(state.copyWith(
-            status: SearchStateStatus.suggestionsDisplay,
+            stateStatus: SearchStateStatus.searchInitial,
             suggestions: cities,
             queryValue: ""));
       }

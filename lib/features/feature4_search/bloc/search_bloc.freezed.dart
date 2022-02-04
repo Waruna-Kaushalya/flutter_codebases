@@ -23,11 +23,11 @@ class _$SearchEventTearOff {
   const _$SearchEventTearOff();
 
   _SearchEvent call(
-      {required SearchEventStatus status,
+      {required SearchEventStatus eventStatus,
       List<String>? suggestions,
       String? queryValue}) {
     return _SearchEvent(
-      status: status,
+      eventStatus: eventStatus,
       suggestions: suggestions,
       queryValue: queryValue,
     );
@@ -43,7 +43,7 @@ const $SearchEvent = _$SearchEventTearOff();
 
 /// @nodoc
 mixin _$SearchEvent {
-  SearchEventStatus get status => throw _privateConstructorUsedError;
+  SearchEventStatus get eventStatus => throw _privateConstructorUsedError;
   List<String>? get suggestions => throw _privateConstructorUsedError;
   String? get queryValue => throw _privateConstructorUsedError;
 
@@ -59,7 +59,7 @@ abstract class $SearchEventCopyWith<$Res> {
           SearchEvent value, $Res Function(SearchEvent) then) =
       _$SearchEventCopyWithImpl<$Res>;
   $Res call(
-      {SearchEventStatus status,
+      {SearchEventStatus eventStatus,
       List<String>? suggestions,
       String? queryValue});
 }
@@ -74,14 +74,14 @@ class _$SearchEventCopyWithImpl<$Res> implements $SearchEventCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? status = freezed,
+    Object? eventStatus = freezed,
     Object? suggestions = freezed,
     Object? queryValue = freezed,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      eventStatus: eventStatus == freezed
+          ? _value.eventStatus
+          : eventStatus // ignore: cast_nullable_to_non_nullable
               as SearchEventStatus,
       suggestions: suggestions == freezed
           ? _value.suggestions
@@ -103,7 +103,7 @@ abstract class _$SearchEventCopyWith<$Res>
       __$SearchEventCopyWithImpl<$Res>;
   @override
   $Res call(
-      {SearchEventStatus status,
+      {SearchEventStatus eventStatus,
       List<String>? suggestions,
       String? queryValue});
 }
@@ -120,14 +120,14 @@ class __$SearchEventCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? status = freezed,
+    Object? eventStatus = freezed,
     Object? suggestions = freezed,
     Object? queryValue = freezed,
   }) {
     return _then(_SearchEvent(
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      eventStatus: eventStatus == freezed
+          ? _value.eventStatus
+          : eventStatus // ignore: cast_nullable_to_non_nullable
               as SearchEventStatus,
       suggestions: suggestions == freezed
           ? _value.suggestions
@@ -144,13 +144,14 @@ class __$SearchEventCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SearchEvent implements _SearchEvent {
-  _$_SearchEvent({required this.status, this.suggestions, this.queryValue});
+  _$_SearchEvent(
+      {required this.eventStatus, this.suggestions, this.queryValue});
 
   factory _$_SearchEvent.fromJson(Map<String, dynamic> json) =>
       _$$_SearchEventFromJson(json);
 
   @override
-  final SearchEventStatus status;
+  final SearchEventStatus eventStatus;
   @override
   final List<String>? suggestions;
   @override
@@ -158,7 +159,7 @@ class _$_SearchEvent implements _SearchEvent {
 
   @override
   String toString() {
-    return 'SearchEvent(status: $status, suggestions: $suggestions, queryValue: $queryValue)';
+    return 'SearchEvent(eventStatus: $eventStatus, suggestions: $suggestions, queryValue: $queryValue)';
   }
 
   @override
@@ -166,7 +167,8 @@ class _$_SearchEvent implements _SearchEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _SearchEvent &&
-            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality()
+                .equals(other.eventStatus, eventStatus) &&
             const DeepCollectionEquality()
                 .equals(other.suggestions, suggestions) &&
             const DeepCollectionEquality()
@@ -176,7 +178,7 @@ class _$_SearchEvent implements _SearchEvent {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(eventStatus),
       const DeepCollectionEquality().hash(suggestions),
       const DeepCollectionEquality().hash(queryValue));
 
@@ -193,7 +195,7 @@ class _$_SearchEvent implements _SearchEvent {
 
 abstract class _SearchEvent implements SearchEvent {
   factory _SearchEvent(
-      {required SearchEventStatus status,
+      {required SearchEventStatus eventStatus,
       List<String>? suggestions,
       String? queryValue}) = _$_SearchEvent;
 
@@ -201,7 +203,7 @@ abstract class _SearchEvent implements SearchEvent {
       _$_SearchEvent.fromJson;
 
   @override
-  SearchEventStatus get status;
+  SearchEventStatus get eventStatus;
   @override
   List<String>? get suggestions;
   @override
@@ -221,12 +223,12 @@ class _$SearchStateTearOff {
   const _$SearchStateTearOff();
 
   _SearchState call(
-      {SearchStateStatus status = SearchStateStatus.searchInitial,
+      {SearchStateStatus stateStatus = SearchStateStatus.searchInitial,
       List<String>? suggestions,
       List<String>? results,
       String? queryValue}) {
     return _SearchState(
-      status: status,
+      stateStatus: stateStatus,
       suggestions: suggestions,
       results: results,
       queryValue: queryValue,
@@ -243,7 +245,7 @@ const $SearchState = _$SearchStateTearOff();
 
 /// @nodoc
 mixin _$SearchState {
-  SearchStateStatus get status => throw _privateConstructorUsedError;
+  SearchStateStatus get stateStatus => throw _privateConstructorUsedError;
   List<String>? get suggestions => throw _privateConstructorUsedError;
   List<String>? get results => throw _privateConstructorUsedError;
   String? get queryValue => throw _privateConstructorUsedError;
@@ -260,7 +262,7 @@ abstract class $SearchStateCopyWith<$Res> {
           SearchState value, $Res Function(SearchState) then) =
       _$SearchStateCopyWithImpl<$Res>;
   $Res call(
-      {SearchStateStatus status,
+      {SearchStateStatus stateStatus,
       List<String>? suggestions,
       List<String>? results,
       String? queryValue});
@@ -276,15 +278,15 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? status = freezed,
+    Object? stateStatus = freezed,
     Object? suggestions = freezed,
     Object? results = freezed,
     Object? queryValue = freezed,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      stateStatus: stateStatus == freezed
+          ? _value.stateStatus
+          : stateStatus // ignore: cast_nullable_to_non_nullable
               as SearchStateStatus,
       suggestions: suggestions == freezed
           ? _value.suggestions
@@ -310,7 +312,7 @@ abstract class _$SearchStateCopyWith<$Res>
       __$SearchStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {SearchStateStatus status,
+      {SearchStateStatus stateStatus,
       List<String>? suggestions,
       List<String>? results,
       String? queryValue});
@@ -328,15 +330,15 @@ class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? status = freezed,
+    Object? stateStatus = freezed,
     Object? suggestions = freezed,
     Object? results = freezed,
     Object? queryValue = freezed,
   }) {
     return _then(_SearchState(
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      stateStatus: stateStatus == freezed
+          ? _value.stateStatus
+          : stateStatus // ignore: cast_nullable_to_non_nullable
               as SearchStateStatus,
       suggestions: suggestions == freezed
           ? _value.suggestions
@@ -358,7 +360,7 @@ class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_SearchState implements _SearchState {
   _$_SearchState(
-      {this.status = SearchStateStatus.searchInitial,
+      {this.stateStatus = SearchStateStatus.searchInitial,
       this.suggestions,
       this.results,
       this.queryValue});
@@ -368,7 +370,7 @@ class _$_SearchState implements _SearchState {
 
   @JsonKey()
   @override
-  final SearchStateStatus status;
+  final SearchStateStatus stateStatus;
   @override
   final List<String>? suggestions;
   @override
@@ -378,7 +380,7 @@ class _$_SearchState implements _SearchState {
 
   @override
   String toString() {
-    return 'SearchState(status: $status, suggestions: $suggestions, results: $results, queryValue: $queryValue)';
+    return 'SearchState(stateStatus: $stateStatus, suggestions: $suggestions, results: $results, queryValue: $queryValue)';
   }
 
   @override
@@ -386,7 +388,8 @@ class _$_SearchState implements _SearchState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _SearchState &&
-            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality()
+                .equals(other.stateStatus, stateStatus) &&
             const DeepCollectionEquality()
                 .equals(other.suggestions, suggestions) &&
             const DeepCollectionEquality().equals(other.results, results) &&
@@ -397,7 +400,7 @@ class _$_SearchState implements _SearchState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(stateStatus),
       const DeepCollectionEquality().hash(suggestions),
       const DeepCollectionEquality().hash(results),
       const DeepCollectionEquality().hash(queryValue));
@@ -415,7 +418,7 @@ class _$_SearchState implements _SearchState {
 
 abstract class _SearchState implements SearchState {
   factory _SearchState(
-      {SearchStateStatus status,
+      {SearchStateStatus stateStatus,
       List<String>? suggestions,
       List<String>? results,
       String? queryValue}) = _$_SearchState;
@@ -424,7 +427,7 @@ abstract class _SearchState implements SearchState {
       _$_SearchState.fromJson;
 
   @override
-  SearchStateStatus get status;
+  SearchStateStatus get stateStatus;
   @override
   List<String>? get suggestions;
   @override

@@ -55,7 +55,6 @@ part of 'search_bloc.dart';
 
 enum SearchStateStatus {
   searchInitial,
-  suggestionsDisplay,
   resultLoading,
   showResult,
   cityNotFound,
@@ -64,7 +63,6 @@ enum SearchStateStatus {
 
 extension SearchStatusX on SearchStateStatus {
   bool get isSearchInitial => this == SearchStateStatus.searchInitial;
-  bool get isSuggestionsDisplay => this == SearchStateStatus.suggestionsDisplay;
   bool get isResultLoading => this == SearchStateStatus.resultLoading;
   bool get isShowResult => this == SearchStateStatus.showResult;
   bool get isCityNotFound => this == SearchStateStatus.cityNotFound;
@@ -74,7 +72,7 @@ extension SearchStatusX on SearchStateStatus {
 @freezed
 class SearchState with _$SearchState {
   factory SearchState({
-    @Default(SearchStateStatus.searchInitial) SearchStateStatus status,
+    @Default(SearchStateStatus.searchInitial) SearchStateStatus stateStatus,
     List<String>? suggestions,
     List<String>? results,
     String? queryValue,
@@ -83,3 +81,7 @@ class SearchState with _$SearchState {
   factory SearchState.fromJson(Map<String, dynamic> json) =>
       _$SearchStateFromJson(json);
 }
+
+
+// suggestionsDisplay,
+//  bool get isSuggestionsDisplay => this == SearchStateStatus.suggestionsDisplay;
