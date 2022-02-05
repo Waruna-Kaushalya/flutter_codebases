@@ -51,6 +51,47 @@
 
 //! ----------------
 
+part of 'search_bloc.dart';
+
+enum SearchEventStatus {
+  typeInSearchbarEvnt,
+  clickedSuggetionEvnt,
+  submittedSearchEvnt,
+  clickedClearBtnEvnt,
+  clickedBackArrowBtnEvnt,
+  clickedSuggetionRemoveBtnEvnt,
+}
+
+extension SearchEventStatusX on SearchEventStatus {
+  bool get isTypeInSearchbarEvnt =>
+      this == SearchEventStatus.typeInSearchbarEvnt;
+  bool get isClickedSuggetionEvnt =>
+      this == SearchEventStatus.clickedSuggetionEvnt;
+  bool get isSubmittedSearchEvnt =>
+      this == SearchEventStatus.submittedSearchEvnt;
+  bool get isClickedClearBtnEvnt =>
+      this == SearchEventStatus.clickedClearBtnEvnt;
+  bool get isClickedBackArrowBtnEvnt =>
+      this == SearchEventStatus.clickedBackArrowBtnEvnt;
+  bool get isClickedSuggetionRemoveBtnEvnt =>
+      this == SearchEventStatus.clickedSuggetionRemoveBtnEvnt;
+}
+
+@freezed
+class SearchEvent with _$SearchEvent {
+  factory SearchEvent({
+    required SearchEventStatus eventStatus,
+    List<String>? suggestions,
+    String? suggestion,
+    String? queryValue,
+  }) = _SearchEvent;
+
+  factory SearchEvent.fromJson(Map<String, dynamic> json) =>
+      _$SearchEventFromJson(json);
+}
+
+//! ----------------
+
 // part of 'search_bloc.dart';
 
 // enum SearchEventStatus {
@@ -74,79 +115,41 @@
 //   bool get isRemoveSuggetion => this == SearchEventStatus.removeSuggetion;
 // }
 
-// @freezed
-// class SearchEvent with _$SearchEvent {
-//   factory SearchEvent({
-//     required SearchEventStatus eventStatus,
+// @JsonSerializable()
+// class SearchEvent extends Equatable {
+//   final SearchEventStatus eventStatus;
+//   final List<String>? suggestions;
+//   final String? suggestion;
+//   final String? queryValue;
+//   const SearchEvent({
+//     required this.eventStatus,
+//     this.suggestions,
+//     this.suggestion,
+//     this.queryValue,
+//   });
+
+//   SearchEvent copyWith({
+//     SearchEventStatus? eventStatus,
 //     List<String>? suggestions,
 //     String? suggestion,
 //     String? queryValue,
-//   }) = _SearchEvent;
+//   }) {
+//     return SearchEvent(
+//       eventStatus: eventStatus ?? this.eventStatus,
+//       suggestions: suggestions ?? this.suggestions,
+//       suggestion: suggestion ?? this.suggestion,
+//       queryValue: queryValue ?? this.queryValue,
+//     );
+//   }
 
+//   @override
+//   List<Object?> get props => [eventStatus, suggestions, suggestion, queryValue];
+
+//   /// Connect the generated [_$PersonFromJson] function to the `fromJson`
+//   /// factory.
 //   factory SearchEvent.fromJson(Map<String, dynamic> json) =>
 //       _$SearchEventFromJson(json);
+
+//   /// Connect the generated [_$PersonToJson] function to the `toJson` method.
+//   Map<String, dynamic> toJson() => _$SearchEventToJson(this);
 // }
-
-//! ----------------
-
-part of 'search_bloc.dart';
-
-enum SearchEventStatus {
-  typeInTheSearchbar,
-  suggestedCityClicked,
-  onSubmitted,
-  clickedClearIconButton,
-  clickedBackArrowButton,
-  removeSuggetion,
-}
-
-extension SearchEventStatusX on SearchEventStatus {
-  bool get isTypeInTheSearchbar => this == SearchEventStatus.typeInTheSearchbar;
-  bool get isSuggestedCityClicked =>
-      this == SearchEventStatus.suggestedCityClicked;
-  bool get isOnSubmitted => this == SearchEventStatus.onSubmitted;
-  bool get isClickedClearIconButton =>
-      this == SearchEventStatus.clickedClearIconButton;
-  bool get isClickedBackArrowButton =>
-      this == SearchEventStatus.clickedBackArrowButton;
-  bool get isRemoveSuggetion => this == SearchEventStatus.removeSuggetion;
-}
-
-@JsonSerializable()
-class SearchEvent extends Equatable {
-  final SearchEventStatus eventStatus;
-  final List<String>? suggestions;
-  final String? suggestion;
-  final String? queryValue;
-  const SearchEvent({
-    required this.eventStatus,
-    this.suggestions,
-    this.suggestion,
-    this.queryValue,
-  });
-
-  SearchEvent copyWith({
-    SearchEventStatus? eventStatus,
-    List<String>? suggestions,
-    String? suggestion,
-    String? queryValue,
-  }) {
-    return SearchEvent(
-      eventStatus: eventStatus ?? this.eventStatus,
-      suggestions: suggestions ?? this.suggestions,
-      suggestion: suggestion ?? this.suggestion,
-      queryValue: queryValue ?? this.queryValue,
-    );
-  }
-
-  @override
-  List<Object?> get props => [eventStatus, suggestions, suggestion, queryValue];
-
-  /// Connect the generated [_$PersonFromJson] function to the `fromJson`
-  /// factory.
-  factory SearchEvent.fromJson(Map<String, dynamic> json) =>
-      _$SearchEventFromJson(json);
-
-  /// Connect the generated [_$PersonToJson] function to the `toJson` method.
-  Map<String, dynamic> toJson() => _$SearchEventToJson(this);
-}

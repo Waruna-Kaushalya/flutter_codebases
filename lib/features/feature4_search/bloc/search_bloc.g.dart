@@ -6,7 +6,8 @@ part of 'search_bloc.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SearchEvent _$SearchEventFromJson(Map<String, dynamic> json) => SearchEvent(
+_$_SearchEvent _$$_SearchEventFromJson(Map<String, dynamic> json) =>
+    _$_SearchEvent(
       eventStatus: $enumDecode(_$SearchEventStatusEnumMap, json['eventStatus']),
       suggestions: (json['suggestions'] as List<dynamic>?)
           ?.map((e) => e as String)
@@ -15,7 +16,7 @@ SearchEvent _$SearchEventFromJson(Map<String, dynamic> json) => SearchEvent(
       queryValue: json['queryValue'] as String?,
     );
 
-Map<String, dynamic> _$SearchEventToJson(SearchEvent instance) =>
+Map<String, dynamic> _$$_SearchEventToJson(_$_SearchEvent instance) =>
     <String, dynamic>{
       'eventStatus': _$SearchEventStatusEnumMap[instance.eventStatus],
       'suggestions': instance.suggestions,
@@ -24,18 +25,18 @@ Map<String, dynamic> _$SearchEventToJson(SearchEvent instance) =>
     };
 
 const _$SearchEventStatusEnumMap = {
-  SearchEventStatus.typeInTheSearchbar: 'typeInTheSearchbar',
-  SearchEventStatus.suggestedCityClicked: 'suggestedCityClicked',
-  SearchEventStatus.onSubmitted: 'onSubmitted',
-  SearchEventStatus.clickedClearIconButton: 'clickedClearIconButton',
-  SearchEventStatus.clickedBackArrowButton: 'clickedBackArrowButton',
-  SearchEventStatus.removeSuggetion: 'removeSuggetion',
+  SearchEventStatus.typeInSearchbarEvnt: 'typeInSearchbarEvnt',
+  SearchEventStatus.clickedSuggetionEvnt: 'clickedSuggetionEvnt',
+  SearchEventStatus.submittedSearchEvnt: 'submittedSearchEvnt',
+  SearchEventStatus.clickedClearBtnEvnt: 'clickedClearBtnEvnt',
+  SearchEventStatus.clickedBackArrowBtnEvnt: 'clickedBackArrowBtnEvnt',
+  SearchEventStatus.clickedSuggetionRemoveBtnEvnt:
+      'clickedSuggetionRemoveBtnEvnt',
 };
 
-SearchState _$SearchStateFromJson(Map<String, dynamic> json) => SearchState(
-      stateStatus: $enumDecodeNullable(
-              _$SearchStateStatusEnumMap, json['stateStatus']) ??
-          SearchStateStatus.searchInitial,
+_$_SearchState _$$_SearchStateFromJson(Map<String, dynamic> json) =>
+    _$_SearchState(
+      stateStatus: $enumDecode(_$SearchStateStatusEnumMap, json['stateStatus']),
       suggestions: (json['suggestions'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -44,7 +45,7 @@ SearchState _$SearchStateFromJson(Map<String, dynamic> json) => SearchState(
       queryValue: json['queryValue'] as String?,
     );
 
-Map<String, dynamic> _$SearchStateToJson(SearchState instance) =>
+Map<String, dynamic> _$$_SearchStateToJson(_$_SearchState instance) =>
     <String, dynamic>{
       'stateStatus': _$SearchStateStatusEnumMap[instance.stateStatus],
       'suggestions': instance.suggestions,
@@ -53,9 +54,8 @@ Map<String, dynamic> _$SearchStateToJson(SearchState instance) =>
     };
 
 const _$SearchStateStatusEnumMap = {
-  SearchStateStatus.searchInitial: 'searchInitial',
-  SearchStateStatus.resultLoading: 'resultLoading',
-  SearchStateStatus.showResult: 'showResult',
-  SearchStateStatus.cityNotFound: 'cityNotFound',
-  SearchStateStatus.searchEnd: 'searchEnd',
+  SearchStateStatus.searchInitialState: 'searchInitialState',
+  SearchStateStatus.searchResultLoadingState: 'searchResultLoadingState',
+  SearchStateStatus.searchResultShowState: 'searchResultShowState',
+  SearchStateStatus.searchNotFoundState: 'searchNotFoundState',
 };
