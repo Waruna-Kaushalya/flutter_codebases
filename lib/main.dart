@@ -2,7 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_codebase/features/feature3_counter/logic/bloc/counter_bloc.dart';
 import 'package:flutter_codebase/features/feature3_counter/logic/cubit/counter_cubit.dart';
-import 'package:flutter_codebase/features/feature4_search/bloc/search_bloc.dart';
+
 import 'package:flutter_codebase/pages/pages.dart';
 import 'package:flutter_codebase/routes/routes.dart';
 import 'package:flutter_codebase/utility/app_bloc_observer.dart';
@@ -11,6 +11,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_codebase/features/features.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+
+import 'features/feature4_search/logic/bloc/search_bloc.dart';
 
 Future<void> main() async {
   //?call notice codes

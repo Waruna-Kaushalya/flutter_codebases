@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_codebase/features/feature4_search/view/pages/search_page.dart';
+import 'package:flutter_codebase/features/feature4_search/view/pages/search_bloc_page.dart';
 
-import '../../bloc/search_bloc.dart';
-
-class SearchTest extends StatelessWidget {
+class SearchHomePage extends StatelessWidget {
   static const routeName = '/searchTest';
 
-  const SearchTest({Key? key}) : super(key: key);
+  const SearchHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +17,7 @@ class SearchTest extends StatelessWidget {
               Icons.search,
             ),
             onPressed: () {
-              Navigator.pushNamed(context, SearchPage.routeName);
+              Navigator.pushNamed(context, SearchBlocPage.routeName);
             },
           ),
         ],

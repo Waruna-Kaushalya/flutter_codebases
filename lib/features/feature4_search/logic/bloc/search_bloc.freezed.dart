@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-SearchEvent _$SearchEventFromJson(Map<String, dynamic> json) {
-  return _SearchEvent.fromJson(json);
-}
-
 /// @nodoc
 class _$SearchEventTearOff {
   const _$SearchEventTearOff();
@@ -34,10 +30,6 @@ class _$SearchEventTearOff {
       queryValue: queryValue,
     );
   }
-
-  SearchEvent fromJson(Map<String, Object?> json) {
-    return SearchEvent.fromJson(json);
-  }
 }
 
 /// @nodoc
@@ -50,7 +42,6 @@ mixin _$SearchEvent {
   String? get suggestion => throw _privateConstructorUsedError;
   String? get queryValue => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SearchEventCopyWith<SearchEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -157,16 +148,13 @@ class __$SearchEventCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_SearchEvent implements _SearchEvent {
   _$_SearchEvent(
       {required this.eventStatus,
       this.suggestions,
       this.suggestion,
       this.queryValue});
-
-  factory _$_SearchEvent.fromJson(Map<String, dynamic> json) =>
-      _$$_SearchEventFromJson(json);
 
   @override
   final SearchEventStatus eventStatus;
@@ -209,11 +197,6 @@ class _$_SearchEvent implements _SearchEvent {
   @override
   _$SearchEventCopyWith<_SearchEvent> get copyWith =>
       __$SearchEventCopyWithImpl<_SearchEvent>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_SearchEventToJson(this);
-  }
 }
 
 abstract class _SearchEvent implements SearchEvent {
@@ -222,9 +205,6 @@ abstract class _SearchEvent implements SearchEvent {
       List<String>? suggestions,
       String? suggestion,
       String? queryValue}) = _$_SearchEvent;
-
-  factory _SearchEvent.fromJson(Map<String, dynamic> json) =
-      _$_SearchEvent.fromJson;
 
   @override
   SearchEventStatus get eventStatus;
@@ -252,12 +232,14 @@ class _$SearchStateTearOff {
       {required SearchStateStatus stateStatus,
       List<String>? suggestions,
       List<String>? results,
-      String? queryValue}) {
+      String? queryValue,
+      String? errorMsg}) {
     return _SearchState(
       stateStatus: stateStatus,
       suggestions: suggestions,
       results: results,
       queryValue: queryValue,
+      errorMsg: errorMsg,
     );
   }
 
@@ -275,6 +257,7 @@ mixin _$SearchState {
   List<String>? get suggestions => throw _privateConstructorUsedError;
   List<String>? get results => throw _privateConstructorUsedError;
   String? get queryValue => throw _privateConstructorUsedError;
+  String? get errorMsg => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -291,7 +274,8 @@ abstract class $SearchStateCopyWith<$Res> {
       {SearchStateStatus stateStatus,
       List<String>? suggestions,
       List<String>? results,
-      String? queryValue});
+      String? queryValue,
+      String? errorMsg});
 }
 
 /// @nodoc
@@ -308,6 +292,7 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
     Object? suggestions = freezed,
     Object? results = freezed,
     Object? queryValue = freezed,
+    Object? errorMsg = freezed,
   }) {
     return _then(_value.copyWith(
       stateStatus: stateStatus == freezed
@@ -326,6 +311,10 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
           ? _value.queryValue
           : queryValue // ignore: cast_nullable_to_non_nullable
               as String?,
+      errorMsg: errorMsg == freezed
+          ? _value.errorMsg
+          : errorMsg // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -341,7 +330,8 @@ abstract class _$SearchStateCopyWith<$Res>
       {SearchStateStatus stateStatus,
       List<String>? suggestions,
       List<String>? results,
-      String? queryValue});
+      String? queryValue,
+      String? errorMsg});
 }
 
 /// @nodoc
@@ -360,6 +350,7 @@ class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
     Object? suggestions = freezed,
     Object? results = freezed,
     Object? queryValue = freezed,
+    Object? errorMsg = freezed,
   }) {
     return _then(_SearchState(
       stateStatus: stateStatus == freezed
@@ -378,6 +369,10 @@ class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
           ? _value.queryValue
           : queryValue // ignore: cast_nullable_to_non_nullable
               as String?,
+      errorMsg: errorMsg == freezed
+          ? _value.errorMsg
+          : errorMsg // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -389,7 +384,8 @@ class _$_SearchState implements _SearchState {
       {required this.stateStatus,
       this.suggestions,
       this.results,
-      this.queryValue});
+      this.queryValue,
+      this.errorMsg});
 
   factory _$_SearchState.fromJson(Map<String, dynamic> json) =>
       _$$_SearchStateFromJson(json);
@@ -402,10 +398,12 @@ class _$_SearchState implements _SearchState {
   final List<String>? results;
   @override
   final String? queryValue;
+  @override
+  final String? errorMsg;
 
   @override
   String toString() {
-    return 'SearchState(stateStatus: $stateStatus, suggestions: $suggestions, results: $results, queryValue: $queryValue)';
+    return 'SearchState(stateStatus: $stateStatus, suggestions: $suggestions, results: $results, queryValue: $queryValue, errorMsg: $errorMsg)';
   }
 
   @override
@@ -419,7 +417,8 @@ class _$_SearchState implements _SearchState {
                 .equals(other.suggestions, suggestions) &&
             const DeepCollectionEquality().equals(other.results, results) &&
             const DeepCollectionEquality()
-                .equals(other.queryValue, queryValue));
+                .equals(other.queryValue, queryValue) &&
+            const DeepCollectionEquality().equals(other.errorMsg, errorMsg));
   }
 
   @override
@@ -428,7 +427,8 @@ class _$_SearchState implements _SearchState {
       const DeepCollectionEquality().hash(stateStatus),
       const DeepCollectionEquality().hash(suggestions),
       const DeepCollectionEquality().hash(results),
-      const DeepCollectionEquality().hash(queryValue));
+      const DeepCollectionEquality().hash(queryValue),
+      const DeepCollectionEquality().hash(errorMsg));
 
   @JsonKey(ignore: true)
   @override
@@ -446,7 +446,8 @@ abstract class _SearchState implements SearchState {
       {required SearchStateStatus stateStatus,
       List<String>? suggestions,
       List<String>? results,
-      String? queryValue}) = _$_SearchState;
+      String? queryValue,
+      String? errorMsg}) = _$_SearchState;
 
   factory _SearchState.fromJson(Map<String, dynamic> json) =
       _$_SearchState.fromJson;
@@ -459,6 +460,8 @@ abstract class _SearchState implements SearchState {
   List<String>? get results;
   @override
   String? get queryValue;
+  @override
+  String? get errorMsg;
   @override
   @JsonKey(ignore: true)
   _$SearchStateCopyWith<_SearchState> get copyWith =>

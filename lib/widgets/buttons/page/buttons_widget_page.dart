@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_codebase/widgets/fluttertoast/widget/fluttertoast_widget.dart';
 import '../widgets/widgets.dart';
 
 class ButtonsWidget extends StatelessWidget {
@@ -19,13 +19,13 @@ class ButtonsWidget extends StatelessWidget {
             buttonLabel: "Elavated Button",
             //? Inhere pass Function to Elavated button onPresd.
 
-            onCustomButtonPressed: () => Fluttertoast.showToast(
-                msg: "Pressed Outlined Button", fontSize: 15),
+            onCustomButtonPressed: () =>
+                showFlutterToastWidget(msg: "Pressed Outlined Button"),
           ),
           OutLinedButtonWidget(
             buttonLabel: "Outlined Button",
-            onCustomButtonPressed: () => Fluttertoast.showToast(
-                msg: "Pressed Outlined Button", fontSize: 15),
+            onCustomButtonPressed: () =>
+                showFlutterToastWidget(msg: "Pressed Outlined Button"),
           ),
           const TextButtonWidget(),
           const IconsButtonWidget(),
@@ -34,8 +34,8 @@ class ButtonsWidget extends StatelessWidget {
           const OutlinedWithIconWidget(),
           GradientTextButton(
             buttonLabel: "Gradiant",
-            onCustomButtonPressed: () => Fluttertoast.showToast(
-                msg: "Pressed Outlined Button", fontSize: 15),
+            onCustomButtonPressed: () =>
+                showFlutterToastWidget(msg: "Pressed Outlined Button"),
           ),
         ],
       ),

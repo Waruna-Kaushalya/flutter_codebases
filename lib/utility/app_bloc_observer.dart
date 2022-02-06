@@ -61,9 +61,6 @@ class AppBlocObserver extends BlocObserver {
 
   @override
   void onCreate(BlocBase bloc) {
-    print("======================");
-    print(bloc == bloc);
-    print("======================");
     developer.log(
       '--------bloc----------$bloc',
       name: 'onCreate',

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codebase/features/feature2_toggle_switch_button/view/pages/toggle_switchlist_button_page.dart';
-import 'package:flutter_codebase/features/feature4_search/view/pages/search_bar_exactly_search_feature_page.dart';
-import 'package:flutter_codebase/features/feature4_search/view/pages/search_page.dart';
-import 'package:flutter_codebase/features/feature4_search/view/pages/search_test.dart';
+import 'package:flutter_codebase/features/feature4_search/view/pages/search_maual_page.dart';
+import 'package:flutter_codebase/features/feature4_search/view/pages/search_bloc_page.dart';
+import 'package:flutter_codebase/features/feature4_search/view/pages/search_home_page.dart';
 
 import 'package:flutter_codebase/pages/pages.dart';
 import 'package:flutter_codebase/widgets/buttons/page/buttons_widget_page.dart';
@@ -61,22 +61,22 @@ class AppRoutes {
           builder: (context) => const InkWellButtonsWidget(),
         );
 
-      case SearchBarExactlySearchPage.routeName:
+      case SearchManualPage.routeName:
         return MaterialPageRoute(
           settings: const RouteSettings(name: 'SearchBarPage'),
-          builder: (context) => const SearchBarExactlySearchPage(),
+          builder: (context) => const SearchManualPage(),
         );
 
-      case SearchTest.routeName:
+      case SearchHomePage.routeName:
         return MaterialPageRoute(
           settings: const RouteSettings(name: 'SearchTest'),
-          builder: (context) => const SearchTest(),
+          builder: (context) => const SearchHomePage(),
         );
 
-      case SearchPage.routeName:
+      case SearchBlocPage.routeName:
         return MaterialPageRoute(
           settings: const RouteSettings(name: 'SearchPage'),
-          builder: (context) => const SearchPage(),
+          builder: (context) => const SearchBlocPage(),
         );
 
       default:

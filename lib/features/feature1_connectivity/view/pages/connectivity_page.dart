@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_codebase/features/feature1_connectivity/logic/cubit/cubut.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ConnectivityFeaturePage extends StatefulWidget {
   static const routeName = '/connectivityfeaturepage';
@@ -17,7 +18,15 @@ class _ConnectivityFeaturePageState extends State<ConnectivityFeaturePage> {
   Widget build(BuildContext context) {
     return BlocListener<ConnectivityCubit, ConnectivityState>(
       listener: (context, state) {
-        // TODO: implement listener
+        if (state is NetworkConnected &&
+            state.connectionType == ConnectionType.mobile) {
+          Fluttertoast.showToast(msg: "Connected to Mobile");
+        } else if (state is NetworkConnected &&
+            state.connectionType == ConnectionType.wifi) {
+          Fluttertoast.showToast(msg: "Connected to WiFi");
+        } else {
+          Fluttertoast.showToast(msg: "Network Disconnected");
+        }
       },
       child: Scaffold(
         appBar: AppBar(

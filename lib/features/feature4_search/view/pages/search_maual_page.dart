@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class SearchForBloc extends StatelessWidget {
+class SearchManualPage extends StatelessWidget {
   static const routeName = '/searchBarPage';
 
-  const SearchForBloc({Key? key}) : super(key: key);
+  const SearchManualPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,6 @@ class SearchForBloc extends StatelessWidget {
             onPressed: () async {
               final result =
                   await showSearch(context: context, delegate: CitySearch());
-              print("-=========================$result");
             },
           ),
         ],
@@ -29,6 +28,55 @@ class SearchForBloc extends StatelessWidget {
 }
 
 class CitySearch extends SearchDelegate {
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme colorScheme = theme.colorScheme;
+
+    return theme.copyWith(
+        appBarTheme: AppBarTheme(
+          backgroundColor: colorScheme.brightness == Brightness.dark
+              ? Colors.grey[900]
+              : Colors.white,
+          iconTheme: theme.primaryIconTheme.copyWith(color: Colors.grey),
+        ),
+        inputDecorationTheme: searchFieldDecorationTheme ??
+            InputDecorationTheme(
+              labelStyle: const TextStyle(color: Colors.black, fontSize: 4),
+              // hintStyle: TextStyle(color: Colors.black),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 7, horizontal: 8),
+              hintStyle:
+                  searchFieldStyle ?? theme.inputDecorationTheme.hintStyle,
+              // border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(4.0))),
+              // filled: true,
+              // fillColor: Color(0xFFF2F2F2),
+              focusedBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(100)),
+                borderSide: BorderSide(width: 1, color: Colors.red),
+              ),
+              disabledBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(100)),
+                borderSide: BorderSide(width: 1, color: Colors.orange),
+              ),
+              enabledBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(100)),
+                borderSide: BorderSide(width: 1, color: Colors.green),
+              ),
+              border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(100)),
+                  borderSide: BorderSide(
+                    width: 1,
+                  )),
+              errorBorder: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(4)),
+                  borderSide: BorderSide(width: 1, color: Colors.black)),
+              focusedErrorBorder: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(4)),
+                  borderSide: BorderSide(width: 1, color: Colors.yellowAccent)),
+            ));
+  }
+
   final cities = [
     "Badulla",
     "Balangoda",
@@ -186,57 +234,6 @@ class CitySearch extends SearchDelegate {
           },
         ),
       ],
-    );
-  }
-
-  //! =======================Theme===============================
-  @override
-  ThemeData appBarTheme(BuildContext context) {
-    assert(context != null);
-    final ThemeData theme = Theme.of(context);
-    final ColorScheme colorScheme = theme.colorScheme;
-    assert(theme != null);
-    return theme.copyWith(
-      appBarTheme: AppBarTheme(
-        backgroundColor: colorScheme.brightness == Brightness.dark
-            ? Colors.grey[900]
-            : Colors.white,
-        iconTheme: theme.primaryIconTheme.copyWith(color: Colors.grey),
-      ),
-      inputDecorationTheme: searchFieldDecorationTheme ??
-          InputDecorationTheme(
-            labelStyle: TextStyle(color: Colors.black, fontSize: 4),
-            // hintStyle: TextStyle(color: Colors.black),
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 7, horizontal: 8),
-            hintStyle: searchFieldStyle ?? theme.inputDecorationTheme.hintStyle,
-            // border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(4.0))),
-            // filled: true,
-            // fillColor: Color(0xFFF2F2F2),
-            focusedBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(100)),
-              borderSide: BorderSide(width: 1, color: Colors.red),
-            ),
-            disabledBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(100)),
-              borderSide: BorderSide(width: 1, color: Colors.orange),
-            ),
-            enabledBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(100)),
-              borderSide: BorderSide(width: 1, color: Colors.green),
-            ),
-            border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(100)),
-                borderSide: BorderSide(
-                  width: 1,
-                )),
-            errorBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(4)),
-                borderSide: BorderSide(width: 1, color: Colors.black)),
-            focusedErrorBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(4)),
-                borderSide: BorderSide(width: 1, color: Colors.yellowAccent)),
-          ),
     );
   }
 }

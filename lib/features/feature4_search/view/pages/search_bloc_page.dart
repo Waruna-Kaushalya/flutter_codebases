@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_codebase/features/feature4_search/bloc/search_bloc.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_codebase/features/feature4_search/logic/bloc/search_bloc.dart';
 
 import '../theme/theme.dart';
 import '../widgets/widgets.dart';
 
-class SearchPage extends StatelessWidget {
+class SearchBlocPage extends StatelessWidget {
   static const routeName = '/searchPage';
 
-  const SearchPage({Key? key}) : super(key: key);
+  const SearchBlocPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class SearchPage extends StatelessWidget {
           ),
           onPressed: () {
             context.read<SearchBloc>().add(SearchEvent(
-                  eventStatus: SearchEventStatus.clickedBackArrowBtnEvnt,
+                  eventStatus: SearchEventStatus.clickedBackArrowBtn,
                 ));
 
             Navigator.pop(context);
@@ -32,8 +33,7 @@ class SearchPage extends StatelessWidget {
         ),
         title: BlocListener<SearchBloc, SearchState>(
           listener: (context, state) {
-            if (state.stateStatus ==
-                SearchStateStatus.searchResultLoadingState) {
+            if (state.stateStatus == SearchStateStatus.loading) {
               //? when loading and show result normally search bar is clered it sself. So qury value dislay in search bar manually
               _nameHolder.text = state.queryValue.toString();
             }
@@ -49,13 +49,13 @@ class SearchPage extends StatelessWidget {
             onChanged: (value) {
               context.read<SearchBloc>().add(SearchEvent(
                     queryValue: value,
-                    eventStatus: SearchEventStatus.typeInSearchbarEvnt,
+                    eventStatus: SearchEventStatus.typedInSearchbar,
                   ));
             },
             onSubmitted: (value) {
               context.read<SearchBloc>().add(SearchEvent(
                     queryValue: value,
-                    eventStatus: SearchEventStatus.submittedSearchEvnt,
+                    eventStatus: SearchEventStatus.submittedSearch,
                   ));
             },
 
@@ -74,7 +74,7 @@ class SearchPage extends StatelessWidget {
                     _nameHolder.clear();
 
                     context.read<SearchBloc>().add(SearchEvent(
-                          eventStatus: SearchEventStatus.clickedClearBtnEvnt,
+                          eventStatus: SearchEventStatus.clickedClearBtn,
                         ));
                   },
                 );
@@ -89,20 +89,19 @@ class SearchPage extends StatelessWidget {
         alignment: Alignment.topLeft,
         child: BlocBuilder<SearchBloc, SearchState>(
           builder: (context, state) {
-            if (state.stateStatus == SearchStateStatus.searchInitialState) {
+            if (state.stateStatus == SearchStateStatus.initial) {
               final queryValue = state.queryValue;
               final suggestions = state.suggestions;
               return suggetionMListViewMethod(suggestions!, queryValue!);
-            } else if (state.stateStatus ==
-                SearchStateStatus.searchResultShowState) {
+            } else if (state.stateStatus == SearchStateStatus.success) {
               final queryValue = state.queryValue;
               final resultList = state.results;
               return showResultMethod(queryValue, resultList);
-            } else if (state.stateStatus ==
-                SearchStateStatus.searchNotFoundState) {
-              return const CityNotFoundWidget();
-            } else if (state.stateStatus ==
-                SearchStateStatus.searchResultLoadingState) {
+            } else if (state.stateStatus == SearchStateStatus.failure) {
+              return CityNotFoundWidget(
+                errorMsg: state.errorMsg.toString(),
+              );
+            } else if (state.stateStatus == SearchStateStatus.loading) {
               return const ResultLoadingWidget();
             } else {
               return const SizedBox.shrink();

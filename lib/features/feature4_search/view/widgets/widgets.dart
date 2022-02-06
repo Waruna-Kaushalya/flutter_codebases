@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_codebase/features/feature4_search/bloc/search_bloc.dart';
+
+import 'package:flutter_codebase/features/feature4_search/logic/bloc/search_bloc.dart';
 
 Center showResultMethod(String? queryValue, List<String>? resultList) {
   return Center(
@@ -45,8 +46,8 @@ ListView suggetionMListViewMethod(List<String> suggestions, String queryValue) {
           // SelectSuggestQuery
 
           context.read<SearchBloc>().add(SearchEvent(
-                queryValue: suggestion,
-                eventStatus: SearchEventStatus.clickedSuggetionEvnt,
+                suggestion: suggestion,
+                eventStatus: SearchEventStatus.clickedSuggetion,
               ));
 
           // weatherCubit.getWeather(cityName.trim());
@@ -67,7 +68,7 @@ ListView suggetionMListViewMethod(List<String> suggestions, String queryValue) {
             //?suggestion
             context.read<SearchBloc>().add(SearchEvent(
                   suggestion: suggestion,
-                  eventStatus: SearchEventStatus.clickedSuggetionRemoveBtnEvnt,
+                  eventStatus: SearchEventStatus.clickedSuggetionRemoveBtn,
                 ));
           },
         ),
@@ -114,8 +115,10 @@ class ResultLoadingWidget extends StatelessWidget {
 }
 
 class CityNotFoundWidget extends StatelessWidget {
+  final String errorMsg;
   const CityNotFoundWidget({
     Key? key,
+    required this.errorMsg,
   }) : super(key: key);
 
   @override
@@ -123,17 +126,17 @@ class CityNotFoundWidget extends StatelessWidget {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Icon(
+        children: [
+          const Icon(
             Icons.location_city,
             size: 120,
           ),
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
           Text(
-            "City Not Found",
-            style: TextStyle(
+            errorMsg,
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 45,
               fontWeight: FontWeight.bold,

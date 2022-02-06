@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_codebase/features/feature3_counter/logic/bloc/counter_bloc.dart';
+import 'package:flutter_codebase/widgets/fluttertoast/widget/fluttertoast_widget.dart';
 
 class CounterBlocPage extends StatelessWidget {
   static const routeName = '/counterBlocPage';
@@ -16,7 +17,14 @@ class CounterBlocPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          BlocBuilder<CounterBloc, CounterState>(
+          BlocConsumer<CounterBloc, CounterState>(
+            listener: (context, state) {
+              if (state.wasIncremented == true) {
+                showFlutterToastWidget(msg: "Increment");
+              } else {
+                showFlutterToastWidget(msg: "Decrement");
+              }
+            },
             builder: (context, state) {
               return Text(
                 state.counterValue.toString(),
