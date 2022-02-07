@@ -45,10 +45,16 @@ ListView suggetionMListViewMethod(List<String> suggestions, String queryValue) {
           //query = suggestion;
           // SelectSuggestQuery
 
-          context.read<SearchBloc>().add(SearchEvent(
-                suggestion: suggestion,
-                eventStatus: SearchEventStatus.clickedSuggetion,
-              ));
+          //! old
+          // context.read<SearchBloc>().add(SearchEvent(
+          //       suggestion: suggestion,
+          //       eventStatus: SearchEventStatus.clickedSuggetion,
+          //     ));
+
+          //! new
+          context
+              .read<SearchBloc>()
+              .add(SearchClickedSuggetion(suggestion: suggestion));
 
           // weatherCubit.getWeather(cityName.trim());
           // searchBloc
@@ -66,10 +72,16 @@ ListView suggetionMListViewMethod(List<String> suggestions, String queryValue) {
           icon: const Icon(Icons.clear),
           onPressed: () {
             //?suggestion
-            context.read<SearchBloc>().add(SearchEvent(
-                  suggestion: suggestion,
-                  eventStatus: SearchEventStatus.clickedSuggetionRemoveBtn,
-                ));
+
+            //! old
+            // context.read<SearchBloc>().add(SearchEvent(
+            //       suggestion: suggestion,
+            //       eventStatus: SearchEventStatus.clickedSuggetionRemoveBtn,
+            //     ));
+
+            //! new
+            context.read<SearchBloc>().add(SearchClickedSuggetionRemove(
+                suggestion: suggestion, queryValue: queryValue));
           },
         ),
         // title: Text(suggestion),

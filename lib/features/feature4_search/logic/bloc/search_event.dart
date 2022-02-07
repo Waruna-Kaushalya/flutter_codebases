@@ -1,74 +1,84 @@
-part of 'search_bloc.dart';
+// part of 'search_bloc.dart';
 
-enum SearchEventStatus {
-  typedInSearchbar,
-  clickedSuggetion,
-  submittedSearch,
-  clickedClearBtn,
-  clickedBackArrowBtn,
-  clickedSuggetionRemoveBtn,
-}
+// enum SearchEventStatus {
+//   typedInSearchbar,
+//   clickedSuggetion,
+//   submittedSearch,
+//   clickedClearBtn,
+//   clickedBackArrowBtn,
+//   clickedSuggetionRemoveBtn,
+// }
 
-@freezed
-class SearchEvent with _$SearchEvent {
-  factory SearchEvent({
-    required SearchEventStatus eventStatus,
-    List<String>? suggestions,
-    String? suggestion,
-    String? queryValue,
-  }) = _SearchEvent;
-}
+// @freezed
+// class SearchEvent with _$SearchEvent {
+//   factory SearchEvent({
+//     required SearchEventStatus eventStatus,
+//     List<String>? suggestions,
+//     String? suggestion,
+//     String? queryValue,
+//   }) = _SearchEvent;
+// }
 
 //! --------------- second method
 
-// abstract class SearchEvent extends Equatable {
-//   const SearchEvent();
-// }
+part of 'search_bloc.dart';
 
-// class TypedInSearchbar extends SearchEvent {
-//   const TypedInSearchbar({
-//     required this.queryValue,
-//   });
+abstract class SearchEvent extends Equatable {
+  const SearchEvent();
+}
 
-//   final String queryValue;
+class SearchTyped extends SearchEvent {
+  const SearchTyped({
+    required this.queryValue,
+  });
 
-//   @override
-//   List<Object?> get props => [queryValue];
-// }
+  final String queryValue;
 
-// class ClickedSuggetion extends SearchEvent {
-//   const ClickedSuggetion({
-//     required this.queryValue,
-//   });
+  @override
+  List<Object?> get props => [queryValue];
+}
 
-//   final String queryValue;
+class SearchSubmitted extends SearchEvent {
+  const SearchSubmitted({
+    required this.queryValue,
+  });
 
-//   @override
-//   List<Object?> get props => [queryValue];
-// }
+  final String queryValue;
 
-// class SubmittedSearch extends SearchEvent {
-//   const SubmittedSearch({
-//     required this.queryValue,
-//   });
+  @override
+  List<Object?> get props => [queryValue];
+}
 
-//   final String queryValue;
+class SearchClickedSuggetion extends SearchEvent {
+  const SearchClickedSuggetion({
+    required this.suggestion,
+  });
 
-//   @override
-//   List<Object?> get props => [queryValue];
-// }
+  final String suggestion;
 
-// class ClickedSuggetionRemoveBtn extends SearchEvent {
-//   @override
-//   List<Object?> get props => [];
-// }
+  @override
+  List<Object?> get props => [suggestion];
+}
 
-// class ClickedClearBtn extends SearchEvent {
-//   @override
-//   List<Object?> get props => [];
-// }
+class SearchClickedSuggetionRemove extends SearchEvent {
+  const SearchClickedSuggetionRemove({
+    required this.suggestion,
+    required this.queryValue,
+  });
 
-// class ClickedBackArrowBtn extends SearchEvent {
-//   @override
-//   List<Object?> get props => [];
-// }
+  final String suggestion;
+  final String queryValue;
+
+  @override
+  List<Object?> get props => [suggestion, queryValue];
+}
+
+class SearchClickedClear extends SearchEvent {
+  @override
+  List<Object?> get props => [];
+}
+
+class SearchClickedBackArrow extends SearchEvent {
+  @override
+  List<Object?> get props => [];
+}

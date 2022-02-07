@@ -24,9 +24,13 @@ class SearchBlocPage extends StatelessWidget {
             Icons.arrow_back,
           ),
           onPressed: () {
-            context.read<SearchBloc>().add(SearchEvent(
-                  eventStatus: SearchEventStatus.clickedBackArrowBtn,
-                ));
+            //! old
+            // context.read<SearchBloc>().add(SearchEvent(
+            //       eventStatus: SearchEventStatus.clickedBackArrowBtn,
+            //     ));
+
+            //! new
+            context.read<SearchBloc>().add(SearchClickedBackArrow());
 
             Navigator.pop(context);
           },
@@ -47,16 +51,27 @@ class SearchBlocPage extends StatelessWidget {
 
             controller: _nameHolder,
             onChanged: (value) {
-              context.read<SearchBloc>().add(SearchEvent(
-                    queryValue: value,
-                    eventStatus: SearchEventStatus.typedInSearchbar,
-                  ));
+              //! old
+              // context.read<SearchBloc>().add(SearchEvent(
+              //       queryValue: value,
+              //       eventStatus: SearchEventStatus.typedInSearchbar,
+              //     ));
+
+              //! new
+
+              context.read<SearchBloc>().add(SearchTyped(queryValue: value));
             },
             onSubmitted: (value) {
-              context.read<SearchBloc>().add(SearchEvent(
-                    queryValue: value,
-                    eventStatus: SearchEventStatus.submittedSearch,
-                  ));
+              //!old
+              // context.read<SearchBloc>().add(SearchEvent(
+              //       queryValue: value,
+              //       eventStatus: SearchEventStatus.submittedSearch,
+              //     ));
+
+              //! new
+              context
+                  .read<SearchBloc>()
+                  .add(SearchSubmitted(queryValue: value));
             },
 
             decoration: textFieldDecorationMethod(),
@@ -73,9 +88,13 @@ class SearchBlocPage extends StatelessWidget {
                   onPressed: () {
                     _nameHolder.clear();
 
-                    context.read<SearchBloc>().add(SearchEvent(
-                          eventStatus: SearchEventStatus.clickedClearBtn,
-                        ));
+                    //! old
+                    // context.read<SearchBloc>().add(SearchEvent(
+                    //       eventStatus: SearchEventStatus.clickedClearBtn,
+                    //     ));
+
+                    //! new
+                    context.read<SearchBloc>().add(SearchClickedClear());
                   },
                 );
               } else {
