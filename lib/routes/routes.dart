@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_codebase/features/feature2_toggle_switch_button/view/pages/toggle_switchlist_button_page.dart';
 
 import 'package:flutter_codebase/pages/pages.dart';
 

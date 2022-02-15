@@ -5,7 +5,6 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_codebase/pages/pages.dart';
 import 'package:flutter_codebase/routes/routes.dart';
 
-import 'package:flutter_codebase/features/feature2_toggle_switch_button/logic/bloc/toggle_bloc.dart';
 import 'package:flutter_codebase/features/feature3_counter/logic/bloc/counter_bloc.dart';
 import 'package:flutter_codebase/features/feature3_counter/logic/cubit/counter_cubit.dart';
 
