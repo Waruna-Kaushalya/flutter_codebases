@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_codebase/pages/pages.dart';
-
 import 'package:flutter_codebase/features/features.dart';
-
-import '../features/feature4_search/presentation/pages/search_bloc_page.dart';
-import '../features/feature4_search/presentation/pages/search_home_page.dart';
-import '../features/feature4_search/presentation/pages/search_maual_page.dart';
 import '../widgets/widgets.dart';
 
 class AppRoutes {

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../features/features.dart';
 
-import '../features/feature4_search/presentation/pages/search_home_page.dart';
-import '../features/feature4_search/presentation/pages/search_maual_page.dart';
 import '../widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {

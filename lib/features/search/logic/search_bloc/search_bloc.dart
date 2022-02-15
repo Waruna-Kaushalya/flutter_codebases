@@ -221,9 +221,11 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_codebase/features/feature4_search/data/data_providers/cities.dart';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'dart:developer' as developer;
+
+import '../../data/data_providers/data_providers.dart';
 
 part 'search_event.dart';
 part 'search_state.dart';
