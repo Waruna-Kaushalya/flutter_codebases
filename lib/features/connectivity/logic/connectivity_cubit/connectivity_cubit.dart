@@ -1,56 +1,56 @@
-// import 'dart:async';
-// import 'package:connectivity_plus/connectivity_plus.dart';
-// import 'package:equatable/equatable.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:meta/meta.dart';
+import 'dart:async';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meta/meta.dart';
 
-// part 'connectivity_state.dart';
+part 'connectivity_state.dart';
 
-// enum ConnectionType { wifi, mobile, none }
+enum ConnectionType { wifi, mobile, none }
 
-// class ConnectivityCubit extends Cubit<ConnectivityState> {
-//   //? final Connectivity connectivity = Connectivity();
+class ConnectivityCubit extends Cubit<ConnectivityState> {
+  //? final Connectivity connectivity = Connectivity();
 
-//   //?connectivity_plus plugin dependency and pasing it
-//   //?required parramerter as constructor
-//   final Connectivity connectivity;
+  //?connectivity_plus plugin dependency and pasing it
+  //?required parramerter as constructor
+  final Connectivity connectivity;
 
-//   //? You can also listen for network state changes by subscribing to the stream exposed by connectivity plugin
-//   //? Be sure to cancel subscription after you are done
-//   late StreamSubscription connectivityStreamSubscription;
+  //? You can also listen for network state changes by subscribing to the stream exposed by connectivity plugin
+  //? Be sure to cancel subscription after you are done
+  late StreamSubscription connectivityStreamSubscription;
 
-//   ConnectivityCubit({required this.connectivity}) : super(NetworkLoading()) {
-//     //? Got a new connectivity status!
-//     connectivityStreamSubscription =
-//         connectivity.onConnectivityChanged.listen((connectivityResult) {
-//       if (connectivityResult == ConnectivityResult.wifi) {
-//         emitInternetConnected(ConnectionType.wifi);
-//         // emit(InternetConnected(connectionType: ConnectionType.wifi));
-//       } else if (connectivityResult == ConnectivityResult.mobile) {
-//         emitInternetConnected(ConnectionType.mobile);
-//         // emit(InternetConnected(connectionType: ConnectionType.mobile));
-//       } else if (connectivityResult == ConnectivityResult.none) {
-//         emitInternetDisconnected();
-//         // emit(InternetDisconnected());
-//       }
-//     });
-//   }
+  ConnectivityCubit({required this.connectivity}) : super(NetworkLoading()) {
+    //? Got a new connectivity status!
+    connectivityStreamSubscription =
+        connectivity.onConnectivityChanged.listen((connectivityResult) {
+      if (connectivityResult == ConnectivityResult.wifi) {
+        emitInternetConnected(ConnectionType.wifi);
+        // emit(InternetConnected(connectionType: ConnectionType.wifi));
+      } else if (connectivityResult == ConnectivityResult.mobile) {
+        emitInternetConnected(ConnectionType.mobile);
+        // emit(InternetConnected(connectionType: ConnectionType.mobile));
+      } else if (connectivityResult == ConnectivityResult.none) {
+        emitInternetDisconnected();
+        // emit(InternetDisconnected());
+      }
+    });
+  }
 
-//   void emitInternetConnected(ConnectionType connectionType) =>
-//       emit(NetworkConnected(connectionType: connectionType));
+  void emitInternetConnected(ConnectionType connectionType) =>
+      emit(NetworkConnected(connectionType: connectionType));
 
-//   // void emitInternetConnectedMobile(ConnectionType connectionType) =>
-//   //     emit(NetworkConnected(connectionType: connectionType));
+  // void emitInternetConnectedMobile(ConnectionType connectionType) =>
+  //     emit(NetworkConnected(connectionType: connectionType));
 
-//   void emitInternetDisconnected() => emit(NetworkDisconnected());
+  void emitInternetDisconnected() => emit(NetworkDisconnected());
 
-//   //?Be sure to cancel subscription after you are done
-//   @override
-//   Future<void> close() {
-//     connectivityStreamSubscription.cancel();
-//     return super.close();
-//   }
-// }
+  //?Be sure to cancel subscription after you are done
+  @override
+  Future<void> close() {
+    connectivityStreamSubscription.cancel();
+    return super.close();
+  }
+}
 
 //????
 

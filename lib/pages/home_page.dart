@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../features/feature1_connectivity/feature.dart';
+import '../features/features.dart';
+
 import '../features/feature2_toggle_switch_button/view/pages/toggle_switchlist_button_page.dart';
-import '../features/feature3_counter/view/pages/counter_bloc_page.dart';
-import '../features/feature3_counter/view/pages/counter_cubit_page.dart';
+
 import '../features/feature4_search/presentation/pages/search_home_page.dart';
 import '../features/feature4_search/presentation/pages/search_maual_page.dart';
 import '../widgets/widgets.dart';

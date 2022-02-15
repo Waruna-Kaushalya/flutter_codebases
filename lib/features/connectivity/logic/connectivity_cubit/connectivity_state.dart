@@ -1,26 +1,26 @@
-// part of 'connectivity_cubit.dart';
+part of 'connectivity_cubit.dart';
 
-// @immutable
-// abstract class ConnectivityState extends Equatable {}
+@immutable
+abstract class ConnectivityState extends Equatable {}
 
-// class NetworkLoading extends ConnectivityState {
-//   @override
-//   List<Object?> get props => [];
-// }
+class NetworkLoading extends ConnectivityState {
+  @override
+  List<Object?> get props => [];
+}
 
-// class NetworkConnected extends ConnectivityState {
-//   final ConnectionType connectionType;
+class NetworkConnected extends ConnectivityState {
+  final ConnectionType connectionType;
 
-//   NetworkConnected({required this.connectionType});
+  NetworkConnected({required this.connectionType});
 
-//   @override
-//   List<Object?> get props => [connectionType];
-// }
+  @override
+  List<Object?> get props => [connectionType];
+}
 
-// class NetworkDisconnected extends ConnectivityState {
-//   @override
-//   List<Object?> get props => [];
-// }
+class NetworkDisconnected extends ConnectivityState {
+  @override
+  List<Object?> get props => [];
+}
 
 
 
