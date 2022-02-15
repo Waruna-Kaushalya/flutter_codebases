@@ -5,9 +5,6 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_codebase/pages/pages.dart';
 import 'package:flutter_codebase/routes/routes.dart';
 
-import 'package:flutter_codebase/features/feature3_counter/logic/bloc/counter_bloc.dart';
-import 'package:flutter_codebase/features/feature3_counter/logic/cubit/counter_cubit.dart';
-
 import 'package:flutter_codebase/utility/app_bloc_observer.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';

@@ -1,15 +1,15 @@
 part of 'counter_cubit.dart';
 
 @freezed
-class CounterState with _$CounterState {
-  factory CounterState({
+class CounterCubitState with _$CounterCubitState {
+  factory CounterCubitState({
     //? required parameters
     required int counterValue,
     required bool wasIncremented,
-  }) = _CounterState;
+  }) = _CounterCubitState;
 
   //? Jason Serialization with copyWith
   //? Automatically check object equlity
-  factory CounterState.fromJson(Map<String, dynamic> json) =>
-      _$CounterStateFromJson(json);
+  factory CounterCubitState.fromJson(Map<String, dynamic> json) =>
+      _$CounterCubitStateFromJson(json);
 }

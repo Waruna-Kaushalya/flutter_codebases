@@ -14,57 +14,58 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CounterState _$CounterStateFromJson(Map<String, dynamic> json) {
-  return _CounterState.fromJson(json);
+CounterCubitState _$CounterCubitStateFromJson(Map<String, dynamic> json) {
+  return _CounterCubitState.fromJson(json);
 }
 
 /// @nodoc
-class _$CounterStateTearOff {
-  const _$CounterStateTearOff();
+class _$CounterCubitStateTearOff {
+  const _$CounterCubitStateTearOff();
 
-  _CounterState call(
+  _CounterCubitState call(
       {required int counterValue, required bool wasIncremented}) {
-    return _CounterState(
+    return _CounterCubitState(
       counterValue: counterValue,
       wasIncremented: wasIncremented,
     );
   }
 
-  CounterState fromJson(Map<String, Object?> json) {
-    return CounterState.fromJson(json);
+  CounterCubitState fromJson(Map<String, Object?> json) {
+    return CounterCubitState.fromJson(json);
   }
 }
 
 /// @nodoc
-const $CounterState = _$CounterStateTearOff();
+const $CounterCubitState = _$CounterCubitStateTearOff();
 
 /// @nodoc
-mixin _$CounterState {
+mixin _$CounterCubitState {
 //? required parameters
   int get counterValue => throw _privateConstructorUsedError;
   bool get wasIncremented => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CounterStateCopyWith<CounterState> get copyWith =>
+  $CounterCubitStateCopyWith<CounterCubitState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CounterStateCopyWith<$Res> {
-  factory $CounterStateCopyWith(
-          CounterState value, $Res Function(CounterState) then) =
-      _$CounterStateCopyWithImpl<$Res>;
+abstract class $CounterCubitStateCopyWith<$Res> {
+  factory $CounterCubitStateCopyWith(
+          CounterCubitState value, $Res Function(CounterCubitState) then) =
+      _$CounterCubitStateCopyWithImpl<$Res>;
   $Res call({int counterValue, bool wasIncremented});
 }
 
 /// @nodoc
-class _$CounterStateCopyWithImpl<$Res> implements $CounterStateCopyWith<$Res> {
-  _$CounterStateCopyWithImpl(this._value, this._then);
+class _$CounterCubitStateCopyWithImpl<$Res>
+    implements $CounterCubitStateCopyWith<$Res> {
+  _$CounterCubitStateCopyWithImpl(this._value, this._then);
 
-  final CounterState _value;
+  final CounterCubitState _value;
   // ignore: unused_field
-  final $Res Function(CounterState) _then;
+  final $Res Function(CounterCubitState) _then;
 
   @override
   $Res call({
@@ -85,31 +86,32 @@ class _$CounterStateCopyWithImpl<$Res> implements $CounterStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CounterStateCopyWith<$Res>
-    implements $CounterStateCopyWith<$Res> {
-  factory _$CounterStateCopyWith(
-          _CounterState value, $Res Function(_CounterState) then) =
-      __$CounterStateCopyWithImpl<$Res>;
+abstract class _$CounterCubitStateCopyWith<$Res>
+    implements $CounterCubitStateCopyWith<$Res> {
+  factory _$CounterCubitStateCopyWith(
+          _CounterCubitState value, $Res Function(_CounterCubitState) then) =
+      __$CounterCubitStateCopyWithImpl<$Res>;
   @override
   $Res call({int counterValue, bool wasIncremented});
 }
 
 /// @nodoc
-class __$CounterStateCopyWithImpl<$Res> extends _$CounterStateCopyWithImpl<$Res>
-    implements _$CounterStateCopyWith<$Res> {
-  __$CounterStateCopyWithImpl(
-      _CounterState _value, $Res Function(_CounterState) _then)
-      : super(_value, (v) => _then(v as _CounterState));
+class __$CounterCubitStateCopyWithImpl<$Res>
+    extends _$CounterCubitStateCopyWithImpl<$Res>
+    implements _$CounterCubitStateCopyWith<$Res> {
+  __$CounterCubitStateCopyWithImpl(
+      _CounterCubitState _value, $Res Function(_CounterCubitState) _then)
+      : super(_value, (v) => _then(v as _CounterCubitState));
 
   @override
-  _CounterState get _value => super._value as _CounterState;
+  _CounterCubitState get _value => super._value as _CounterCubitState;
 
   @override
   $Res call({
     Object? counterValue = freezed,
     Object? wasIncremented = freezed,
   }) {
-    return _then(_CounterState(
+    return _then(_CounterCubitState(
       counterValue: counterValue == freezed
           ? _value.counterValue
           : counterValue // ignore: cast_nullable_to_non_nullable
@@ -124,11 +126,12 @@ class __$CounterStateCopyWithImpl<$Res> extends _$CounterStateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CounterState implements _CounterState {
-  _$_CounterState({required this.counterValue, required this.wasIncremented});
+class _$_CounterCubitState implements _CounterCubitState {
+  _$_CounterCubitState(
+      {required this.counterValue, required this.wasIncremented});
 
-  factory _$_CounterState.fromJson(Map<String, dynamic> json) =>
-      _$$_CounterStateFromJson(json);
+  factory _$_CounterCubitState.fromJson(Map<String, dynamic> json) =>
+      _$$_CounterCubitStateFromJson(json);
 
   @override //? required parameters
   final int counterValue;
@@ -137,14 +140,14 @@ class _$_CounterState implements _CounterState {
 
   @override
   String toString() {
-    return 'CounterState(counterValue: $counterValue, wasIncremented: $wasIncremented)';
+    return 'CounterCubitState(counterValue: $counterValue, wasIncremented: $wasIncremented)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CounterState &&
+            other is _CounterCubitState &&
             const DeepCollectionEquality()
                 .equals(other.counterValue, counterValue) &&
             const DeepCollectionEquality()
@@ -159,22 +162,22 @@ class _$_CounterState implements _CounterState {
 
   @JsonKey(ignore: true)
   @override
-  _$CounterStateCopyWith<_CounterState> get copyWith =>
-      __$CounterStateCopyWithImpl<_CounterState>(this, _$identity);
+  _$CounterCubitStateCopyWith<_CounterCubitState> get copyWith =>
+      __$CounterCubitStateCopyWithImpl<_CounterCubitState>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CounterStateToJson(this);
+    return _$$_CounterCubitStateToJson(this);
   }
 }
 
-abstract class _CounterState implements CounterState {
-  factory _CounterState(
+abstract class _CounterCubitState implements CounterCubitState {
+  factory _CounterCubitState(
       {required int counterValue,
-      required bool wasIncremented}) = _$_CounterState;
+      required bool wasIncremented}) = _$_CounterCubitState;
 
-  factory _CounterState.fromJson(Map<String, dynamic> json) =
-      _$_CounterState.fromJson;
+  factory _CounterCubitState.fromJson(Map<String, dynamic> json) =
+      _$_CounterCubitState.fromJson;
 
   @override //? required parameters
   int get counterValue;
@@ -182,6 +185,6 @@ abstract class _CounterState implements CounterState {
   bool get wasIncremented;
   @override
   @JsonKey(ignore: true)
-  _$CounterStateCopyWith<_CounterState> get copyWith =>
+  _$CounterCubitStateCopyWith<_CounterCubitState> get copyWith =>
       throw _privateConstructorUsedError;
 }

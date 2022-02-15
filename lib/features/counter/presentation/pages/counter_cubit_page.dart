@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter_codebase/features/feature3_counter/logic/cubit/counter_cubit.dart';
+import '../../logic/logic.dart';
 
 class CounterCubitPage extends StatelessWidget {
   static const routeName = '/counterCubitPage';
@@ -17,7 +17,7 @@ class CounterCubitPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          BlocBuilder<CounterCubit, CounterState>(
+          BlocBuilder<CounterCubit, CounterCubitState>(
             builder: (context, state) {
               return Text(
                 state.counterValue.toString(),
