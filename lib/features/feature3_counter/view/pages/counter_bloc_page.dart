@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_codebase/features/feature3_counter/logic/bloc/counter_bloc.dart';
-import 'package:flutter_codebase/widgets/fluttertoast/widget/fluttertoast_widget.dart';
+
+import '../../../../widgets/fluttertoast/widgets/fluttertoast_widget.dart';
 
 class CounterBlocPage extends StatelessWidget {
   static const routeName = '/counterBlocPage';

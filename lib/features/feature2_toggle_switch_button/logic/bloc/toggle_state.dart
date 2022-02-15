@@ -1,10 +1,18 @@
 part of 'toggle_bloc.dart';
 
-abstract class ToggleState extends Equatable {
-  const ToggleState();
-  
-  @override
-  List<Object> get props => [];
-}
+enum WeatherStateStatus { initial, loading, success, failure }
 
-class ToggleInitial extends ToggleState {}
+@freezed
+class ToggleswitchState with _$ToggleswitchState {
+  factory ToggleswitchState({
+    WeatherStateStatus? stateStatus,
+    //? required parameters
+    required bool appNotification,
+    required bool emailNotification,
+  }) = _ToggleswitchState;
+
+  //? Jason Serialization with copyWith
+  //? Automatically check object equlity
+  factory ToggleswitchState.fromJson(Map<String, dynamic> json) =>
+      _$ToggleswitchStateFromJson(json);
+}

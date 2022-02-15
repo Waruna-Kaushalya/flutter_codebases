@@ -1,12 +1,12 @@
 // part of 'search_bloc.dart';
 
 // enum SearchEventStatus {
-//   typedInSearchbar,
-//   clickedSuggetion,
-//   submittedSearch,
-//   clickedClearBtn,
-//   clickedBackArrowBtn,
-//   clickedSuggetionRemoveBtn,
+//   searchQueryTyped,
+//   searchQuerySubmitted,
+//   searchSuggetionPressed,
+//   searchSuggetionRemoved,
+//   searchClearBtnPressed,
+//   searchBackArrowBtnPressed,
 // }
 
 // @freezed
@@ -27,8 +27,8 @@ abstract class SearchEvent extends Equatable {
   const SearchEvent();
 }
 
-class SearchTyped extends SearchEvent {
-  const SearchTyped({
+class SearchQueryTyped extends SearchEvent {
+  const SearchQueryTyped({
     required this.queryValue,
   });
 
@@ -38,8 +38,8 @@ class SearchTyped extends SearchEvent {
   List<Object?> get props => [queryValue];
 }
 
-class SearchSubmitted extends SearchEvent {
-  const SearchSubmitted({
+class SearchQuerySubmitted extends SearchEvent {
+  const SearchQuerySubmitted({
     required this.queryValue,
   });
 
@@ -49,8 +49,8 @@ class SearchSubmitted extends SearchEvent {
   List<Object?> get props => [queryValue];
 }
 
-class SearchClickedSuggetion extends SearchEvent {
-  const SearchClickedSuggetion({
+class SearchSuggetionPressed extends SearchEvent {
+  const SearchSuggetionPressed({
     required this.suggestion,
   });
 
@@ -60,8 +60,8 @@ class SearchClickedSuggetion extends SearchEvent {
   List<Object?> get props => [suggestion];
 }
 
-class SearchClickedSuggetionRemove extends SearchEvent {
-  const SearchClickedSuggetionRemove({
+class SearchSuggetionRemoved extends SearchEvent {
+  const SearchSuggetionRemoved({
     required this.suggestion,
     required this.queryValue,
   });
@@ -73,12 +73,12 @@ class SearchClickedSuggetionRemove extends SearchEvent {
   List<Object?> get props => [suggestion, queryValue];
 }
 
-class SearchClickedClear extends SearchEvent {
+class SearchClearBtnPressed extends SearchEvent {
   @override
   List<Object?> get props => [];
 }
 
-class SearchClickedBackArrow extends SearchEvent {
+class SearchBackArrowBtnPressed extends SearchEvent {
   @override
   List<Object?> get props => [];
 }

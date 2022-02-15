@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_codebase/features/feature2_toggle_switch_button/logic/bloc/toggle_bloc.dart';
+import 'package:flutter_codebase/features/feature2_toggle_switch_button/view/widgets/scafold_widget.dart';
 
-import '../../../features.dart';
+// import '../../../features.dart';
 
 class ToggleSwitchListButtonPage extends StatefulWidget {
   static const routeName = '/toggleswitchlistbuttonPage';
@@ -21,12 +23,12 @@ class _ToggleSwitchListButtonPageState
       appBar: AppBar(
         title: const Text("Settings"),
       ),
-      body: BlocConsumer<ToggleswitchCubit, ToggleswitchState>(
+      body: BlocConsumer<ToggleswitchBloc, ToggleswitchState>(
         listener: (context, state) {
           notificationSnackbar(context, state);
         },
         builder: (context, state) {
-          return BlocBuilder<ToggleswitchCubit, ToggleswitchState>(
+          return BlocBuilder<ToggleswitchBloc, ToggleswitchState>(
             builder: (context, state) {
               return Column(
                 children: [
@@ -35,8 +37,8 @@ class _ToggleSwitchListButtonPageState
                     value: state.appNotification,
                     onChanged: (newvalue) {
                       context
-                          .read<ToggleswitchCubit>()
-                          .toggleAppNotification(newvalue);
+                          .read<ToggleswitchBloc>()
+                          .add(ToggleAppNotification(appNoti: newvalue));
                     },
                   ),
                   SwitchListTile(
@@ -44,8 +46,8 @@ class _ToggleSwitchListButtonPageState
                     value: state.emailNotification,
                     onChanged: (newValue) {
                       context
-                          .read<ToggleswitchCubit>()
-                          .toggleEmailNotifications(newValue);
+                          .read<ToggleswitchBloc>()
+                          .add(ToggleEmailNotifications(emailNoti: newValue));
                     },
                   ),
                 ],

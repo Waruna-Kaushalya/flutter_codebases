@@ -1,5 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_codebase/features/feature2_toggle_switch_button/logic/bloc/toggle_bloc.dart';
 import 'package:flutter_codebase/features/feature3_counter/logic/bloc/counter_bloc.dart';
 import 'package:flutter_codebase/features/feature3_counter/logic/cubit/counter_cubit.dart';
 
@@ -68,8 +69,8 @@ class MyApp extends StatelessWidget {
             connectivity: connectivity,
           ),
         ),
-        BlocProvider<ToggleswitchCubit>(
-          create: (context) => ToggleswitchCubit(),
+        BlocProvider<ToggleswitchBloc>(
+          create: (context) => ToggleswitchBloc(),
         ),
         BlocProvider<CounterCubit>(
           create: (context) => CounterCubit(),
