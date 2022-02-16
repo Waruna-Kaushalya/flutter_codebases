@@ -1,2 +1,2 @@
-export 'connectivity_api/connectivity_api.dart';
-export 'connectivity_local/connectivity_local.dart';
+export 'api/api.dart';
+export 'local/local.dart';
