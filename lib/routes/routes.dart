@@ -1,22 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_codebase/pages/pages.dart';
-import 'package:flutter_codebase/features/features.dart';
+import '../pages/pages.dart';
+import '../features/features.dart';
 import '../widgets/widgets.dart';
 
 class AppRoutes {
   Route? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
+
+      ///
+      /// [home] pages
+
       case HomePage.routeName:
         return MaterialPageRoute(
           settings: const RouteSettings(name: 'MyHomePage'),
           builder: (context) => const HomePage(),
         );
 
-      case BaselineWidgetPage.routeName:
+      case FeatureShowcase.routeName:
         return MaterialPageRoute(
-          settings: const RouteSettings(name: 'BaselineWidget'),
-          builder: (context) => const BaselineWidgetPage(),
+          settings: const RouteSettings(name: 'FeatureShowcase'),
+          builder: (context) => const FeatureShowcase(),
         );
+
+      case WidgetShowcase.routeName:
+        return MaterialPageRoute(
+          settings: const RouteSettings(name: 'WidgetShowcase'),
+          builder: (context) => const WidgetShowcase(),
+        );
+
+      ///
+      /// [feature] pages
 
       case ConnectivityFeaturePage.routeName:
         return MaterialPageRoute(
@@ -24,10 +37,10 @@ class AppRoutes {
           builder: (context) => const ConnectivityFeaturePage(),
         );
 
-      case ToggleSwitchListButtonPage.routeName:
+      case ToggleSwitchPage.routeName:
         return MaterialPageRoute(
-          settings: const RouteSettings(name: 'ToggleSwitchListButtonPage'),
-          builder: (context) => const ToggleSwitchListButtonPage(),
+          settings: const RouteSettings(name: 'ToggleSwitchPage'),
+          builder: (context) => const ToggleSwitchPage(),
         );
 
       case CounterBlocPage.routeName:
@@ -40,18 +53,6 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: const RouteSettings(name: 'CounterCubitPage'),
           builder: (context) => const CounterCubitPage(),
-        );
-
-      case ButtonsWidget.routeName:
-        return MaterialPageRoute(
-          settings: const RouteSettings(name: 'ButtonsWidget'),
-          builder: (context) => const ButtonsWidget(),
-        );
-
-      case InkWellButtonsWidget.routeName:
-        return MaterialPageRoute(
-          settings: const RouteSettings(name: 'InkWellButtonsWidget'),
-          builder: (context) => const InkWellButtonsWidget(),
         );
 
       case SearchManualPage.routeName:
@@ -70,6 +71,27 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: const RouteSettings(name: 'SearchPage'),
           builder: (context) => const SearchBlocPage(),
+        );
+
+      ///
+      /// [widgets] pages
+
+      case BaselineWidgetPage.routeName:
+        return MaterialPageRoute(
+          settings: const RouteSettings(name: 'BaselineWidget'),
+          builder: (context) => const BaselineWidgetPage(),
+        );
+
+      case ButtonsWidget.routeName:
+        return MaterialPageRoute(
+          settings: const RouteSettings(name: 'ButtonsWidget'),
+          builder: (context) => const ButtonsWidget(),
+        );
+
+      case InkWellButtonsWidget.routeName:
+        return MaterialPageRoute(
+          settings: const RouteSettings(name: 'InkWellButtonsWidget'),
+          builder: (context) => const InkWellButtonsWidget(),
         );
 
       default:

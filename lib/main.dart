@@ -7,17 +7,17 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-import 'package:flutter_codebase/features/features.dart';
-import 'package:flutter_codebase/pages/pages.dart';
-import 'package:flutter_codebase/routes/routes.dart';
+import '../features/features.dart';
+import '../pages/pages.dart';
+import '../routes/routes.dart';
 
 Future<void> main() async {
   //?call notice codes
   WidgetsFlutterBinding.ensureInitialized();
 
-  //?Select storage for store data using hydeated bloc package
-  //?data storeing location selection is very importent.
-  //?other wise data migh be loast when system clear data
+  //?Select storage for store data using hydrated bloc package
+  //?data storing location selection is very important.
+  //?other wise data might be lost when system clear data
   final storage = await HydratedStorage.build(
     storageDirectory: await getApplicationDocumentsDirectory(),
   );

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../features/features.dart';
-
+import '../pages/pages.dart';
 import '../widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
@@ -20,66 +19,17 @@ class HomePage extends StatelessWidget {
             height: 5,
           ),
           ElavatedButtonWidget(
-            buttonLabel: "Baseline Widget",
+            buttonLabel: "FeatureShowcase",
             onCustomButtonPressed: () => Navigator.pushNamed(
               context,
-              BaselineWidgetPage.routeName,
+              FeatureShowcase.routeName,
             ),
           ),
           ElavatedButtonWidget(
-            buttonLabel: "Connectivity Feature",
+            buttonLabel: "WidgetShowcase",
             onCustomButtonPressed: () => Navigator.pushNamed(
               context,
-              ConnectivityFeaturePage.routeName,
-            ),
-          ),
-          ElavatedButtonWidget(
-            buttonLabel: "Toggle switchlist button",
-            onCustomButtonPressed: () => Navigator.pushNamed(
-              context,
-              ToggleSwitchListButtonPage.routeName,
-            ),
-          ),
-          ElavatedButtonWidget(
-            buttonLabel: "Counter Bloc feature",
-            onCustomButtonPressed: () => Navigator.pushNamed(
-              context,
-              CounterBlocPage.routeName,
-            ),
-          ),
-          ElavatedButtonWidget(
-            buttonLabel: "Counter Cubit feature",
-            onCustomButtonPressed: () => Navigator.pushNamed(
-              context,
-              CounterCubitPage.routeName,
-            ),
-          ),
-          ElavatedButtonWidget(
-            buttonLabel: "Button widgets",
-            onCustomButtonPressed: () => Navigator.pushNamed(
-              context,
-              ButtonsWidget.routeName,
-            ),
-          ),
-          ElavatedButtonWidget(
-            buttonLabel: "Inkwell Button widgets",
-            onCustomButtonPressed: () => Navigator.pushNamed(
-              context,
-              InkWellButtonsWidget.routeName,
-            ),
-          ),
-          ElavatedButtonWidget(
-            buttonLabel: "Search Feature - Manual",
-            onCustomButtonPressed: () => Navigator.pushNamed(
-              context,
-              SearchManualPage.routeName,
-            ),
-          ),
-          ElavatedButtonWidget(
-            buttonLabel: "Search Feature - Bloc",
-            onCustomButtonPressed: () => Navigator.pushNamed(
-              context,
-              SearchHomePage.routeName,
+              WidgetShowcase.routeName,
             ),
           ),
         ],

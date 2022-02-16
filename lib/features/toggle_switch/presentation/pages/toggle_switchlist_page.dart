@@ -6,18 +6,16 @@ import '../widgets/scafold_widget.dart';
 
 // import '../../../features.dart';
 
-class ToggleSwitchListButtonPage extends StatefulWidget {
-  static const routeName = '/toggleswitchlistbuttonPage';
+class ToggleSwitchPage extends StatefulWidget {
+  static const routeName = '/toggleSwitchPage';
 
-  const ToggleSwitchListButtonPage({Key? key}) : super(key: key);
+  const ToggleSwitchPage({Key? key}) : super(key: key);
 
   @override
-  State<ToggleSwitchListButtonPage> createState() =>
-      _ToggleSwitchListButtonPageState();
+  State<ToggleSwitchPage> createState() => _ToggleSwitchPageState();
 }
 
-class _ToggleSwitchListButtonPageState
-    extends State<ToggleSwitchListButtonPage> {
+class _ToggleSwitchPageState extends State<ToggleSwitchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
