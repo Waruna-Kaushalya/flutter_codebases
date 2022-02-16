@@ -112,7 +112,7 @@ class _SearchBlocPageState extends State<SearchBlocPage> {
                   queryValue: queryValue,
                   myFocusNode: myFocusNode);
             } else if (state.stateStatus == SearchStateStatus.success) {
-              final queryValue = state.queryValue;
+              // final queryValue = state.queryValue;
               final resultList = state.results;
               // return showResultMethod(queryValue, resultList);
               return ShowResultWidget(resultList: resultList);
