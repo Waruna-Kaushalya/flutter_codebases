@@ -1,11 +1,11 @@
 part of 'toggle_switch_bloc.dart';
 
-enum WeatherStateStatus { initial, loading, success, failure }
+enum ToggleSwitchStateStatus { initial, loading, success, failure }
 
 @freezed
 class ToggleswitchState with _$ToggleswitchState {
   factory ToggleswitchState({
-    WeatherStateStatus? stateStatus,
+    ToggleSwitchStateStatus? stateStatus,
     //? required parameters
     required bool appNotification,
     required bool emailNotification,

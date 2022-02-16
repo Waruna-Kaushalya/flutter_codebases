@@ -73,6 +73,12 @@ class AppRoutes {
           builder: (context) => const SearchBlocPage(),
         );
 
+      case WeatherPage.routeName:
+        return MaterialPageRoute(
+          settings: const RouteSettings(name: 'WeatherPage'),
+          builder: (context) => const WeatherPage(),
+        );
+
       ///
       /// [widgets] pages
 

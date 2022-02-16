@@ -60,6 +60,13 @@ class FeatureShowcase extends StatelessWidget {
               SearchHomePage.routeName,
             ),
           ),
+          ElavatedButtonWidget(
+            buttonLabel: "Weather Feature",
+            onCustomButtonPressed: () => Navigator.pushNamed(
+              context,
+              WeatherPage.routeName,
+            ),
+          ),
         ],
       ),
     );

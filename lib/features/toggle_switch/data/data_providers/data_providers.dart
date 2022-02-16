@@ -1,2 +1,2 @@
 export 'api/api.dart';
-export 'local/local.dart';
+export 'local_storage/local_storage.dart';

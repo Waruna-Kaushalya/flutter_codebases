@@ -23,7 +23,7 @@ class _$ToggleswitchStateTearOff {
   const _$ToggleswitchStateTearOff();
 
   _ToggleswitchState call(
-      {WeatherStateStatus? stateStatus,
+      {ToggleSwitchStateStatus? stateStatus,
       required bool appNotification,
       required bool emailNotification}) {
     return _ToggleswitchState(
@@ -43,7 +43,7 @@ const $ToggleswitchState = _$ToggleswitchStateTearOff();
 
 /// @nodoc
 mixin _$ToggleswitchState {
-  WeatherStateStatus? get stateStatus =>
+  ToggleSwitchStateStatus? get stateStatus =>
       throw _privateConstructorUsedError; //? required parameters
   bool get appNotification => throw _privateConstructorUsedError;
   bool get emailNotification => throw _privateConstructorUsedError;
@@ -60,7 +60,7 @@ abstract class $ToggleswitchStateCopyWith<$Res> {
           ToggleswitchState value, $Res Function(ToggleswitchState) then) =
       _$ToggleswitchStateCopyWithImpl<$Res>;
   $Res call(
-      {WeatherStateStatus? stateStatus,
+      {ToggleSwitchStateStatus? stateStatus,
       bool appNotification,
       bool emailNotification});
 }
@@ -84,7 +84,7 @@ class _$ToggleswitchStateCopyWithImpl<$Res>
       stateStatus: stateStatus == freezed
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
-              as WeatherStateStatus?,
+              as ToggleSwitchStateStatus?,
       appNotification: appNotification == freezed
           ? _value.appNotification
           : appNotification // ignore: cast_nullable_to_non_nullable
@@ -105,7 +105,7 @@ abstract class _$ToggleswitchStateCopyWith<$Res>
       __$ToggleswitchStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {WeatherStateStatus? stateStatus,
+      {ToggleSwitchStateStatus? stateStatus,
       bool appNotification,
       bool emailNotification});
 }
@@ -131,7 +131,7 @@ class __$ToggleswitchStateCopyWithImpl<$Res>
       stateStatus: stateStatus == freezed
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
-              as WeatherStateStatus?,
+              as ToggleSwitchStateStatus?,
       appNotification: appNotification == freezed
           ? _value.appNotification
           : appNotification // ignore: cast_nullable_to_non_nullable
@@ -156,7 +156,7 @@ class _$_ToggleswitchState implements _ToggleswitchState {
       _$$_ToggleswitchStateFromJson(json);
 
   @override
-  final WeatherStateStatus? stateStatus;
+  final ToggleSwitchStateStatus? stateStatus;
   @override //? required parameters
   final bool appNotification;
   @override
@@ -200,7 +200,7 @@ class _$_ToggleswitchState implements _ToggleswitchState {
 
 abstract class _ToggleswitchState implements ToggleswitchState {
   factory _ToggleswitchState(
-      {WeatherStateStatus? stateStatus,
+      {ToggleSwitchStateStatus? stateStatus,
       required bool appNotification,
       required bool emailNotification}) = _$_ToggleswitchState;
 
@@ -208,7 +208,7 @@ abstract class _ToggleswitchState implements ToggleswitchState {
       _$_ToggleswitchState.fromJson;
 
   @override
-  WeatherStateStatus? get stateStatus;
+  ToggleSwitchStateStatus? get stateStatus;
   @override //? required parameters
   bool get appNotification;
   @override

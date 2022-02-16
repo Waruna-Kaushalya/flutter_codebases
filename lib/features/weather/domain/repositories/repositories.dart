@@ -1,1 +1,1 @@
-export 'weather_repository/weather_repository.dart';
+export 'api_weather_repository/api_weather_repository.dart';
