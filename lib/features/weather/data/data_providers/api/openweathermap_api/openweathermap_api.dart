@@ -54,12 +54,14 @@ class OpenweathermapWeatherApi implements Api {
       );
 
       if (response.statusCode == 404) {
-        throw const Failure(message: "City not found");
+        throw "City not found";
+        // throw const Failure(message: "City not found");
         // throw CityNotFoundFailure();
       }
 
       if (response.statusCode != 200) {
-        throw const Failure(message: "Something went wrong");
+        throw "Something went wrong";
+        // throw const Failure(message: "Something went wrong");
         // throw SomethingWentWrong();
       }
 
@@ -76,13 +78,16 @@ class OpenweathermapWeatherApi implements Api {
 
       return weather;
     } on SocketException {
-      throw const Failure(message: 'No Internet connection 😑');
+      throw "No Internet connection 😑";
+      // throw const Failure(message: 'No Internet connection 😑');
       // throw InternetConnectionFailure();
     } on HttpException {
-      throw const Failure(message: "Couldn't find the city 😱");
+      throw "Couldn't find the city 😱";
+      // throw const Failure(message: "Couldn't find the city 😱");
       // throw CityNotFoundFailure();
     } on FormatException {
-      throw const Failure(message: "Bad response format 👎");
+      throw "Bad response format 👎";
+      // throw const Failure(message: "Bad response format 👎");
       // throw ResposeFormatFailure();
     }
   }

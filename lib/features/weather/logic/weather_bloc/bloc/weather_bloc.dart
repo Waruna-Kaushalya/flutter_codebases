@@ -66,15 +66,15 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
             temperatureUnits: units,
             selections: selections,
           ));
-        } on PlatformException catch (e) {
-          final failure = e.message;
+        } catch (e) {
+          final failure = e;
           // final failure = Failure(message: e.toString());
 
           /// emit [failier] state
           /// msg as [failure.message,]
           emit(state.copyWith(
             stateStatus: WeatherStateStatus.failure,
-            errorMsg: failure,
+            errorMsg: failure.toString(),
           ));
         }
         // }
