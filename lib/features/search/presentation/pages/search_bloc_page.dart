@@ -102,7 +102,7 @@ class _SearchBlocPageState extends State<SearchBlocPage> {
         alignment: Alignment.topLeft,
         child: BlocBuilder<SearchBloc, SearchState>(
           builder: (context, state) {
-            if (state.stateStatus == SearchStateStatus.initial) {
+            if (state.stateStatus.isInitial) {
               final queryValue = state.queryValue;
               final suggestions = state.suggestions;
               // return suggetionMListViewMethod(
@@ -111,16 +111,16 @@ class _SearchBlocPageState extends State<SearchBlocPage> {
                   suggestions: suggestions,
                   queryValue: queryValue,
                   myFocusNode: myFocusNode);
-            } else if (state.stateStatus == SearchStateStatus.success) {
+            } else if (state.stateStatus.isSuccess) {
               // final queryValue = state.queryValue;
               final resultList = state.results;
               // return showResultMethod(queryValue, resultList);
               return ShowResultWidget(resultList: resultList);
-            } else if (state.stateStatus == SearchStateStatus.failure) {
+            } else if (state.stateStatus.isFailure) {
               return CityNotFoundWidget(
                 errorMsg: state.errorMsg.toString(),
               );
-            } else if (state.stateStatus == SearchStateStatus.loading) {
+            } else if (state.stateStatus.isLoading) {
               return const ResultLoadingWidget();
             } else {
               return const SizedBox.shrink();
