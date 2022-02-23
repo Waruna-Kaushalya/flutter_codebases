@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codebase/features/connectivity/presentation/pages/internet_connection_page.dart';
 
 import '../features/features.dart';
 import '../widgets/widgets.dart';
@@ -18,11 +19,18 @@ class FeatureShowcase extends StatelessWidget {
           const SizedBox(
             height: 5,
           ),
+          // ElavatedButtonWidget(
+          //   buttonLabel: "Connectivity Feature",
+          //   onCustomButtonPressed: () => Navigator.pushNamed(
+          //     context,
+          //     ConnectivityFeaturePage.routeName,
+          //   ),
+          // ),
           ElavatedButtonWidget(
-            buttonLabel: "Connectivity Feature",
+            buttonLabel: "Internet Connectivity Feature",
             onCustomButtonPressed: () => Navigator.pushNamed(
               context,
-              ConnectivityFeaturePage.routeName,
+              InternetConnectivityPage.routeName,
             ),
           ),
           ElavatedButtonWidget(

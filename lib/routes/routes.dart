@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codebase/features/connectivity/presentation/pages/internet_connection_page.dart';
 import '../pages/pages.dart';
 import '../features/features.dart';
 import '../widgets/widgets.dart';
@@ -31,10 +32,16 @@ class AppRoutes {
       ///
       /// [feature] pages
 
-      case ConnectivityFeaturePage.routeName:
+      // case ConnectivityFeaturePage.routeName:
+      //   return MaterialPageRoute(
+      //     settings: const RouteSettings(name: 'ConnectivityFeaturePage'),
+      //     builder: (context) => const ConnectivityFeaturePage(),
+      //   );
+
+      case InternetConnectivityPage.routeName:
         return MaterialPageRoute(
-          settings: const RouteSettings(name: 'ConnectivityFeaturePage'),
-          builder: (context) => const ConnectivityFeaturePage(),
+          settings: const RouteSettings(name: 'InternetConnectivityPage'),
+          builder: (context) => const InternetConnectivityPage(),
         );
 
       case ToggleSwitchPage.routeName:
