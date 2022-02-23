@@ -21,7 +21,7 @@ class _InternetConnectivityPage extends State<InternetConnectivityPage> {
           Fluttertoast.showToast(msg: "Connected to Mobile");
         } else if (state.internetStateStatus.isWifil && state.showErr == true) {
           Fluttertoast.showToast(msg: "Connected to WiFi");
-        } else {
+        } else if (state.internetStateStatus.isNone) {
           Fluttertoast.showToast(msg: "Network Disconnected");
         }
       },
