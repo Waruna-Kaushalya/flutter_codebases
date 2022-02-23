@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_codebase/features/weather/domain/repositories/abstract_weather_repository/weather_repository.dart';
 // import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -14,10 +15,11 @@ part 'weather_bloc.freezed.dart';
 part 'weather_bloc.g.dart';
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
-  final ApiWeatherRepository apiWeatherRepository;
-  WeatherBloc({
-    required this.apiWeatherRepository,
-  }) : super(WeatherState(
+  // final ApiWeatherRepository apiWeatherRepository;
+  final Weatherrepository _weatherrepository;
+  WeatherBloc(
+    this._weatherrepository,
+  ) : super(WeatherState(
           stateStatus: WeatherStateStatus.initial,
           cityName: "",
           isTemperatureUnitsState: false,
@@ -34,7 +36,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
           emit(state.copyWith(stateStatus: WeatherStateStatus.loading));
 
           /// fetch [weather] from [weatherRepository]
-          final weather = await apiWeatherRepository
+          final weather = await _weatherrepository
               .getWeatherLocationData(event.cityName.totrimLower());
 
           /// get temperature

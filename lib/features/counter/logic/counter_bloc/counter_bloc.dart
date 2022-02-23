@@ -1,21 +1,37 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-part 'counter_event.dart';
-part 'counter_state.dart';
+import 'package:flutter_codebase/features/counter/logic/counter/counter.dart';
+
 part 'counter_bloc.freezed.dart';
 part 'counter_bloc.g.dart';
+part 'counter_event.dart';
+part 'counter_state.dart';
 
 class CounterBloc extends Bloc<CounterEvent, CounterState> with HydratedMixin {
-  CounterBloc() : super(CounterState(counterValue: 0, wasIncremented: false)) {
-    on<CounterEvent>((event, emit) {
-      if (event is Increment) {
+  final CounterChnage _counterChnage;
+  CounterBloc(
+    this._counterChnage,
+  ) : super(CounterState(counterValue: 0, wasIncremented: false)) {
+    on<CounterEvent>((event, emit) async {
+      // if (event is Increment) {
+      //   emit(state.copyWith(
+      //       counterValue: state.counterValue + 1, wasIncremented: true));
+      // } else if (event is Decrement) {
+      //   emit(state.copyWith(
+      //       counterValue: state.counterValue - 1, wasIncremented: false));
+      // }
+      event.map(increment: (value) {
         emit(state.copyWith(
-            counterValue: state.counterValue + 1, wasIncremented: true));
-      } else if (event is Decrement) {
+          counterValue: _counterChnage.counterIncrement(state.counterValue),
+          wasIncremented: true,
+        ));
+      }, decrement: (value) {
         emit(state.copyWith(
-            counterValue: state.counterValue - 1, wasIncremented: false));
-      }
+          counterValue: _counterChnage.counterDecrement(state.counterValue),
+          wasIncremented: false,
+        ));
+      });
     });
   }
 

@@ -4,11 +4,17 @@ import '../abstract_weather_repository/weather_repository.dart';
 
 class ApiWeatherRepository implements Weatherrepository {
   //api object use for fetch data from api
+
+  // final OpenweathermapWeatherApi apiClient;
+
   @override
   final OpenweathermapWeatherApi apiClient;
+
+  // ApiWeatherRepository({required this.apiClient});
   ApiWeatherRepository({required this.apiClient});
 
   //getWeatherLocationData function is asyncrones method and using fetch data and return data to cubit
+
   @override
   Future<Weather> getWeatherLocationData(String cityName) async {
     // try {

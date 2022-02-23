@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter_codebase/features/counter/logic/counter/counter.dart';
 import 'package:flutter_codebase/utility/app_bloc_observer.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
@@ -72,17 +73,19 @@ class MyApp extends StatelessWidget {
           create: (context) => CounterCubit(),
         ),
         BlocProvider<CounterBloc>(
-          create: (context) => CounterBloc(),
+          create: (context) => CounterBloc(CounterChangeByTwo()),
         ),
         BlocProvider<SearchBloc>(
           create: (context) => SearchBloc(),
         ),
         BlocProvider<WeatherBloc>(
-          create: (context) => WeatherBloc(
-            apiWeatherRepository: ApiWeatherRepository(
-              apiClient: OpenweathermapWeatherApi(),
-            ),
-          ),
+          create: (context) => WeatherBloc(ApiWeatherRepository(
+            apiClient: OpenweathermapWeatherApi(),
+          )
+              // apiWeatherRepository: ApiWeatherRepository(
+              //   apiClient: OpenweathermapWeatherApi(),
+              // ),
+              ),
         ),
       ],
       child: MaterialApp(
