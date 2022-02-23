@@ -13,17 +13,10 @@ extension InternetStateStatusX on InternetStateStatus {
   bool get isNone => this == InternetStateStatus.none;
 }
 
-enum ShowToastStatus { trueToast, falseToast }
-
-extension ShowToastStatusX on ShowToastStatus {
-  bool get isTrueToast => this == ShowToastStatus.trueToast;
-  bool get isFalseToast => this == ShowToastStatus.falseToast;
-}
-
 @freezed
 class InternetState with _$InternetState {
   factory InternetState({
-    @Default(ShowToastStatus.falseToast) ShowToastStatus showToast,
-    required InternetStateStatus internetStateStatus,
+    @Default(false) bool showErr,
+    @Default(InternetStateStatus.none) InternetStateStatus internetStateStatus,
   }) = _InternetState;
 }

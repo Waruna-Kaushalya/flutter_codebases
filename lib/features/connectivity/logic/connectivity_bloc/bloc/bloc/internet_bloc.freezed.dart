@@ -338,10 +338,10 @@ class _$InternetStateTearOff {
   const _$InternetStateTearOff();
 
   _InternetState call(
-      {ShowToastStatus showToast = ShowToastStatus.falseToast,
-      required InternetStateStatus internetStateStatus}) {
+      {bool showErr = false,
+      InternetStateStatus internetStateStatus = InternetStateStatus.none}) {
     return _InternetState(
-      showToast: showToast,
+      showErr: showErr,
       internetStateStatus: internetStateStatus,
     );
   }
@@ -352,7 +352,7 @@ const $InternetState = _$InternetStateTearOff();
 
 /// @nodoc
 mixin _$InternetState {
-  ShowToastStatus get showToast => throw _privateConstructorUsedError;
+  bool get showErr => throw _privateConstructorUsedError;
   InternetStateStatus get internetStateStatus =>
       throw _privateConstructorUsedError;
 
@@ -366,8 +366,7 @@ abstract class $InternetStateCopyWith<$Res> {
   factory $InternetStateCopyWith(
           InternetState value, $Res Function(InternetState) then) =
       _$InternetStateCopyWithImpl<$Res>;
-  $Res call(
-      {ShowToastStatus showToast, InternetStateStatus internetStateStatus});
+  $Res call({bool showErr, InternetStateStatus internetStateStatus});
 }
 
 /// @nodoc
@@ -381,14 +380,14 @@ class _$InternetStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? showToast = freezed,
+    Object? showErr = freezed,
     Object? internetStateStatus = freezed,
   }) {
     return _then(_value.copyWith(
-      showToast: showToast == freezed
-          ? _value.showToast
-          : showToast // ignore: cast_nullable_to_non_nullable
-              as ShowToastStatus,
+      showErr: showErr == freezed
+          ? _value.showErr
+          : showErr // ignore: cast_nullable_to_non_nullable
+              as bool,
       internetStateStatus: internetStateStatus == freezed
           ? _value.internetStateStatus
           : internetStateStatus // ignore: cast_nullable_to_non_nullable
@@ -404,8 +403,7 @@ abstract class _$InternetStateCopyWith<$Res>
           _InternetState value, $Res Function(_InternetState) then) =
       __$InternetStateCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {ShowToastStatus showToast, InternetStateStatus internetStateStatus});
+  $Res call({bool showErr, InternetStateStatus internetStateStatus});
 }
 
 /// @nodoc
@@ -421,14 +419,14 @@ class __$InternetStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? showToast = freezed,
+    Object? showErr = freezed,
     Object? internetStateStatus = freezed,
   }) {
     return _then(_InternetState(
-      showToast: showToast == freezed
-          ? _value.showToast
-          : showToast // ignore: cast_nullable_to_non_nullable
-              as ShowToastStatus,
+      showErr: showErr == freezed
+          ? _value.showErr
+          : showErr // ignore: cast_nullable_to_non_nullable
+              as bool,
       internetStateStatus: internetStateStatus == freezed
           ? _value.internetStateStatus
           : internetStateStatus // ignore: cast_nullable_to_non_nullable
@@ -441,18 +439,19 @@ class __$InternetStateCopyWithImpl<$Res>
 
 class _$_InternetState implements _InternetState {
   _$_InternetState(
-      {this.showToast = ShowToastStatus.falseToast,
-      required this.internetStateStatus});
+      {this.showErr = false,
+      this.internetStateStatus = InternetStateStatus.none});
 
   @JsonKey()
   @override
-  final ShowToastStatus showToast;
+  final bool showErr;
+  @JsonKey()
   @override
   final InternetStateStatus internetStateStatus;
 
   @override
   String toString() {
-    return 'InternetState(showToast: $showToast, internetStateStatus: $internetStateStatus)';
+    return 'InternetState(showErr: $showErr, internetStateStatus: $internetStateStatus)';
   }
 
   @override
@@ -460,7 +459,7 @@ class _$_InternetState implements _InternetState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _InternetState &&
-            const DeepCollectionEquality().equals(other.showToast, showToast) &&
+            const DeepCollectionEquality().equals(other.showErr, showErr) &&
             const DeepCollectionEquality()
                 .equals(other.internetStateStatus, internetStateStatus));
   }
@@ -468,7 +467,7 @@ class _$_InternetState implements _InternetState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(showToast),
+      const DeepCollectionEquality().hash(showErr),
       const DeepCollectionEquality().hash(internetStateStatus));
 
   @JsonKey(ignore: true)
@@ -479,11 +478,11 @@ class _$_InternetState implements _InternetState {
 
 abstract class _InternetState implements InternetState {
   factory _InternetState(
-      {ShowToastStatus showToast,
-      required InternetStateStatus internetStateStatus}) = _$_InternetState;
+      {bool showErr,
+      InternetStateStatus internetStateStatus}) = _$_InternetState;
 
   @override
-  ShowToastStatus get showToast;
+  bool get showErr;
   @override
   InternetStateStatus get internetStateStatus;
   @override

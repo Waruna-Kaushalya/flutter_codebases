@@ -29,7 +29,7 @@ class _ConnectivityFeaturePageState extends State<ConnectivityFeaturePage> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Internet Check"),
+          title: const Text("Connectivity Check"),
         ),
         body: Center(
           child: Column(

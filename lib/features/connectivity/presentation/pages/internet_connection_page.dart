@@ -17,9 +17,9 @@ class _InternetConnectivityPage extends State<InternetConnectivityPage> {
   Widget build(BuildContext context) {
     return BlocListener<InternetBloc, InternetState>(
       listener: (context, state) {
-        if (state.internetStateStatus.isMobile) {
+        if (state.internetStateStatus.isMobile && state.showErr == true) {
           Fluttertoast.showToast(msg: "Connected to Mobile");
-        } else if (state.internetStateStatus.isWifil) {
+        } else if (state.internetStateStatus.isWifil && state.showErr == true) {
           Fluttertoast.showToast(msg: "Connected to WiFi");
         } else {
           Fluttertoast.showToast(msg: "Network Disconnected");

@@ -8,7 +8,7 @@ part 'internet_bloc.freezed.dart';
 part 'internet_event.dart';
 part 'internet_state.dart';
 
-extension ConnectivityResultX on ConnectivityResult {
+extension on ConnectivityResult {
   bool get isWifi => this == ConnectivityResult.wifi;
   bool get isMobile => this == ConnectivityResult.mobile;
   bool get isNone => this == ConnectivityResult.none;
@@ -19,13 +19,14 @@ class InternetBloc extends Bloc<InternetEvent, InternetState> {
   late StreamSubscription connectivityStreamSubscription;
   InternetBloc(
     this.connectivity,
-  ) : super(InternetState(
-          internetStateStatus: InternetStateStatus.none,
-        )) {
+  ) : super(InternetState()) {
     on<InternetEvent>(
-      (event, emit) async {
+      (event, emit) {
         event.map(
-          started: (value) {
+          started: (value) async {
+            final connectivityResultX =
+                await (Connectivity().checkConnectivity());
+
             connectivityStreamSubscription =
                 connectivity.onConnectivityChanged.listen(
               (connectivityResult) async {
@@ -33,22 +34,32 @@ class InternetBloc extends Bloc<InternetEvent, InternetState> {
                     connectivityResult: connectivityResult));
               },
             );
+
+            if (connectivityResultX.isNone) {
+              add(const InternetEvent.checkConnection(
+                  connectivityResult: ConnectivityResult.none));
+            }
+            // if (state.internetStateStatus.isNone) {
+            //   add(const InternetEvent.checkConnection(
+            //       connectivityResult: ConnectivityResult.none));
+            // }
           },
           checkConnection: (_CheckConnection value) {
-            if (value.connectivityResult.isWifi &&
-                state.showToast.isTrueToast) {
+            // &&  state.showToast.isTrueToast
+            // showToast: ShowToastStatus.trueToast
+
+            if (value.connectivityResult.isWifi) {
               emit(state.copyWith(
-                  internetStateStatus: InternetStateStatus.wifi,
-                  showToast: ShowToastStatus.trueToast));
-            } else if (value.connectivityResult.isMobile &&
-                state.showToast.isTrueToast) {
+                internetStateStatus: InternetStateStatus.wifi,
+              ));
+            } else if (value.connectivityResult.isMobile) {
               emit(state.copyWith(
-                  internetStateStatus: InternetStateStatus.mobile,
-                  showToast: ShowToastStatus.trueToast));
+                internetStateStatus: InternetStateStatus.mobile,
+              ));
             } else if (value.connectivityResult.isNone) {
               emit(state.copyWith(
                   internetStateStatus: InternetStateStatus.none,
-                  showToast: ShowToastStatus.trueToast));
+                  showErr: true));
             }
           },
         );
