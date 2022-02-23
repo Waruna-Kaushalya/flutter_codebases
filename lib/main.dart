@@ -17,7 +17,7 @@ Future<void> main() async {
   //?call notice codes
   WidgetsFlutterBinding.ensureInitialized();
 
-  configureDependencies(Env.dev);
+  configureDependencies(Env.prod);
 
   //?Select storage for store data using hydrated bloc package
   //?data storing location selection is very important.

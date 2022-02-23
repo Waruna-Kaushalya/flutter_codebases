@@ -42,7 +42,7 @@ class CounterBlocPage extends StatelessWidget {
               FloatingActionButton(
                 heroTag: "Button_Decrement",
                 onPressed: () {
-                  BlocProvider.of<CounterBloc>(context).add(Decrement());
+                  BlocProvider.of<CounterBloc>(context).add(const Decrement());
                 },
                 child: const Icon(Icons.remove),
               ),
@@ -52,7 +52,7 @@ class CounterBlocPage extends StatelessWidget {
               FloatingActionButton(
                 heroTag: "Button_Increment",
                 onPressed: () {
-                  BlocProvider.of<CounterBloc>(context).add(Increment());
+                  BlocProvider.of<CounterBloc>(context).add(const Increment());
                 },
                 child: const Icon(Icons.add),
               )
