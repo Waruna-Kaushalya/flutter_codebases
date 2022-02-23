@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_codebase/features/counter/logic/counter/counter.dart';
+import 'package:flutter_codebase/injection.dart';
 import 'package:flutter_codebase/utility/app_bloc_observer.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
@@ -15,6 +16,8 @@ import '../routes/routes.dart';
 Future<void> main() async {
   //?call notice codes
   WidgetsFlutterBinding.ensureInitialized();
+
+  configureDependencies(Env.dev);
 
   //?Select storage for store data using hydrated bloc package
   //?data storing location selection is very important.
@@ -73,7 +76,8 @@ class MyApp extends StatelessWidget {
           create: (context) => CounterCubit(),
         ),
         BlocProvider<CounterBloc>(
-          create: (context) => CounterBloc(CounterChangeByTwo()),
+          // create: (context) => CounterBloc(CounterChangeByTwo()),
+          create: (context) => getIt<CounterBloc>(),
         ),
         BlocProvider<SearchBloc>(
           create: (context) => SearchBloc(),

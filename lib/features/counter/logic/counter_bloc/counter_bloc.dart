@@ -2,12 +2,14 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import 'package:flutter_codebase/features/counter/logic/counter/counter.dart';
+import 'package:injectable/injectable.dart';
 
 part 'counter_bloc.freezed.dart';
 part 'counter_bloc.g.dart';
 part 'counter_event.dart';
 part 'counter_state.dart';
 
+@injectable
 class CounterBloc extends Bloc<CounterEvent, CounterState> with HydratedMixin {
   final CounterChnage _counterChnage;
   CounterBloc(
