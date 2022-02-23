@@ -19,7 +19,9 @@ class InternetBloc extends Bloc<InternetEvent, InternetState> {
   late StreamSubscription connectivityStreamSubscription;
   InternetBloc(
     this.connectivity,
-  ) : super(InternetState(internetStateStatus: InternetStateStatus.none)) {
+  ) : super(InternetState(
+          internetStateStatus: InternetStateStatus.none,
+        )) {
     on<InternetEvent>(
       (event, emit) async {
         event.map(
@@ -29,41 +31,24 @@ class InternetBloc extends Bloc<InternetEvent, InternetState> {
               (connectivityResult) async {
                 add(InternetEvent.checkConnection(
                     connectivityResult: connectivityResult));
-                // if (connectivityResult.isWifi) {
-                //   emit(state.copyWith(
-                //       internetStateStatus: InternetStateStatus.wifi));
-                //   // emitInternetConnectedMobile();
-                //   // emit(InternetConnected(connectionType: ConnectionType.wifi));
-                // } else if (connectivityResult.isMobile) {
-                //   // emitInternetConnectedWifi();
-                //   emit(state.copyWith(
-                //       internetStateStatus: InternetStateStatus.mobile));
-                //   // emit(InternetConnected(connectionType: ConnectionType.mobile));
-                // } else if (connectivityResult.isNone) {
-                //   // emitInternetDisconnected();
-                //   emit(state.copyWith(
-                //       internetStateStatus: InternetStateStatus.none));
-                //   // emit(InternetDisconnected());
-                // }
               },
             );
           },
           checkConnection: (_CheckConnection value) {
-            if (value.connectivityResult.isWifi) {
+            if (value.connectivityResult.isWifi &&
+                state.showToast.isTrueToast) {
               emit(state.copyWith(
-                  internetStateStatus: InternetStateStatus.wifi));
-              // emitInternetConnectedMobile();
-              // emit(InternetConnected(connectionType: ConnectionType.wifi));
-            } else if (value.connectivityResult.isMobile) {
-              // emitInternetConnectedWifi();
+                  internetStateStatus: InternetStateStatus.wifi,
+                  showToast: ShowToastStatus.trueToast));
+            } else if (value.connectivityResult.isMobile &&
+                state.showToast.isTrueToast) {
               emit(state.copyWith(
-                  internetStateStatus: InternetStateStatus.mobile));
-              // emit(InternetConnected(connectionType: ConnectionType.mobile));
+                  internetStateStatus: InternetStateStatus.mobile,
+                  showToast: ShowToastStatus.trueToast));
             } else if (value.connectivityResult.isNone) {
-              // emitInternetDisconnected();
               emit(state.copyWith(
-                  internetStateStatus: InternetStateStatus.none));
-              // emit(InternetDisconnected());
+                  internetStateStatus: InternetStateStatus.none,
+                  showToast: ShowToastStatus.trueToast));
             }
           },
         );

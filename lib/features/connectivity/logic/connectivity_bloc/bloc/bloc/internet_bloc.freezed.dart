@@ -337,8 +337,11 @@ abstract class _CheckConnection implements InternetEvent {
 class _$InternetStateTearOff {
   const _$InternetStateTearOff();
 
-  _InternetState call({required InternetStateStatus internetStateStatus}) {
+  _InternetState call(
+      {ShowToastStatus showToast = ShowToastStatus.falseToast,
+      required InternetStateStatus internetStateStatus}) {
     return _InternetState(
+      showToast: showToast,
       internetStateStatus: internetStateStatus,
     );
   }
@@ -349,6 +352,7 @@ const $InternetState = _$InternetStateTearOff();
 
 /// @nodoc
 mixin _$InternetState {
+  ShowToastStatus get showToast => throw _privateConstructorUsedError;
   InternetStateStatus get internetStateStatus =>
       throw _privateConstructorUsedError;
 
@@ -362,7 +366,8 @@ abstract class $InternetStateCopyWith<$Res> {
   factory $InternetStateCopyWith(
           InternetState value, $Res Function(InternetState) then) =
       _$InternetStateCopyWithImpl<$Res>;
-  $Res call({InternetStateStatus internetStateStatus});
+  $Res call(
+      {ShowToastStatus showToast, InternetStateStatus internetStateStatus});
 }
 
 /// @nodoc
@@ -376,9 +381,14 @@ class _$InternetStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? showToast = freezed,
     Object? internetStateStatus = freezed,
   }) {
     return _then(_value.copyWith(
+      showToast: showToast == freezed
+          ? _value.showToast
+          : showToast // ignore: cast_nullable_to_non_nullable
+              as ShowToastStatus,
       internetStateStatus: internetStateStatus == freezed
           ? _value.internetStateStatus
           : internetStateStatus // ignore: cast_nullable_to_non_nullable
@@ -394,7 +404,8 @@ abstract class _$InternetStateCopyWith<$Res>
           _InternetState value, $Res Function(_InternetState) then) =
       __$InternetStateCopyWithImpl<$Res>;
   @override
-  $Res call({InternetStateStatus internetStateStatus});
+  $Res call(
+      {ShowToastStatus showToast, InternetStateStatus internetStateStatus});
 }
 
 /// @nodoc
@@ -410,9 +421,14 @@ class __$InternetStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? showToast = freezed,
     Object? internetStateStatus = freezed,
   }) {
     return _then(_InternetState(
+      showToast: showToast == freezed
+          ? _value.showToast
+          : showToast // ignore: cast_nullable_to_non_nullable
+              as ShowToastStatus,
       internetStateStatus: internetStateStatus == freezed
           ? _value.internetStateStatus
           : internetStateStatus // ignore: cast_nullable_to_non_nullable
@@ -424,14 +440,19 @@ class __$InternetStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_InternetState implements _InternetState {
-  _$_InternetState({required this.internetStateStatus});
+  _$_InternetState(
+      {this.showToast = ShowToastStatus.falseToast,
+      required this.internetStateStatus});
 
+  @JsonKey()
+  @override
+  final ShowToastStatus showToast;
   @override
   final InternetStateStatus internetStateStatus;
 
   @override
   String toString() {
-    return 'InternetState(internetStateStatus: $internetStateStatus)';
+    return 'InternetState(showToast: $showToast, internetStateStatus: $internetStateStatus)';
   }
 
   @override
@@ -439,13 +460,16 @@ class _$_InternetState implements _InternetState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _InternetState &&
+            const DeepCollectionEquality().equals(other.showToast, showToast) &&
             const DeepCollectionEquality()
                 .equals(other.internetStateStatus, internetStateStatus));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(internetStateStatus));
+      runtimeType,
+      const DeepCollectionEquality().hash(showToast),
+      const DeepCollectionEquality().hash(internetStateStatus));
 
   @JsonKey(ignore: true)
   @override
@@ -454,9 +478,12 @@ class _$_InternetState implements _InternetState {
 }
 
 abstract class _InternetState implements InternetState {
-  factory _InternetState({required InternetStateStatus internetStateStatus}) =
-      _$_InternetState;
+  factory _InternetState(
+      {ShowToastStatus showToast,
+      required InternetStateStatus internetStateStatus}) = _$_InternetState;
 
+  @override
+  ShowToastStatus get showToast;
   @override
   InternetStateStatus get internetStateStatus;
   @override

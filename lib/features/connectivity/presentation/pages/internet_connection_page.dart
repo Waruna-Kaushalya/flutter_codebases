@@ -49,30 +49,6 @@ class _InternetConnectivityPage extends State<InternetConnectivityPage> {
                       internetType: 'Disconnected',
                     );
                   }
-
-                  //** */
-
-                  // if (connectionState.status == ConnectivityStatus.connected &&
-                  //     connectionState.connectionType == ConnectionType.mobile) {
-                  //   return const CounterAndNetLabel(
-                  //     internetType: 'Mobile',
-                  //   );
-                  // } else if (connectionState.status ==
-                  //         ConnectivityStatus.connected &&
-                  //     connectionState.connectionType == ConnectionType.wifi) {
-                  //   return const CounterAndNetLabel(
-                  //     internetType: 'WiFi',
-                  //   );
-                  // } else if (connectionState.status ==
-                  //     ConnectivityStatus.connectedWithoutInternet) {
-                  //   return const CounterAndNetLabel(
-                  //     internetType: 'Connected Without Internet',
-                  //   );
-                  // } else {
-                  //   return const CounterAndNetLabel(
-                  //     internetType: 'Disconnected',
-                  //   );
-                  // }
                 },
               )
             ],
