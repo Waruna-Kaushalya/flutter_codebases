@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter_codebase/features/connectivity/logic/connection/connection_facade.dart';
 
 import 'package:flutter_codebase/features/connectivity/presentation/pages/internet_connection_page.dart';
 import 'package:flutter_codebase/injection.dart';
@@ -73,7 +74,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<InternetBloc>(
           lazy: false,
           create: (context) =>
-              InternetBloc(Connectivity())..add(const InternetEvent.started()),
+              InternetBloc(Connectivity(), CheckConnection(Connectivity()))
+                ..add(const InternetEvent.started()),
         ),
         BlocProvider<ToggleswitchBloc>(
           create: (context) => ToggleswitchBloc(),
@@ -103,7 +105,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: HomePage.routeName,
+        initialRoute: InternetConnectivityPage.routeName,
         onGenerateRoute: appRoutes.onGenerateRoute,
       ),
     );

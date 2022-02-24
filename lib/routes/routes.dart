@@ -32,11 +32,11 @@ class AppRoutes {
       ///
       /// [feature] pages
 
-      case ConnectivityFeaturePage.routeName:
-        return MaterialPageRoute(
-          settings: const RouteSettings(name: 'ConnectivityFeaturePage'),
-          builder: (context) => const ConnectivityFeaturePage(),
-        );
+      // case ConnectivityFeaturePage.routeName:
+      //   return MaterialPageRoute(
+      //     settings: const RouteSettings(name: 'ConnectivityFeaturePage'),
+      //     builder: (context) => const ConnectivityFeaturePage(),
+      //   );
 
       case InternetConnectivityPage.routeName:
         return MaterialPageRoute(

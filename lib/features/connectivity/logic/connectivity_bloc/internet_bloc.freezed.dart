@@ -23,7 +23,7 @@ class _$InternetEventTearOff {
   }
 
   _CheckConnection checkConnection(
-      {required ConnectivityResult connectivityResult}) {
+      {required InternetStateStatus connectivityResult}) {
     return _CheckConnection(
       connectivityResult: connectivityResult,
     );
@@ -38,20 +38,20 @@ mixin _$InternetEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(ConnectivityResult connectivityResult)
+    required TResult Function(InternetStateStatus connectivityResult)
         checkConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(ConnectivityResult connectivityResult)? checkConnection,
+    TResult Function(InternetStateStatus connectivityResult)? checkConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(ConnectivityResult connectivityResult)? checkConnection,
+    TResult Function(InternetStateStatus connectivityResult)? checkConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -132,7 +132,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(ConnectivityResult connectivityResult)
+    required TResult Function(InternetStateStatus connectivityResult)
         checkConnection,
   }) {
     return started();
@@ -142,7 +142,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(ConnectivityResult connectivityResult)? checkConnection,
+    TResult Function(InternetStateStatus connectivityResult)? checkConnection,
   }) {
     return started?.call();
   }
@@ -151,7 +151,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(ConnectivityResult connectivityResult)? checkConnection,
+    TResult Function(InternetStateStatus connectivityResult)? checkConnection,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -201,7 +201,7 @@ abstract class _$CheckConnectionCopyWith<$Res> {
   factory _$CheckConnectionCopyWith(
           _CheckConnection value, $Res Function(_CheckConnection) then) =
       __$CheckConnectionCopyWithImpl<$Res>;
-  $Res call({ConnectivityResult connectivityResult});
+  $Res call({InternetStateStatus connectivityResult});
 }
 
 /// @nodoc
@@ -223,7 +223,7 @@ class __$CheckConnectionCopyWithImpl<$Res>
       connectivityResult: connectivityResult == freezed
           ? _value.connectivityResult
           : connectivityResult // ignore: cast_nullable_to_non_nullable
-              as ConnectivityResult,
+              as InternetStateStatus,
     ));
   }
 }
@@ -234,7 +234,7 @@ class _$_CheckConnection implements _CheckConnection {
   const _$_CheckConnection({required this.connectivityResult});
 
   @override
-  final ConnectivityResult connectivityResult;
+  final InternetStateStatus connectivityResult;
 
   @override
   String toString() {
@@ -263,7 +263,7 @@ class _$_CheckConnection implements _CheckConnection {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(ConnectivityResult connectivityResult)
+    required TResult Function(InternetStateStatus connectivityResult)
         checkConnection,
   }) {
     return checkConnection(connectivityResult);
@@ -273,7 +273,7 @@ class _$_CheckConnection implements _CheckConnection {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(ConnectivityResult connectivityResult)? checkConnection,
+    TResult Function(InternetStateStatus connectivityResult)? checkConnection,
   }) {
     return checkConnection?.call(connectivityResult);
   }
@@ -282,7 +282,7 @@ class _$_CheckConnection implements _CheckConnection {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(ConnectivityResult connectivityResult)? checkConnection,
+    TResult Function(InternetStateStatus connectivityResult)? checkConnection,
     required TResult orElse(),
   }) {
     if (checkConnection != null) {
@@ -325,9 +325,9 @@ class _$_CheckConnection implements _CheckConnection {
 
 abstract class _CheckConnection implements InternetEvent {
   const factory _CheckConnection(
-      {required ConnectivityResult connectivityResult}) = _$_CheckConnection;
+      {required InternetStateStatus connectivityResult}) = _$_CheckConnection;
 
-  ConnectivityResult get connectivityResult;
+  InternetStateStatus get connectivityResult;
   @JsonKey(ignore: true)
   _$CheckConnectionCopyWith<_CheckConnection> get copyWith =>
       throw _privateConstructorUsedError;
