@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'connection_status.dart';
+import '../../../domain/facade/connection_facade.dart';
+import '../../../domain/core/connection_status.dart';
 
 extension on ConnectivityResult {
   bool get isWifi => this == ConnectivityResult.wifi;
@@ -8,14 +9,12 @@ extension on ConnectivityResult {
   bool get isNone => this == ConnectivityResult.none;
 }
 
-abstract class ConnectivityFacade {
-  Future<InternetStateStatus> currentInternetStatus();
-  Stream<InternetStateStatus> get netStatus;
-}
-
 class CheckConnection implements ConnectivityFacade {
   final Connectivity connectivity;
   late StreamSubscription connectivityStreamSubscription;
+
+  final StreamController<InternetStateStatus> _statusController =
+      StreamController<InternetStateStatus>();
 
   CheckConnection(this.connectivity);
 
@@ -34,9 +33,6 @@ class CheckConnection implements ConnectivityFacade {
 
     return connectivityResult;
   }
-
-  final StreamController<InternetStateStatus> _statusController =
-      StreamController<InternetStateStatus>();
 
   @override
   Stream<InternetStateStatus> get netStatus {

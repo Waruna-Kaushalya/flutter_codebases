@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_codebase/features/connectivity/logic/connection/connection_status.dart';
-
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_codebase/features/connectivity/domain/core/connection_status.dart';
 
 import '../../../../widgets/snackbar/widgets/snackbar_widget.dart';
 import '../../../../widgets/text_label/widgets/text_label_widget.dart';
-import '../../connectivity_feature.dart';
+import '../../application/connectivity_bloc/bloc.dart';
 
 class InternetConnectivityPage extends StatefulWidget {
   static const routeName = '/internetConnectivityPage';

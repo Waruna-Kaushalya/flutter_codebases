@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter_codebase/features/connectivity/logic/connection/connection_facade.dart';
 
 import 'package:flutter_codebase/features/connectivity/presentation/pages/internet_connection_page.dart';
 import 'package:flutter_codebase/injection.dart';
-import 'package:flutter_codebase/pages/pages.dart';
 import 'package:flutter_codebase/utility/app_bloc_observer.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
@@ -14,6 +12,8 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../features/features.dart';
 import '../routes/routes.dart';
+import 'features/connectivity/Infrastructure/connectivity/connectivity_plus/connectivity_plus_connection.dart';
+import 'features/connectivity/application/connectivity_bloc/internet_bloc.dart';
 
 Future<void> main() async {
   //?call notice codes
