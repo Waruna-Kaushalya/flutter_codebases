@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_codebase/features/connectivity/logic/connectivity_bloc/bloc/bloc/internet_bloc.dart';
+
 import 'package:fluttertoast/fluttertoast.dart';
+
+import '../../../../widgets/snackbar/widgets/snackbar_widget.dart';
+import '../../../../widgets/text_label/text_label_widget.dart';
+import '../../connectivity_feature.dart';
 
 class InternetConnectivityPage extends StatefulWidget {
   static const routeName = '/internetConnectivityPage';
@@ -18,11 +22,32 @@ class _InternetConnectivityPage extends State<InternetConnectivityPage> {
     return BlocListener<InternetBloc, InternetState>(
       listener: (context, state) {
         if (state.internetStateStatus.isMobile && state.showErr == true) {
-          Fluttertoast.showToast(msg: "Connected to Mobile");
+          // Fluttertoast.showToast(msg: "Connected to Mobile");
+          showSnackBar(
+            context: context,
+            snackBarIcon: Icons.wifi,
+            snackBarText: "Connected",
+            snackBarBackgroudColor: Colors.green,
+          );
         } else if (state.internetStateStatus.isWifil && state.showErr == true) {
-          Fluttertoast.showToast(msg: "Connected to WiFi");
+          // Fluttertoast.showToast(msg: "Connected to WiFi");
+          showSnackBar(
+            context: context,
+            snackBarIcon: Icons.wifi,
+            // msgStr: "Your internet connection has been restored.",
+            snackBarText: "Connected",
+            snackBarBackgroudColor: Colors.green,
+          );
         } else if (state.internetStateStatus.isNone) {
-          Fluttertoast.showToast(msg: "Network Disconnected");
+          // Fluttertoast.showToast(msg: "You are currently offline.");
+
+          showSnackBar(
+            context: context,
+            snackBarIcon: Icons.wifi_off,
+            // msgStr: "You are currently offline.",
+            snackBarText: "Disconnected",
+            snackBarBackgroudColor: Colors.black,
+          );
         }
       },
       child: Scaffold(
@@ -37,15 +62,15 @@ class _InternetConnectivityPage extends State<InternetConnectivityPage> {
               BlocBuilder<InternetBloc, InternetState>(
                 builder: (context, state) {
                   if (state.internetStateStatus.isMobile) {
-                    return const CounterAndNetLabel(
+                    return const TextLabel(
                       internetType: 'Mobile',
                     );
                   } else if (state.internetStateStatus.isWifil) {
-                    return const CounterAndNetLabel(
+                    return const TextLabel(
                       internetType: 'WiFi',
                     );
                   } else {
-                    return const CounterAndNetLabel(
+                    return const TextLabel(
                       internetType: 'Disconnected',
                     );
                   }
@@ -57,27 +82,4 @@ class _InternetConnectivityPage extends State<InternetConnectivityPage> {
       ),
     );
   }
-}
-
-class CounterAndNetLabel extends StatelessWidget {
-  const CounterAndNetLabel({
-    Key? key,
-    required this.internetType,
-  }) : super(key: key);
-
-  final String internetType;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          internetType,
-          style: textStyle(),
-        ),
-      ],
-    );
-  }
-
-  TextStyle textStyle() => const TextStyle(color: Colors.black, fontSize: 30.0);
 }

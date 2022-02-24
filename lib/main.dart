@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter_codebase/features/connectivity/logic/connectivity_bloc/bloc/bloc/internet_bloc.dart';
+
 import 'package:flutter_codebase/features/connectivity/presentation/pages/internet_connection_page.dart';
 import 'package:flutter_codebase/injection.dart';
 import 'package:flutter_codebase/utility/app_bloc_observer.dart';

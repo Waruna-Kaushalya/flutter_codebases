@@ -150,27 +150,3 @@ class InitialInputTextField extends StatelessWidget {
     );
   }
 }
-
-// snackMsg is SnackBar widget
-class SnackMsg extends StatelessWidget {
-  const SnackMsg({
-    Key? key,
-    required this.msg,
-  }) : super(key: key);
-
-  final String msg;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        // key: scaffoldKey,
-        body: Builder(
-      builder: (BuildContext context) {
-        return GestureDetector(
-          onTap: () {},
-          child: const Text('SHOW SNACK'),
-        );
-      },
-    ));
-  }
-}
