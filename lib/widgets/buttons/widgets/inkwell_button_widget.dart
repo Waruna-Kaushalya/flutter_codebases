@@ -19,7 +19,8 @@ class InkWellTextWidget extends StatelessWidget {
         color: Colors.blue,
         child: InkWell(
           onTap: () {},
-          //? when long press this collor iffect diaply
+
+          /// when long press this collor iffect diaply
           splashColor: Colors.black26,
           child: Container(
             alignment: Alignment.center,
@@ -53,13 +54,16 @@ class InkWellTextConnerRoundedWidget extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Material(
         color: Colors.blue,
-        //? both line needed when conner rounded
+
+        /// both line needed when conner rounded
         borderRadius: BorderRadius.circular(28),
-        //? this line prevent rectangle shadow under widget when long press
+
+        /// this line prevent rectangle shadow under widget when long press
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: InkWell(
           onTap: () {},
-          //? when long press this collor iffect diaply
+
+          /// when long press this collor iffect diaply
           splashColor: Colors.black26,
           child: Container(
             alignment: Alignment.center,
@@ -96,7 +100,8 @@ class InkWellImageWidget extends StatelessWidget {
       padding: const EdgeInsets.all(5),
       child: InkWell(
         onTap: () {},
-        //? when long press this collor iffect diaply
+
+        /// when long press this collor iffect diaply
         splashColor: Colors.white10,
         child: Ink.image(
           image: const AssetImage('assets/images/image2.jpg'),
@@ -125,19 +130,23 @@ class InkWellImageConnerRoundedWidget extends StatelessWidget {
       alignment: Alignment.center,
       padding: const EdgeInsets.all(5),
       child: Material(
-        //? Background color
+        /// Background color
         color: Colors.blue,
-        //? Shadow around button
+
+        /// Shadow around button
         elevation: 8,
-        //? both line needed when conner rounded
+
+        /// both line needed when conner rounded
         borderRadius: BorderRadius.circular(28),
-        //? this line prevent rectangle shadow under widget when long press
+
+        /// this line prevent rectangle shadow under widget when long press
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: InkWell(
           onTap: () {},
           onLongPress: () {},
           onDoubleTap: () {},
-          //? when long press this collor iffect diaply
+
+          /// when long press this collor iffect diaply
           splashColor: Colors.white12,
           child: Ink.image(
             image: const AssetImage('assets/images/image2.jpg'),
@@ -168,7 +177,8 @@ class InkWellImageOverTextWidget extends StatelessWidget {
       padding: const EdgeInsets.all(5),
       child: InkWell(
         onTap: () {},
-        //? when long press this collor iffect diaply
+
+        /// when long press this collor iffect diaply
         splashColor: Colors.white12,
         child: Ink.image(
           image: const AssetImage('assets/images/image2.jpg'),
@@ -206,15 +216,17 @@ class InkWellImageUnderTextWidget extends StatelessWidget {
       alignment: Alignment.center,
       padding: const EdgeInsets.all(5),
       child: Material(
-        //? Background color
+        /// Background color
         color: Colors.blue,
-        //? Shadow around button
+
+        /// Shadow around button
         elevation: 8,
         child: InkWell(
           onTap: () {},
           onLongPress: () {},
           onDoubleTap: () {},
-          //? when long press this collor iffect diaply
+
+          /// when long press this collor iffect diaply
           splashColor: Colors.white12,
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -256,19 +268,23 @@ class InkWellImageUnderTextConnerRoundedWidget extends StatelessWidget {
       alignment: Alignment.center,
       padding: const EdgeInsets.all(5),
       child: Material(
-        //? Background color
+        /// Background color
         color: Colors.blue,
-        //? Shadow around button
+
+        /// Shadow around button
         elevation: 8,
-        //? both line needed when conner rounded
+
+        /// both line needed when conner rounded
         borderRadius: BorderRadius.circular(28),
-        //? this line prevent rectangle shadow under widget when long press
+
+        /// this line prevent rectangle shadow under widget when long press
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: InkWell(
           onTap: () {},
           onLongPress: () {},
           onDoubleTap: () {},
-          //? when long press this collor iffect diaply
+
+          /// when long press this collor iffect diaply
           splashColor: Colors.white12,
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -310,19 +326,23 @@ class InkWellImageSideTextConnerRoundedWidget extends StatelessWidget {
       alignment: Alignment.center,
       padding: const EdgeInsets.all(5),
       child: Material(
-        //? Background color
+        /// Background color
         color: Colors.blue,
-        //? Shadow around button
+
+        /// Shadow around button
         elevation: 8,
-        //? both line needed when conner rounded
+
+        /// both line needed when conner rounded
         borderRadius: BorderRadius.circular(28),
-        //? this line prevent rectangle shadow under widget when long press
+
+        /// this line prevent rectangle shadow under widget when long press
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: InkWell(
           onTap: () {},
           onLongPress: () {},
           onDoubleTap: () {},
-          //? when long press this collor iffect diaply
+
+          /// when long press this collor iffect diaply
           splashColor: Colors.white12,
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -367,21 +387,25 @@ class InkWellCircleImageWidget extends StatelessWidget {
       alignment: Alignment.center,
       padding: const EdgeInsets.all(5),
       child: Material(
-        //? Background color
+        /// Background color
         color: Colors.blue,
-        //? Shadow around button
+
+        /// Shadow around button
         elevation: 8,
-        //? both line needed when conner rounded
+
+        /// both line needed when conner rounded
         // borderRadius: BorderRadius.circular(28),
-        //? insted of using borderRadious use CircleBorder to Circle option
+        /// insted of using borderRadious use CircleBorder to Circle option
         shape: const CircleBorder(),
-        //? this line prevent rectangle shadow under widget when long press
+
+        /// this line prevent rectangle shadow under widget when long press
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: InkWell(
           onTap: () {},
           // onLongPress: () {},
           onDoubleTap: () {},
-          //? when long press this collor iffect diaply
+
+          /// when long press this collor iffect diaply
           splashColor: Colors.white12,
           child: Ink.image(
             image: const AssetImage('assets/images/image2.jpg'),
@@ -411,23 +435,28 @@ class InkWellCircleImageWithBorderWidget extends StatelessWidget {
       alignment: Alignment.center,
       padding: const EdgeInsets.all(5),
       child: Material(
-        //? Background color
+        /// Background color
         color: Colors.blue,
-        //? Shadow around button
+
+        /// Shadow around button
         elevation: 8,
-        //? both line needed when conner rounded
+
+        /// both line needed when conner rounded
         // borderRadius: BorderRadius.circular(28),
-        //? insted of using borderRadious use CircleBorder to Circle option
+        /// insted of using borderRadious use CircleBorder to Circle option
         shape: const CircleBorder(),
-        //? this line prevent rectangle shadow under widget when long press
+
+        /// this line prevent rectangle shadow under widget when long press
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: InkWell(
           onTap: () {},
           // onLongPress: () {},
           onDoubleTap: () {},
-          //? when long press this collor iffect diaply
+
+          /// when long press this collor iffect diaply
           splashColor: Colors.white12,
-          //? This container for border
+
+          /// This container for border
           child: Container(
             decoration: BoxDecoration(
               color: Colors.transparent,
@@ -466,23 +495,28 @@ class InkWellImageWithRoundedBorderWidget extends StatelessWidget {
       alignment: Alignment.center,
       padding: const EdgeInsets.all(5),
       child: Material(
-        //? Background color
+        /// Background color
         color: Colors.blue,
-        //? Shadow around button
+
+        /// Shadow around button
         elevation: 8,
-        //? both line needed when conner rounded
+
+        /// both line needed when conner rounded
         // borderRadius: BorderRadius.circular(28),
-        //? change both shape property in Material Widget and container
+        /// change both shape property in Material Widget and container
         borderRadius: BorderRadius.circular(28),
-        //? this line prevent rectangle shadow under widget when long press
+
+        /// this line prevent rectangle shadow under widget when long press
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: InkWell(
           onTap: () {},
           // onLongPress: () {},
           onDoubleTap: () {},
-          //? when long press this collor iffect diaply
+
+          /// when long press this collor iffect diaply
           splashColor: Colors.white12,
-          //? This container for border
+
+          /// This container for border
           child: Container(
             decoration: BoxDecoration(
               color: Colors.transparent,
@@ -490,7 +524,8 @@ class InkWellImageWithRoundedBorderWidget extends StatelessWidget {
                 color: Colors.blue,
                 width: 5,
               ),
-              //? change both shape property in Material Widget and container
+
+              /// change both shape property in Material Widget and container
               borderRadius: BorderRadius.circular(28),
             ),
             child: Ink.image(

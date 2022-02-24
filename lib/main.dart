@@ -4,6 +4,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 
 import 'package:flutter_codebase/features/connectivity/presentation/pages/internet_connection_page.dart';
 import 'package:flutter_codebase/injection.dart';
+import 'package:flutter_codebase/pages/pages.dart';
 import 'package:flutter_codebase/utility/app_bloc_observer.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
@@ -102,7 +103,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: InternetConnectivityPage.routeName,
+        initialRoute: HomePage.routeName,
         onGenerateRoute: appRoutes.onGenerateRoute,
       ),
     );

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../../widgets/snackbar/widgets/snackbar_widget.dart';
-import '../../../../widgets/text_label/text_label_widget.dart';
+import '../../../../widgets/text_label/widgets/text_label_widget.dart';
 import '../../connectivity_feature.dart';
 
 class InternetConnectivityPage extends StatefulWidget {
