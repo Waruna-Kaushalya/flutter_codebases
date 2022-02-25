@@ -49,6 +49,8 @@ void showSnackBar({
     //   horizontal: 8.0, // Inner padding for SnackBar content.
     // ),
 
+    elevation: 0,
+
     /// Empty space to surround the snack bar.
     // margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 12),
   );

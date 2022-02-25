@@ -12,8 +12,12 @@ part 'toggle_switch_state.dart';
 class ToggleswitchBloc extends Bloc<ToggleEvent, ToggleswitchState>
     with HydratedMixin {
   ToggleswitchBloc()
-      : super(ToggleswitchState(
-            appNotification: false, emailNotification: false)) {
+      : super(
+          ToggleswitchState(
+            appNotification: false,
+            emailNotification: false,
+          ),
+        ) {
     on<ToggleEvent>((event, emit) {
       if (event is ToggleAppNotification) {
         emit(state.copyWith(appNotification: event.appNoti));

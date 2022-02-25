@@ -1,24 +1,3 @@
-// part of 'search_bloc.dart';
-
-// enum SearchEventStatus {
-//   searchQueryTyped,
-//   searchQuerySubmitted,
-//   searchSuggetionPressed,
-//   searchSuggetionRemoved,
-//   searchClearBtnPressed,
-//   searchBackArrowBtnPressed,
-// }
-
-// @freezed
-// class SearchEvent with _$SearchEvent {
-//   factory SearchEvent({
-//     required SearchEventStatus eventStatus,
-//     List<String>? suggestions,
-//     String? suggestion,
-//     String? queryValue,
-//   }) = _SearchEvent;
-// }
-
 //! --------------- second method
 
 // part of 'search_bloc.dart';

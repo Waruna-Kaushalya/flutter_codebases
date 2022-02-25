@@ -23,7 +23,12 @@ class InternetBloc extends Bloc<InternetEvent, InternetState> {
   InternetBloc(
     this.connectivity,
     this.checkConnection,
-  ) : super(InternetState()) {
+  ) : super(
+          const InternetState(
+            internetStateStatus: InternetStateStatus.none,
+            showErr: false,
+          ),
+        ) {
     on<InternetEvent>(
       (event, emit) {
         event.map(

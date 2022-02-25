@@ -14,15 +14,11 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> with HydratedMixin {
   final CounterChnage _counterChnage;
   CounterBloc(
     this._counterChnage,
-  ) : super(CounterState(counterValue: 0, wasIncremented: false)) {
+  ) : super(CounterState(
+          counterValue: 0,
+          wasIncremented: false,
+        )) {
     on<CounterEvent>((event, emit) async {
-      // if (event is Increment) {
-      //   emit(state.copyWith(
-      //       counterValue: state.counterValue + 1, wasIncremented: true));
-      // } else if (event is Decrement) {
-      //   emit(state.copyWith(
-      //       counterValue: state.counterValue - 1, wasIncremented: false));
-      // }
       event.map(increment: (value) {
         emit(state.copyWith(
           counterValue: _counterChnage.counterIncrement(state.counterValue),

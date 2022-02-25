@@ -338,8 +338,8 @@ class _$InternetStateTearOff {
   const _$InternetStateTearOff();
 
   _InternetState call(
-      {bool showErr = false,
-      InternetStateStatus internetStateStatus = InternetStateStatus.none}) {
+      {required bool showErr,
+      required InternetStateStatus internetStateStatus}) {
     return _InternetState(
       showErr: showErr,
       internetStateStatus: internetStateStatus,
@@ -438,14 +438,11 @@ class __$InternetStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_InternetState implements _InternetState {
-  _$_InternetState(
-      {this.showErr = false,
-      this.internetStateStatus = InternetStateStatus.none});
+  const _$_InternetState(
+      {required this.showErr, required this.internetStateStatus});
 
-  @JsonKey()
   @override
   final bool showErr;
-  @JsonKey()
   @override
   final InternetStateStatus internetStateStatus;
 
@@ -477,9 +474,9 @@ class _$_InternetState implements _InternetState {
 }
 
 abstract class _InternetState implements InternetState {
-  factory _InternetState(
-      {bool showErr,
-      InternetStateStatus internetStateStatus}) = _$_InternetState;
+  const factory _InternetState(
+      {required bool showErr,
+      required InternetStateStatus internetStateStatus}) = _$_InternetState;
 
   @override
   bool get showErr;
