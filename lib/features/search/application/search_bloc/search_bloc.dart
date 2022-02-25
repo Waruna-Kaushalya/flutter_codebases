@@ -225,23 +225,245 @@
 //   String totrimLower() => (trim().toLowerCase());
 // }
 
-//! ----------- 5th method ---------- 1st method
+// //! ----------- 5th method ---------- 1st method
+
+// import 'dart:developer' as developer;
+
+// import 'package:bloc/bloc.dart';
+// import 'package:freezed_annotation/freezed_annotation.dart';
+
+// import '../../Infrastructure/api/demo_cities.dart';
+// import '../../Infrastructure/local/recent_cities.dart';
+
+// part 'search_event.dart';
+// part 'search_state.dart';
+// part 'search_bloc.freezed.dart';
+// part 'search_bloc.g.dart';
+
+// class SearchBloc extends Bloc<SearchEvent, SearchState> {
+//   SearchBloc()
+//       : super(SearchState(
+//           queryValue: "",
+//           stateStatus: SearchStateStatus.initial,
+//           suggestions: recentCities,
+//         )) {
+//     on<SearchEvent>(
+//       (event, emit) async {
+//         await event.map(
+//           searchQueryTyped: (value) {
+//             // _onSuggetionsDisplayed;
+
+//             String queryValue = value.queryValue.totrimLower();
+
+//             final suggestions = compareUserTypeLettersWithSuggestionList(
+//                 queryValue: queryValue);
+
+//             // final suggestions = queryValue.isEmpty
+//             //     ? recentCities
+//             //     : recentCities.where((city) {
+//             //         return city.toLowerCase().startsWith(queryValue);
+//             //       }).toList();
+
+//             emit(state.copyWith(
+//               stateStatus: SearchStateStatus.initial,
+//               suggestions: suggestions,
+//               queryValue: queryValue,
+//             ));
+//           },
+//           searchQuerySubmitted: (value) async {
+//             // _onSearchResultDisplayed;
+
+//             String queryValue = value.queryValue.totrimLower();
+
+//             emit(state.copyWith(
+//                 stateStatus: SearchStateStatus.loading,
+//                 queryValue: value.queryValue));
+
+//             //* if query empty, warning send to user to enter city name
+//             if (queryValue.isEmpty) {
+//               emit(state.copyWith(
+//                   stateStatus: SearchStateStatus.failure,
+//                   errorMsg: "Please enter a city name. Ex: London"));
+//             } else {
+//               await Future.delayed(const Duration(seconds: 1));
+
+//               updateSuggestionsList(queryValue: queryValue);
+
+//               final lsitExactlyValue =
+//                   compareQueryWithDataList(queryValue: queryValue);
+
+//               lsitExactlyValue.isNotEmpty
+//                   ? emit(state.copyWith(
+//                       stateStatus: SearchStateStatus.success,
+//                       queryValue: queryValue,
+//                       results: lsitExactlyValue))
+//                   : emit(state.copyWith(
+//                       stateStatus: SearchStateStatus.failure,
+//                       errorMsg: "City Not Found"));
+//             }
+//           },
+//           searchSuggetionPressed: (value) async {
+//             // _onSuggetionResultDisplayed;
+
+//             String suggestionValue = value.suggestion.totrimLower();
+//             emit(state.copyWith(
+//               stateStatus: SearchStateStatus.loading,
+//               queryValue: suggestionValue,
+//             ));
+
+//             await Future.delayed(const Duration(seconds: 1));
+
+//             updateSuggestionsList(
+//               queryValue: suggestionValue,
+//             );
+
+//             final lsitExactlyValue = compareQueryWithDataList(
+//               queryValue: suggestionValue,
+//             );
+
+//             lsitExactlyValue.isNotEmpty
+//                 ? emit(state.copyWith(
+//                     stateStatus: SearchStateStatus.success,
+//                     queryValue: suggestionValue,
+//                     results: lsitExactlyValue,
+//                   ))
+//                 : emit(state.copyWith(
+//                     stateStatus: SearchStateStatus.failure,
+//                     errorMsg: "City Not Found",
+//                   ));
+//           },
+//           searchSuggetionRemoved: (value) async {
+//             // _onSuggetionRemoved;
+
+//             final suggestedValue = value.suggestion.totrimLower();
+//             String queryValue = value.queryValue.totrimLower();
+
+//             //* -- Why emited loading state
+//             //* when emit same state bloc not respondend to second state. therefor emit loading state without confuced user and useful manner
+//             emit(state.copyWith(
+//               stateStatus: SearchStateStatus.loading,
+//               //* if not check null then print "null" in search bar
+//               queryValue: queryValue,
+//             ));
+//             await Future.delayed(const Duration(milliseconds: 50));
+//             //*
+
+//             searchSuggetionRemove(suggestedValue: suggestedValue);
+
+//             developer.log(recentCities.toString(), name: 'recentCities');
+
+//             emit(state.copyWith(
+//               stateStatus: SearchStateStatus.initial,
+//               suggestions: recentCities,
+//               queryValue: "",
+//             ));
+//           },
+//           searchClearBtnPressed: (value) {
+//             // _onSearchBarCleared;
+//             emit(state.copyWith(
+//               stateStatus: SearchStateStatus.initial,
+//               suggestions: recentCities,
+//               queryValue: "",
+//             ));
+//           },
+//           searchBackArrowBtnPressed: (value) {
+//             // _onPopupToHome;
+//             emit(state.copyWith(
+//               stateStatus: SearchStateStatus.initial,
+//               suggestions: recentCities,
+//               queryValue: "",
+//             ));
+//           },
+//         );
+//       },
+//     );
+//   }
+
+//   List<String> compareUserTypeLettersWithSuggestionList(
+//       {required String queryValue}) {
+//     // Comparing the user type letters with the suggestion value
+//     final suggestions = queryValue.isEmpty
+//         ? recentCities
+//         : recentCities.where((city) {
+//             return city.totrimLower().startsWith(queryValue);
+//           }).toList();
+
+//     return suggestions;
+//   }
+
+//   List<String> compareQueryWithDataList({required String queryValue}) {
+//     //* Two Options
+//     // Disply if only exact value availble
+//     final exactValueSelected = cities.where((element) {
+//       return element.totrimLower() == queryValue;
+//     }).toList();
+
+//     // Disply all the values contains with query
+//     // final valuesSelected = cities.where((element) {
+//     //   return element.toLowerCase().contains(queryValue);
+//     // }).toList();
+//     //*
+
+//     return exactValueSelected;
+//   }
+
+//   void searchSuggetionRemove({required String suggestedValue}) {
+//     recentCities.removeWhere(
+//       (item) => item.toLowerCase() == suggestedValue,
+//     );
+//   }
+
+//   void updateSuggestionsList({required String queryValue}) {
+//     final String queryValueTrimed = queryValue.totrimLower();
+
+//     //* check value availble
+//     final exactValueSelected = recentCities.where((element) {
+//       return element.totrimLower() == queryValueTrimed;
+//     }).toList();
+
+//     //* if city is not availbe in list, and query is not empy, add city in to top of the list
+//     if (exactValueSelected.isEmpty && queryValue.isNotEmpty) {
+//       recentCities.insert(0, queryValueTrimed);
+//     }
+
+//     //* if city is availbe in list, then delete existing one and add in to top of the list
+//     if (exactValueSelected.isNotEmpty) {
+//       recentCities.removeWhere(
+//         (item) => item.toLowerCase() == queryValueTrimed,
+//       );
+//       recentCities.insert(0, queryValueTrimed);
+//     }
+//   }
+//   //   //! 8888
+// }
+
+// /// [extension] for convert celcious to kelvin and kelvin to celcious
+// extension on String {
+//   String toTrimUpper() => (trim().toUpperCase());
+//   String totrimLower() => (trim().toLowerCase());
+// }
+
+//! ----------- 6th method ---------- 1st method
 
 import 'dart:developer' as developer;
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../data/data_providers/cities.dart';
+import 'package:flutter_codebase/features/search/domain/facade/search_facade.dart';
 
-part 'search_event.dart';
-part 'search_state.dart';
+import '../../Infrastructure/local/recent_cities.dart';
+
 part 'search_bloc.freezed.dart';
 part 'search_bloc.g.dart';
+part 'search_event.dart';
+part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-  SearchBloc()
-      : super(SearchState(
+  final SearchFacade searchFacade;
+  SearchBloc(
+    this.searchFacade,
+  ) : super(SearchState(
           queryValue: "",
           stateStatus: SearchStateStatus.initial,
           suggestions: recentCities,
@@ -249,19 +471,13 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     on<SearchEvent>(
       (event, emit) async {
         await event.map(
-          searchQueryTyped: (value) {
-            // _onSuggetionsDisplayed;
-
+          searchQueryTyped: (value) async {
             String queryValue = value.queryValue.totrimLower();
 
-            final suggestions = compareUserTypeLettersWithSuggestionList(
-                queryValue: queryValue);
-
-            // final suggestions = queryValue.isEmpty
-            //     ? recentCities
-            //     : recentCities.where((city) {
-            //         return city.toLowerCase().startsWith(queryValue);
-            //       }).toList();
+            final suggestions =
+                await searchFacade.compareUserTypeLettersWithSuggestionList(
+              queryValue: queryValue,
+            );
 
             emit(state.copyWith(
               stateStatus: SearchStateStatus.initial,
@@ -270,40 +486,44 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             ));
           },
           searchQuerySubmitted: (value) async {
-            // _onSearchResultDisplayed;
-
             String queryValue = value.queryValue.totrimLower();
 
             emit(state.copyWith(
-                stateStatus: SearchStateStatus.loading,
-                queryValue: value.queryValue));
+              stateStatus: SearchStateStatus.loading,
+              queryValue: value.queryValue,
+            ));
 
-            //* if query empty, warning send to user to enter city name
+            /// if query empty, warning send to user to enter city name
             if (queryValue.isEmpty) {
               emit(state.copyWith(
-                  stateStatus: SearchStateStatus.failure,
-                  errorMsg: "Please enter a city name. Ex: London"));
+                stateStatus: SearchStateStatus.failure,
+                errorMsg: "Please enter a city name. Ex: London",
+              ));
             } else {
               await Future.delayed(const Duration(seconds: 1));
 
-              updateSuggestionsList(queryValue: queryValue);
+              await searchFacade.updateSuggestionsList(
+                queryValue: queryValue,
+              );
 
               final lsitExactlyValue =
-                  compareQueryWithDataList(queryValue: queryValue);
+                  await searchFacade.compareQueryWithDataList(
+                queryValue: queryValue,
+              );
 
               lsitExactlyValue.isNotEmpty
                   ? emit(state.copyWith(
                       stateStatus: SearchStateStatus.success,
                       queryValue: queryValue,
-                      results: lsitExactlyValue))
+                      results: lsitExactlyValue,
+                    ))
                   : emit(state.copyWith(
                       stateStatus: SearchStateStatus.failure,
-                      errorMsg: "City Not Found"));
+                      errorMsg: "City Not Found",
+                    ));
             }
           },
           searchSuggetionPressed: (value) async {
-            // _onSuggetionResultDisplayed;
-
             String suggestionValue = value.suggestion.totrimLower();
             emit(state.copyWith(
               stateStatus: SearchStateStatus.loading,
@@ -312,11 +532,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
             await Future.delayed(const Duration(seconds: 1));
 
-            updateSuggestionsList(
+            await searchFacade.updateSuggestionsList(
               queryValue: suggestionValue,
             );
 
-            final lsitExactlyValue = compareQueryWithDataList(
+            final lsitExactlyValue =
+                await searchFacade.compareQueryWithDataList(
               queryValue: suggestionValue,
             );
 
@@ -332,8 +553,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
                   ));
           },
           searchSuggetionRemoved: (value) async {
-            // _onSuggetionRemoved;
-
             final suggestedValue = value.suggestion.totrimLower();
             String queryValue = value.queryValue.totrimLower();
 
@@ -347,8 +566,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             await Future.delayed(const Duration(milliseconds: 50));
             //*
 
-            recentCities.removeWhere(
-              (item) => item.toLowerCase() == suggestedValue,
+            await searchFacade.searchSuggetionRemove(
+              suggestedValue: suggestedValue,
             );
 
             developer.log(recentCities.toString(), name: 'recentCities');
@@ -379,57 +598,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       },
     );
   }
-
-  List<String> compareUserTypeLettersWithSuggestionList(
-      {required String queryValue}) {
-    // Comparing the user type letters with the suggestion value
-    final suggestions = queryValue.isEmpty
-        ? recentCities
-        : recentCities.where((city) {
-            return city.totrimLower().startsWith(queryValue);
-          }).toList();
-
-    return suggestions;
-  }
-
-  List<String> compareQueryWithDataList({required String queryValue}) {
-    //* Two Options
-    // Disply if only exact value availble
-    final exactValueSelected = cities.where((element) {
-      return element.totrimLower() == queryValue;
-    }).toList();
-
-    // Disply all the values contains with query
-    // final valuesSelected = cities.where((element) {
-    //   return element.toLowerCase().contains(queryValue);
-    // }).toList();
-    //*
-
-    return exactValueSelected;
-  }
-
-  void updateSuggestionsList({required String queryValue}) {
-    final String queryValueTrimed = queryValue.totrimLower();
-
-    //* check value availble
-    final exactValueSelected = recentCities.where((element) {
-      return element.totrimLower() == queryValueTrimed;
-    }).toList();
-
-    //* if city is not availbe in list, and query is not empy, add city in to top of the list
-    if (exactValueSelected.isEmpty && queryValue.isNotEmpty) {
-      recentCities.insert(0, queryValueTrimed);
-    }
-
-    //* if city is availbe in list, then delete existing one and add in to top of the list
-    if (exactValueSelected.isNotEmpty) {
-      recentCities.removeWhere(
-        (item) => item.toLowerCase() == queryValueTrimed,
-      );
-      recentCities.insert(0, queryValueTrimed);
-    }
-  }
-  //   //! 8888
 }
 
 /// [extension] for convert celcious to kelvin and kelvin to celcious

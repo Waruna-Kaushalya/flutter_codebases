@@ -11,10 +11,10 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'features/connectivity/application/connectivity_bloc/internet_bloc.dart'
     as _i7;
 import 'features/connectivity/domain/facade/connection_facade.dart' as _i4;
-import 'features/connectivity/Infrastructure/repositories/connectivity_plus/connectivity_plus_connection.dart'
-    as _i5;
 import 'features/connectivity/Infrastructure/core/connectivity_injectable_module.dart'
     as _i9;
+import 'features/connectivity/Infrastructure/repositories/connectivity_plus/connectivity_plus_connection.dart'
+    as _i5;
 import 'features/counter/logic/counter/counter.dart' as _i6;
 import 'features/counter/logic/counter_bloc/counter_bloc.dart' as _i8;
 

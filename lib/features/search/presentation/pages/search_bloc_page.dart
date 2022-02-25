@@ -62,6 +62,7 @@ class _SearchBlocPageState extends State<SearchBlocPage> {
                     queryValue: value,
                   ));
             },
+
             onSubmitted: (value) {
               if (value.isNotEmpty) {
                 context.read<SearchBloc>().add(SearchQuerySubmitted(
@@ -74,32 +75,72 @@ class _SearchBlocPageState extends State<SearchBlocPage> {
               }
             },
 
-            decoration: textFieldDecorationMethod(),
+            decoration: InputDecoration(
+              // prefixIcon: BlocBuilder<SearchBloc, SearchState>(
+              //   builder: (context, state) {
+              //     if (state.stateStatus.isSuccess) {
+              //       return const Icon(Icons.search);
+              //     } else {
+              //       return const SizedBox(width: 0);
+              //     }
+              //   },
+              // ),
+              suffixIcon: BlocBuilder<SearchBloc, SearchState>(
+                builder: (context, state) {
+                  if (state.queryValue != "") {
+                    return IconButton(
+                      icon: const Icon(
+                        Icons.clear,
+                      ),
+                      onPressed: () {
+                        nameHolder.clear();
+                        myFocusNode.requestFocus();
+                        //! remove commet
+                        context
+                            .read<SearchBloc>()
+                            .add(const SearchClearBtnPressed());
+                      },
+                    );
+                  } else {
+                    return const SizedBox.shrink();
+                  }
+                },
+              ),
+              labelStyle: const TextStyle(color: Colors.black, fontSize: 4),
+              // hintStyle: TextStyle(color: Colors.black),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(100)),
+                borderSide: BorderSide(width: 1, color: Colors.black),
+              ),
+              hintText: 'Search city',
+            ),
           ),
         ),
-        actions: [
-          BlocBuilder<SearchBloc, SearchState>(
-            builder: (context, state) {
-              if (state.queryValue != "") {
-                return IconButton(
-                  icon: const Icon(
-                    Icons.clear,
-                  ),
-                  onPressed: () {
-                    nameHolder.clear();
-                    myFocusNode.requestFocus();
-                    //! remove commet
-                    context
-                        .read<SearchBloc>()
-                        .add(const SearchClearBtnPressed());
-                  },
-                );
-              } else {
-                return const SizedBox.shrink();
-              }
-            },
-          ),
-        ],
+        // actions: [
+        //   BlocBuilder<SearchBloc, SearchState>(
+        //     builder: (context, state) {
+        //       if (state.queryValue != "") {
+        //         return IconButton(
+        //           icon: const Icon(
+        //             Icons.clear,
+        //           ),
+        //           onPressed: () {
+        //             nameHolder.clear();
+        //             myFocusNode.requestFocus();
+        //             //! remove commet
+        //             context
+        //                 .read<SearchBloc>()
+        //                 .add(const SearchClearBtnPressed());
+        //           },
+        //         );
+        //       } else {
+        //         return const SizedBox.shrink();
+        //       }
+        //     },
+        //   ),
+        // ],
       ),
       body: Container(
         alignment: Alignment.topLeft,
