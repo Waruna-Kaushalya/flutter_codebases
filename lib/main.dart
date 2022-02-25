@@ -14,6 +14,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import '../features/features.dart';
 import '../routes/routes.dart';
 import 'features/connectivity/application/connectivity_bloc/internet_bloc.dart';
+import 'features/search/application/search_bloc/search_bloc.dart';
 
 Future<void> main() async {
   //?call notice codes

@@ -13,10 +13,6 @@ extension on ConnectivityResult {
 @LazySingleton(as: ConnectivityFacade)
 class CheckConnection implements ConnectivityFacade {
   final Connectivity connectivity;
-  late StreamSubscription connectivityStreamSubscription;
-
-  final StreamController<InternetStateStatus> _statusController =
-      StreamController<InternetStateStatus>();
 
   CheckConnection(this.connectivity);
 
@@ -35,6 +31,11 @@ class CheckConnection implements ConnectivityFacade {
 
     return connectivityResult;
   }
+
+  late StreamSubscription connectivityStreamSubscription;
+
+  final StreamController<InternetStateStatus> _statusController =
+      StreamController<InternetStateStatus>();
 
   @override
   Stream<InternetStateStatus> get netStatus {

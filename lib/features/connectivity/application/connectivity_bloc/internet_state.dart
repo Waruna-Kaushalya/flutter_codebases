@@ -6,9 +6,4 @@ class InternetState with _$InternetState {
     required bool showErr,
     required InternetStateStatus internetStateStatus,
   }) = _InternetState;
-
-  // factory InternetState.initial() => const InternetState(
-  //       showErr: false,
-  //       internetStateStatus: InternetStateStatus.none,
-  //     );
 }

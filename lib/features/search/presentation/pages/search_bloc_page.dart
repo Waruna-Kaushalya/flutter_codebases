@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../application/search_bloc/bloc.dart';
 import '../../logic/logic.dart';
 import '../themes/themes.dart';
 

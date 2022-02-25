@@ -232,7 +232,7 @@ import 'dart:developer' as developer;
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../features.dart';
+import '../../data/data_providers/cities.dart';
 
 part 'search_event.dart';
 part 'search_state.dart';
