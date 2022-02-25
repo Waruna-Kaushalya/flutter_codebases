@@ -5,8 +5,6 @@ abstract class CounterChnage {
   int counterDecrement(int value);
 }
 
-// @Named("impl1")
-// @Named("impl1")
 @Environment("dev")
 @LazySingleton(as: CounterChnage)
 class CounterChangeByTwo implements CounterChnage {
@@ -21,7 +19,6 @@ class CounterChangeByTwo implements CounterChnage {
   }
 }
 
-// @Named("impl2")
 @Environment("prod")
 @LazySingleton(as: CounterChnage)
 class CounterChangeByOne implements CounterChnage {

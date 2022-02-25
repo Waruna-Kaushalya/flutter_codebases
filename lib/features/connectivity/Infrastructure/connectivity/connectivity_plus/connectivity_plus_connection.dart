@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:injectable/injectable.dart';
 import '../../../domain/facade/connection_facade.dart';
 import '../../../domain/core/connection_status.dart';
 
@@ -9,6 +10,7 @@ extension on ConnectivityResult {
   bool get isNone => this == ConnectivityResult.none;
 }
 
+@LazySingleton(as: ConnectivityFacade)
 class CheckConnection implements ConnectivityFacade {
   final Connectivity connectivity;
   late StreamSubscription connectivityStreamSubscription;

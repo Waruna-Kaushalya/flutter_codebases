@@ -12,7 +12,6 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../features/features.dart';
 import '../routes/routes.dart';
-import 'features/connectivity/Infrastructure/connectivity/connectivity_plus/connectivity_plus_connection.dart';
 import 'features/connectivity/application/connectivity_bloc/internet_bloc.dart';
 
 Future<void> main() async {
@@ -73,9 +72,11 @@ class MyApp extends StatelessWidget {
         // ),
         BlocProvider<InternetBloc>(
           lazy: false,
+          // create: (context) =>
+          //     InternetBloc(Connectivity(), CheckConnection(Connectivity()))
+          //       ..add(const InternetEvent.started()),
           create: (context) =>
-              InternetBloc(Connectivity(), CheckConnection(Connectivity()))
-                ..add(const InternetEvent.started()),
+              getIt<InternetBloc>()..add(const InternetEvent.started()),
         ),
         BlocProvider<ToggleswitchBloc>(
           create: (context) => ToggleswitchBloc(),

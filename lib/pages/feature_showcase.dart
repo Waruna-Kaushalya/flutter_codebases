@@ -19,6 +19,7 @@ class FeatureShowcase extends StatelessWidget {
           const SizedBox(
             height: 5,
           ),
+         
           // ElavatedButtonWidget(
           //   buttonLabel: "Connectivity Feature",
           //   onCustomButtonPressed: () => Navigator.pushNamed(

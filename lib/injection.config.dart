@@ -4,11 +4,19 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
+import 'package:connectivity_plus/connectivity_plus.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'features/counter/logic/counter/counter.dart' as _i3;
-import 'features/counter/logic/counter_bloc/counter_bloc.dart' as _i4;
+import 'features/connectivity/application/connectivity_bloc/internet_bloc.dart'
+    as _i7;
+import 'features/connectivity/domain/facade/connection_facade.dart' as _i4;
+import 'features/connectivity/Infrastructure/connectivity/connectivity_plus/connectivity_plus_connection.dart'
+    as _i5;
+import 'features/connectivity/Infrastructure/core/connectivity_injectable_module.dart'
+    as _i9;
+import 'features/counter/logic/counter/counter.dart' as _i6;
+import 'features/counter/logic/counter_bloc/counter_bloc.dart' as _i8;
 
 const String _dev = 'dev';
 const String _prod = 'prod';
@@ -18,10 +26,19 @@ const String _prod = 'prod';
 _i1.GetIt $initGetIt(_i1.GetIt get,
     {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
-  gh.lazySingleton<_i3.CounterChnage>(() => _i3.CounterChangeByTwo(),
+  final connectivityInjectableModule = _$ConnectivityInjectableModule();
+  gh.lazySingleton<_i3.Connectivity>(
+      () => connectivityInjectableModule.connectivity);
+  gh.lazySingleton<_i4.ConnectivityFacade>(
+      () => _i5.CheckConnection(get<_i3.Connectivity>()));
+  gh.lazySingleton<_i6.CounterChnage>(() => _i6.CounterChangeByTwo(),
       registerFor: {_dev});
-  gh.lazySingleton<_i3.CounterChnage>(() => _i3.CounterChangeByOne(),
+  gh.lazySingleton<_i6.CounterChnage>(() => _i6.CounterChangeByOne(),
       registerFor: {_prod});
-  gh.factory<_i4.CounterBloc>(() => _i4.CounterBloc(get<_i3.CounterChnage>()));
+  gh.factory<_i7.InternetBloc>(() =>
+      _i7.InternetBloc(get<_i3.Connectivity>(), get<_i4.ConnectivityFacade>()));
+  gh.factory<_i8.CounterBloc>(() => _i8.CounterBloc(get<_i6.CounterChnage>()));
   return get;
 }
+
+class _$ConnectivityInjectableModule extends _i9.ConnectivityInjectableModule {}

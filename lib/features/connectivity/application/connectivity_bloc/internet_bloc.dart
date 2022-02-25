@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_codebase/features/connectivity/domain/core/connection_status.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../domain/facade/connection_facade.dart';
 
@@ -11,6 +12,7 @@ part 'internet_bloc.freezed.dart';
 part 'internet_event.dart';
 part 'internet_state.dart';
 
+@injectable
 class InternetBloc extends Bloc<InternetEvent, InternetState> {
   final Connectivity connectivity;
 

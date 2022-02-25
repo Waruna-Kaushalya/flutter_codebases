@@ -1,10 +1,5 @@
 part of 'internet_bloc.dart';
 
-// @freezed
-// class InternetState with _$InternetState {
-//   const factory InternetState.initial() = _Initial;
-// }
-
 @freezed
 class InternetState with _$InternetState {
   factory InternetState({
