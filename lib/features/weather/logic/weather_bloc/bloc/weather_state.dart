@@ -95,6 +95,6 @@ class WeatherState with _$WeatherState {
     String? errorMsg,
   }) = _WeatherState;
 
-  factory WeatherState.fromJson(Map<String, dynamic> json) =>
-      _$WeatherStateFromJson(json);
+  // factory WeatherState.fromJson(Map<String, dynamic> json) =>
+  //     _$WeatherStateFromJson(json);
 }

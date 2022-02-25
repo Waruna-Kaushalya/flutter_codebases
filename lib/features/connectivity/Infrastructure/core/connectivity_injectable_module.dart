@@ -6,7 +6,4 @@ import 'package:injectable/injectable.dart';
 abstract class ConnectivityInjectableModule {
   @lazySingleton
   Connectivity get connectivity => Connectivity();
-
-  // @lazySingleton
-  // Firestore get firestore => Firestore.instance;
 }

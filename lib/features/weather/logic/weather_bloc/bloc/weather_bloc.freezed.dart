@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-WeatherState _$WeatherStateFromJson(Map<String, dynamic> json) {
-  return _WeatherState.fromJson(json);
-}
-
 /// @nodoc
 class _$WeatherStateTearOff {
   const _$WeatherStateTearOff();
@@ -40,10 +36,6 @@ class _$WeatherStateTearOff {
       errorMsg: errorMsg,
     );
   }
-
-  WeatherState fromJson(Map<String, Object?> json) {
-    return WeatherState.fromJson(json);
-  }
 }
 
 /// @nodoc
@@ -59,7 +51,6 @@ mixin _$WeatherState {
   List<bool> get selections => throw _privateConstructorUsedError;
   String? get errorMsg => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $WeatherStateCopyWith<WeatherState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -202,7 +193,7 @@ class __$WeatherStateCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_WeatherState implements _WeatherState {
   _$_WeatherState(
       {this.stateStatus = WeatherStateStatus.initial,
@@ -212,9 +203,6 @@ class _$_WeatherState implements _WeatherState {
       this.temperatureUnits = TemperatureUnits.kelvin,
       this.selections = const [true, false],
       this.errorMsg});
-
-  factory _$_WeatherState.fromJson(Map<String, dynamic> json) =>
-      _$$_WeatherStateFromJson(json);
 
   @JsonKey()
   @override
@@ -274,11 +262,6 @@ class _$_WeatherState implements _WeatherState {
   @override
   _$WeatherStateCopyWith<_WeatherState> get copyWith =>
       __$WeatherStateCopyWithImpl<_WeatherState>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_WeatherStateToJson(this);
-  }
 }
 
 abstract class _WeatherState implements WeatherState {
@@ -290,9 +273,6 @@ abstract class _WeatherState implements WeatherState {
       TemperatureUnits temperatureUnits,
       List<bool> selections,
       String? errorMsg}) = _$_WeatherState;
-
-  factory _WeatherState.fromJson(Map<String, dynamic> json) =
-      _$_WeatherState.fromJson;
 
   @override
   WeatherStateStatus get stateStatus;

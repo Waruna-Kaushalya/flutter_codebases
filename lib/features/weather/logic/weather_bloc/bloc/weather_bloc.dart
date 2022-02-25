@@ -12,7 +12,7 @@ part 'weather_event.dart';
 part 'weather_state.dart';
 
 part 'weather_bloc.freezed.dart';
-part 'weather_bloc.g.dart';
+// part 'weather_bloc.g.dart';
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   // final ApiWeatherRepository apiWeatherRepository;

@@ -35,7 +35,7 @@ class _SearchBlocPageState extends State<SearchBlocPage> {
             Icons.arrow_back,
           ),
           onPressed: () {
-            context.read<SearchBloc>().add(SearchBackArrowBtnPressed());
+            context.read<SearchBloc>().add(const SearchBackArrowBtnPressed());
 
             Navigator.pop(context);
           },
@@ -87,8 +87,10 @@ class _SearchBlocPageState extends State<SearchBlocPage> {
                   onPressed: () {
                     nameHolder.clear();
                     myFocusNode.requestFocus();
-
-                    context.read<SearchBloc>().add(SearchClearBtnPressed());
+                    //! remove commet
+                    context
+                        .read<SearchBloc>()
+                        .add(const SearchClearBtnPressed());
                   },
                 );
               } else {
