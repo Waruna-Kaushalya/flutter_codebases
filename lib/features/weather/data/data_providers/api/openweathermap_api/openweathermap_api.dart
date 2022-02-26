@@ -1,10 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
 import '../../../models/models.dart';
 import '../api/api.dart';
 
+@injectable
 class OpenweathermapWeatherApi implements Api {
   //base url. url end point
   static const String _baseUrl =

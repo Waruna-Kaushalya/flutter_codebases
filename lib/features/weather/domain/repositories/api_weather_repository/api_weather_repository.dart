@@ -1,8 +1,11 @@
 // import '../../../data/data.dart' hide Weather;
+import 'package:injectable/injectable.dart';
+
 import '../../../data/data.dart';
 import '../../models/models.dart';
 import '../abstract_weather_repository/weather_repository.dart';
 
+@LazySingleton(as: Weatherrepository)
 class ApiWeatherRepository implements Weatherrepository {
   //api object use for fetch data from api
 

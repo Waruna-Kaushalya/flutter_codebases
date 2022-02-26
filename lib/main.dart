@@ -95,14 +95,11 @@ class MyApp extends StatelessWidget {
           create: (context) => SearchBloc(SearchRepository()),
         ),
         BlocProvider<WeatherBloc>(
-          create: (context) => WeatherBloc(ApiWeatherRepository(
-            apiClient: OpenweathermapWeatherApi(),
-          )
-              // apiWeatherRepository: ApiWeatherRepository(
-              //   apiClient: OpenweathermapWeatherApi(),
-              // ),
-              ),
-        ),
+          // create: (context) => WeatherBloc(ApiWeatherRepository(
+          //   apiClient: OpenweathermapWeatherApi(),
+          // )
+          create: (context) => getIt<WeatherBloc>(),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

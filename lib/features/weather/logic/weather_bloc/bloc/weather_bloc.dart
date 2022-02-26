@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_codebase/features/weather/domain/repositories/abstract_weather_repository/weather_repository.dart';
 // import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 // import '../../../data/data.dart' hide Weather;
 
@@ -14,6 +15,7 @@ part 'weather_state.dart';
 part 'weather_bloc.freezed.dart';
 // part 'weather_bloc.g.dart';
 
+@injectable
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   // final ApiWeatherRepository apiWeatherRepository;
   final Weatherrepository _weatherrepository;
