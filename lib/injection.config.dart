@@ -52,7 +52,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.factory<_i9.OpenweathermapWeatherApi>(
       () => _i9.OpenweathermapWeatherApi(client: get<_i3.Client>()));
   gh.lazySingleton<_i10.Weatherrepository>(() => _i11.ApiWeatherRepository(
-      apiClient: get<_i12.OpenweathermapWeatherApi>()));
+      openweathermapWeatherApi: get<_i12.OpenweathermapWeatherApi>()));
   gh.factory<_i13.CounterBloc>(
       () => _i13.CounterBloc(get<_i7.CounterChnage>()));
   gh.factory<_i14.WeatherBloc>(

@@ -7,6 +7,7 @@ import '../../../models/models.dart';
 import '../api/api.dart';
 
 @injectable
+@LazySingleton(as: Api)
 class OpenweathermapWeatherApi implements Api {
   //base url. url end point
   static const String _baseUrl =

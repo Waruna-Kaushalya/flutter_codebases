@@ -11,11 +11,10 @@ class ApiWeatherRepository implements Weatherrepository {
 
   // final OpenweathermapWeatherApi apiClient;
 
-  @override
-  final OpenweathermapWeatherApi apiClient;
+  final OpenweathermapWeatherApi openweathermapWeatherApi;
 
   // ApiWeatherRepository({required this.apiClient});
-  ApiWeatherRepository({required this.apiClient});
+  ApiWeatherRepository({required this.openweathermapWeatherApi});
 
   //getWeatherLocationData function is asyncrones method and using fetch data and return data to cubit
 
@@ -25,7 +24,7 @@ class ApiWeatherRepository implements Weatherrepository {
     //rawWeather get response from api using user enter city name
     // final Response rawWeather = await api.getWeatherRawData(cityName);
 
-    final weather = await apiClient.getWeather(cityName);
+    final weather = await openweathermapWeatherApi.getWeather(cityName);
     // if (rawWeather.statusCode == 200) {
     //decode jason response body and map body data
     // Map<String, dynamic> weatherMap = jsonDecode(rawWeather.body);
