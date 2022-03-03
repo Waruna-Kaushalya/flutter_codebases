@@ -17,7 +17,7 @@ class InternetBloc extends Bloc<InternetEvent, InternetState> {
   final Connectivity connectivity;
 
   final ConnectivityFacade checkConnection;
-  late StreamSubscription connectivityStreamSubscription;
+  StreamSubscription<InternetStateStatus>? connectivityStreamSubscription;
 
   InternetBloc(
     this.connectivity,
@@ -29,8 +29,8 @@ class InternetBloc extends Bloc<InternetEvent, InternetState> {
           ),
         ) {
     on<InternetEvent>(
-      (event, emit) {
-        event.map(
+      (event, emit) async {
+        await event.map(
           started: (value) async {
             /// in these two parts initially check current connectivity status
             /// because initlly streme not provide initial connection state
@@ -72,7 +72,7 @@ class InternetBloc extends Bloc<InternetEvent, InternetState> {
 
   @override
   Future<void> close() {
-    connectivityStreamSubscription.cancel();
+    connectivityStreamSubscription?.cancel();
     return super.close();
   }
 }

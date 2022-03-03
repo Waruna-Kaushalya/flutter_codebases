@@ -11,14 +11,14 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.4
   flutter_bloc: ^8.0.1
-  bloc: ^8.0.2
+  bloc: ^8.0.3
   equatable: ^2.0.3
   hydrated_bloc: ^8.0.0
   connectivity_plus: ^2.2.1
   json_annotation: ^4.4.0
   path_provider: ^2.0.9
   freezed_annotation: ^1.1.0
-  fluttertoast: ^8.0.8
+  fluttertoast: ^8.0.9
   json_serializable: ^6.1.4
   http: ^0.13.4
   injectable: ^1.5.3
