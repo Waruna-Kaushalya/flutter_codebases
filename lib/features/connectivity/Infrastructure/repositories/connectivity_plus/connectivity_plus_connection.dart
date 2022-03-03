@@ -38,7 +38,7 @@ class CheckConnection implements ConnectivityFacade {
       StreamController<InternetStateStatus>();
 
   @override
-  Stream<InternetStateStatus> get netStatus {
+  Stream<InternetStateStatus> get connectivityStreamStatus {
     connectivityStreamSubscription = connectivity.onConnectivityChanged.listen(
       (connectivityResult) {
         if (connectivityResult.isMobile) {

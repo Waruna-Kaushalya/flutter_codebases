@@ -18,7 +18,6 @@ class InternetBloc extends Bloc<InternetEvent, InternetState> {
 
   final ConnectivityFacade checkConnection;
   late StreamSubscription connectivityStreamSubscription;
-  late StreamSubscription netStrem;
 
   InternetBloc(
     this.connectivity,
@@ -33,17 +32,23 @@ class InternetBloc extends Bloc<InternetEvent, InternetState> {
       (event, emit) {
         event.map(
           started: (value) async {
+            /// in these two parts initially check current connectivity status
+            /// because initlly streme not provide initial connection state
             final connectivityResultX =
                 await checkConnection.currentInternetStatus();
 
-            netStrem = checkConnection.netStatus.listen((event) {
-              add(InternetEvent.checkConnection(connectivityResult: event));
-            });
-
+            /// if initially connection status in connected we dont need to
+            /// show snack bar. if its not connected, then we need to show
+            /// snack bar
             if (connectivityResultX.isNone) {
               add(const InternetEvent.checkConnection(
                   connectivityResult: InternetStateStatus.none));
             }
+
+            connectivityStreamSubscription =
+                checkConnection.connectivityStreamStatus.listen((event) {
+              add(InternetEvent.checkConnection(connectivityResult: event));
+            });
           },
           checkConnection: (_CheckConnection value) {
             if (value.connectivityResult.isWifil) {
@@ -68,7 +73,6 @@ class InternetBloc extends Bloc<InternetEvent, InternetState> {
   @override
   Future<void> close() {
     connectivityStreamSubscription.cancel();
-    netStrem.cancel();
     return super.close();
   }
 }
