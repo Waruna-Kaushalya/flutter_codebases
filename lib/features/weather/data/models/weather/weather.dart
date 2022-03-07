@@ -1,3 +1,4 @@
+import 'package:flutter_codebase/features/weather/domain/models/weather/weather.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../failure/failure.dart';
@@ -6,16 +7,24 @@ part 'weather.freezed.dart';
 part 'weather.g.dart';
 
 @freezed
-class Weather with _$Weather {
+abstract class WeatherDTO implements _$WeatherDTO {
+  const WeatherDTO._();
   @JsonSerializable(explicitToJson: true)
-  factory Weather({
+  factory WeatherDTO({
     @JsonKey(name: 'name') required String cityname,
     @JsonKey(name: 'main') required Main temperature,
     Failure? failure,
-  }) = _Weather;
+  }) = _WeatherDTO;
 
-  factory Weather.fromJson(Map<String, dynamic> json) =>
-      _$WeatherFromJson(json);
+  factory WeatherDTO.fromJson(Map<String, dynamic> json) =>
+      _$WeatherDTOFromJson(json);
+
+  WeatherEntity toDomain() {
+    return WeatherEntity(
+      cityname: cityname,
+      temperature: temperature.temperature,
+    );
+  }
 }
 
 @freezed

@@ -11,13 +11,15 @@ extension TemperatureUnitsX on TemperatureUnits {
 }
 
 @freezed
-abstract class Weather with _$Weather {
+class WeatherEntity with _$WeatherEntity {
   @JsonSerializable(explicitToJson: true)
-  factory Weather({
+  factory WeatherEntity({
     required String cityname,
     required double temperature,
-  }) = _Weather;
+  }) = _WeatherEntity;
 
-  factory Weather.fromJson(Map<String, dynamic> json) =>
-      _$WeatherFromJson(json);
+  factory WeatherEntity.fromJson(Map<String, dynamic> json) =>
+      _$WeatherEntityFromJson(json);
+
+  // factory WeatherData.fromData() {}
 }

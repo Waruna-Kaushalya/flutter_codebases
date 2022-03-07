@@ -14,35 +14,35 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Weather _$WeatherFromJson(Map<String, dynamic> json) {
-  return _Weather.fromJson(json);
+WeatherDTO _$WeatherDTOFromJson(Map<String, dynamic> json) {
+  return _WeatherDTO.fromJson(json);
 }
 
 /// @nodoc
-class _$WeatherTearOff {
-  const _$WeatherTearOff();
+class _$WeatherDTOTearOff {
+  const _$WeatherDTOTearOff();
 
-  _Weather call(
+  _WeatherDTO call(
       {@JsonKey(name: 'name') required String cityname,
       @JsonKey(name: 'main') required Main temperature,
       Failure? failure}) {
-    return _Weather(
+    return _WeatherDTO(
       cityname: cityname,
       temperature: temperature,
       failure: failure,
     );
   }
 
-  Weather fromJson(Map<String, Object?> json) {
-    return Weather.fromJson(json);
+  WeatherDTO fromJson(Map<String, Object?> json) {
+    return WeatherDTO.fromJson(json);
   }
 }
 
 /// @nodoc
-const $Weather = _$WeatherTearOff();
+const $WeatherDTO = _$WeatherDTOTearOff();
 
 /// @nodoc
-mixin _$Weather {
+mixin _$WeatherDTO {
   @JsonKey(name: 'name')
   String get cityname => throw _privateConstructorUsedError;
   @JsonKey(name: 'main')
@@ -51,13 +51,15 @@ mixin _$Weather {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $WeatherCopyWith<Weather> get copyWith => throw _privateConstructorUsedError;
+  $WeatherDTOCopyWith<WeatherDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WeatherCopyWith<$Res> {
-  factory $WeatherCopyWith(Weather value, $Res Function(Weather) then) =
-      _$WeatherCopyWithImpl<$Res>;
+abstract class $WeatherDTOCopyWith<$Res> {
+  factory $WeatherDTOCopyWith(
+          WeatherDTO value, $Res Function(WeatherDTO) then) =
+      _$WeatherDTOCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'name') String cityname,
       @JsonKey(name: 'main') Main temperature,
@@ -68,12 +70,12 @@ abstract class $WeatherCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WeatherCopyWithImpl<$Res> implements $WeatherCopyWith<$Res> {
-  _$WeatherCopyWithImpl(this._value, this._then);
+class _$WeatherDTOCopyWithImpl<$Res> implements $WeatherDTOCopyWith<$Res> {
+  _$WeatherDTOCopyWithImpl(this._value, this._then);
 
-  final Weather _value;
+  final WeatherDTO _value;
   // ignore: unused_field
-  final $Res Function(Weather) _then;
+  final $Res Function(WeatherDTO) _then;
 
   @override
   $Res call({
@@ -117,9 +119,10 @@ class _$WeatherCopyWithImpl<$Res> implements $WeatherCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$WeatherCopyWith<$Res> implements $WeatherCopyWith<$Res> {
-  factory _$WeatherCopyWith(_Weather value, $Res Function(_Weather) then) =
-      __$WeatherCopyWithImpl<$Res>;
+abstract class _$WeatherDTOCopyWith<$Res> implements $WeatherDTOCopyWith<$Res> {
+  factory _$WeatherDTOCopyWith(
+          _WeatherDTO value, $Res Function(_WeatherDTO) then) =
+      __$WeatherDTOCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'name') String cityname,
@@ -133,13 +136,14 @@ abstract class _$WeatherCopyWith<$Res> implements $WeatherCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$WeatherCopyWithImpl<$Res> extends _$WeatherCopyWithImpl<$Res>
-    implements _$WeatherCopyWith<$Res> {
-  __$WeatherCopyWithImpl(_Weather _value, $Res Function(_Weather) _then)
-      : super(_value, (v) => _then(v as _Weather));
+class __$WeatherDTOCopyWithImpl<$Res> extends _$WeatherDTOCopyWithImpl<$Res>
+    implements _$WeatherDTOCopyWith<$Res> {
+  __$WeatherDTOCopyWithImpl(
+      _WeatherDTO _value, $Res Function(_WeatherDTO) _then)
+      : super(_value, (v) => _then(v as _WeatherDTO));
 
   @override
-  _Weather get _value => super._value as _Weather;
+  _WeatherDTO get _value => super._value as _WeatherDTO;
 
   @override
   $Res call({
@@ -147,7 +151,7 @@ class __$WeatherCopyWithImpl<$Res> extends _$WeatherCopyWithImpl<$Res>
     Object? temperature = freezed,
     Object? failure = freezed,
   }) {
-    return _then(_Weather(
+    return _then(_WeatherDTO(
       cityname: cityname == freezed
           ? _value.cityname
           : cityname // ignore: cast_nullable_to_non_nullable
@@ -167,14 +171,15 @@ class __$WeatherCopyWithImpl<$Res> extends _$WeatherCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_Weather implements _Weather {
-  _$_Weather(
+class _$_WeatherDTO extends _WeatherDTO {
+  _$_WeatherDTO(
       {@JsonKey(name: 'name') required this.cityname,
       @JsonKey(name: 'main') required this.temperature,
-      this.failure});
+      this.failure})
+      : super._();
 
-  factory _$_Weather.fromJson(Map<String, dynamic> json) =>
-      _$$_WeatherFromJson(json);
+  factory _$_WeatherDTO.fromJson(Map<String, dynamic> json) =>
+      _$$_WeatherDTOFromJson(json);
 
   @override
   @JsonKey(name: 'name')
@@ -187,14 +192,14 @@ class _$_Weather implements _Weather {
 
   @override
   String toString() {
-    return 'Weather(cityname: $cityname, temperature: $temperature, failure: $failure)';
+    return 'WeatherDTO(cityname: $cityname, temperature: $temperature, failure: $failure)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Weather &&
+            other is _WeatherDTO &&
             const DeepCollectionEquality().equals(other.cityname, cityname) &&
             const DeepCollectionEquality()
                 .equals(other.temperature, temperature) &&
@@ -210,22 +215,24 @@ class _$_Weather implements _Weather {
 
   @JsonKey(ignore: true)
   @override
-  _$WeatherCopyWith<_Weather> get copyWith =>
-      __$WeatherCopyWithImpl<_Weather>(this, _$identity);
+  _$WeatherDTOCopyWith<_WeatherDTO> get copyWith =>
+      __$WeatherDTOCopyWithImpl<_WeatherDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WeatherToJson(this);
+    return _$$_WeatherDTOToJson(this);
   }
 }
 
-abstract class _Weather implements Weather {
-  factory _Weather(
+abstract class _WeatherDTO extends WeatherDTO {
+  factory _WeatherDTO(
       {@JsonKey(name: 'name') required String cityname,
       @JsonKey(name: 'main') required Main temperature,
-      Failure? failure}) = _$_Weather;
+      Failure? failure}) = _$_WeatherDTO;
+  _WeatherDTO._() : super._();
 
-  factory _Weather.fromJson(Map<String, dynamic> json) = _$_Weather.fromJson;
+  factory _WeatherDTO.fromJson(Map<String, dynamic> json) =
+      _$_WeatherDTO.fromJson;
 
   @override
   @JsonKey(name: 'name')
@@ -237,7 +244,7 @@ abstract class _Weather implements Weather {
   Failure? get failure;
   @override
   @JsonKey(ignore: true)
-  _$WeatherCopyWith<_Weather> get copyWith =>
+  _$WeatherDTOCopyWith<_WeatherDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

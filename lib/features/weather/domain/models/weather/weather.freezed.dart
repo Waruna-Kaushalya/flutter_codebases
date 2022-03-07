@@ -14,53 +14,56 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Weather _$WeatherFromJson(Map<String, dynamic> json) {
-  return _Weather.fromJson(json);
+WeatherEntity _$WeatherEntityFromJson(Map<String, dynamic> json) {
+  return _WeatherEntity.fromJson(json);
 }
 
 /// @nodoc
-class _$WeatherTearOff {
-  const _$WeatherTearOff();
+class _$WeatherEntityTearOff {
+  const _$WeatherEntityTearOff();
 
-  _Weather call({required String cityname, required double temperature}) {
-    return _Weather(
+  _WeatherEntity call({required String cityname, required double temperature}) {
+    return _WeatherEntity(
       cityname: cityname,
       temperature: temperature,
     );
   }
 
-  Weather fromJson(Map<String, Object?> json) {
-    return Weather.fromJson(json);
+  WeatherEntity fromJson(Map<String, Object?> json) {
+    return WeatherEntity.fromJson(json);
   }
 }
 
 /// @nodoc
-const $Weather = _$WeatherTearOff();
+const $WeatherEntity = _$WeatherEntityTearOff();
 
 /// @nodoc
-mixin _$Weather {
+mixin _$WeatherEntity {
   String get cityname => throw _privateConstructorUsedError;
   double get temperature => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $WeatherCopyWith<Weather> get copyWith => throw _privateConstructorUsedError;
+  $WeatherEntityCopyWith<WeatherEntity> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WeatherCopyWith<$Res> {
-  factory $WeatherCopyWith(Weather value, $Res Function(Weather) then) =
-      _$WeatherCopyWithImpl<$Res>;
+abstract class $WeatherEntityCopyWith<$Res> {
+  factory $WeatherEntityCopyWith(
+          WeatherEntity value, $Res Function(WeatherEntity) then) =
+      _$WeatherEntityCopyWithImpl<$Res>;
   $Res call({String cityname, double temperature});
 }
 
 /// @nodoc
-class _$WeatherCopyWithImpl<$Res> implements $WeatherCopyWith<$Res> {
-  _$WeatherCopyWithImpl(this._value, this._then);
+class _$WeatherEntityCopyWithImpl<$Res>
+    implements $WeatherEntityCopyWith<$Res> {
+  _$WeatherEntityCopyWithImpl(this._value, this._then);
 
-  final Weather _value;
+  final WeatherEntity _value;
   // ignore: unused_field
-  final $Res Function(Weather) _then;
+  final $Res Function(WeatherEntity) _then;
 
   @override
   $Res call({
@@ -81,28 +84,32 @@ class _$WeatherCopyWithImpl<$Res> implements $WeatherCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$WeatherCopyWith<$Res> implements $WeatherCopyWith<$Res> {
-  factory _$WeatherCopyWith(_Weather value, $Res Function(_Weather) then) =
-      __$WeatherCopyWithImpl<$Res>;
+abstract class _$WeatherEntityCopyWith<$Res>
+    implements $WeatherEntityCopyWith<$Res> {
+  factory _$WeatherEntityCopyWith(
+          _WeatherEntity value, $Res Function(_WeatherEntity) then) =
+      __$WeatherEntityCopyWithImpl<$Res>;
   @override
   $Res call({String cityname, double temperature});
 }
 
 /// @nodoc
-class __$WeatherCopyWithImpl<$Res> extends _$WeatherCopyWithImpl<$Res>
-    implements _$WeatherCopyWith<$Res> {
-  __$WeatherCopyWithImpl(_Weather _value, $Res Function(_Weather) _then)
-      : super(_value, (v) => _then(v as _Weather));
+class __$WeatherEntityCopyWithImpl<$Res>
+    extends _$WeatherEntityCopyWithImpl<$Res>
+    implements _$WeatherEntityCopyWith<$Res> {
+  __$WeatherEntityCopyWithImpl(
+      _WeatherEntity _value, $Res Function(_WeatherEntity) _then)
+      : super(_value, (v) => _then(v as _WeatherEntity));
 
   @override
-  _Weather get _value => super._value as _Weather;
+  _WeatherEntity get _value => super._value as _WeatherEntity;
 
   @override
   $Res call({
     Object? cityname = freezed,
     Object? temperature = freezed,
   }) {
-    return _then(_Weather(
+    return _then(_WeatherEntity(
       cityname: cityname == freezed
           ? _value.cityname
           : cityname // ignore: cast_nullable_to_non_nullable
@@ -118,11 +125,11 @@ class __$WeatherCopyWithImpl<$Res> extends _$WeatherCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_Weather implements _Weather {
-  _$_Weather({required this.cityname, required this.temperature});
+class _$_WeatherEntity implements _WeatherEntity {
+  _$_WeatherEntity({required this.cityname, required this.temperature});
 
-  factory _$_Weather.fromJson(Map<String, dynamic> json) =>
-      _$$_WeatherFromJson(json);
+  factory _$_WeatherEntity.fromJson(Map<String, dynamic> json) =>
+      _$$_WeatherEntityFromJson(json);
 
   @override
   final String cityname;
@@ -131,14 +138,14 @@ class _$_Weather implements _Weather {
 
   @override
   String toString() {
-    return 'Weather(cityname: $cityname, temperature: $temperature)';
+    return 'WeatherEntity(cityname: $cityname, temperature: $temperature)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Weather &&
+            other is _WeatherEntity &&
             const DeepCollectionEquality().equals(other.cityname, cityname) &&
             const DeepCollectionEquality()
                 .equals(other.temperature, temperature));
@@ -152,20 +159,22 @@ class _$_Weather implements _Weather {
 
   @JsonKey(ignore: true)
   @override
-  _$WeatherCopyWith<_Weather> get copyWith =>
-      __$WeatherCopyWithImpl<_Weather>(this, _$identity);
+  _$WeatherEntityCopyWith<_WeatherEntity> get copyWith =>
+      __$WeatherEntityCopyWithImpl<_WeatherEntity>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WeatherToJson(this);
+    return _$$_WeatherEntityToJson(this);
   }
 }
 
-abstract class _Weather implements Weather {
-  factory _Weather({required String cityname, required double temperature}) =
-      _$_Weather;
+abstract class _WeatherEntity implements WeatherEntity {
+  factory _WeatherEntity(
+      {required String cityname,
+      required double temperature}) = _$_WeatherEntity;
 
-  factory _Weather.fromJson(Map<String, dynamic> json) = _$_Weather.fromJson;
+  factory _WeatherEntity.fromJson(Map<String, dynamic> json) =
+      _$_WeatherEntity.fromJson;
 
   @override
   String get cityname;
@@ -173,6 +182,6 @@ abstract class _Weather implements Weather {
   double get temperature;
   @override
   @JsonKey(ignore: true)
-  _$WeatherCopyWith<_Weather> get copyWith =>
+  _$WeatherEntityCopyWith<_WeatherEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }

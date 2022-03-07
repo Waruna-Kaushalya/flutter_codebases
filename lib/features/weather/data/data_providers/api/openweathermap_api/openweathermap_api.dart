@@ -22,7 +22,7 @@ class OpenweathermapWeatherApi implements Api {
 
   /// Fectch [weather] data from api
   @override
-  Future<Weather> getWeather(String cityName) async {
+  Future<WeatherDTO> getWeather(String cityName) async {
     final url = '$_baseUrl$cityName&appid=$_apiKey';
 
     // final response = await _client.post(
@@ -77,7 +77,7 @@ class OpenweathermapWeatherApi implements Api {
       }
 
       //Map cityname and temp using weather model and return weather data
-      var weather = Weather.fromJson(weatherMap);
+      var weather = WeatherDTO.fromJson(weatherMap);
 
       return weather;
     } on SocketException {
