@@ -40,6 +40,10 @@ class InternetBloc extends Bloc<InternetEvent, InternetState> {
             /// if initially connection status in connected we dont need to
             /// show snack bar. if its not connected, then we need to show
             /// snack bar
+            ///
+            ///  /// if initially connection status in connected we dont need to
+            /// show snack bar. if its not connected, then we need to show
+            /// snack bar
             if (connectivityResultX.isNone) {
               add(const InternetEvent.checkConnection(
                   connectivityResult: InternetStateStatus.none));
