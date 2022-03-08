@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codebase/injection.dart';
-import 'package:flutter_codebase/utility/app_bloc_observer.dart';
+import 'package:flutter_codebase/app/app_bloc_observer.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';

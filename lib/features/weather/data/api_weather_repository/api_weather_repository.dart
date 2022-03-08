@@ -1,5 +1,5 @@
 // import '../../../data/data.dart' hide Weather;
-import 'package:flutter_codebase/features/weather/data/models/weather/weather.dart';
+
 import 'package:injectable/injectable.dart';
 
 import '../../domain/models/weather/weather.dart';
