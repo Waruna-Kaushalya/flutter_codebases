@@ -30,20 +30,6 @@ class _WeatherPageState extends State<WeatherPage> {
               // SnackMsg(msg: state.errorMsg.toString());
               snackBarMas(msg: state.errorMsg.toString());
             }
-            // if (state.stateStatus == WeatherStateStatus.failure &&
-            //     state.errorMsg == "404") {
-            //   snackMsg(context, msg: "City not found");
-            // }
-            // else if (state.stateStatus == WeatherStateStatus.failure &&
-            //     state.errorMsg == "400") {
-            //   snackMsg(context, msg: "Network err");
-            // } else if (state.stateStatus == WeatherStateStatus.failure &&
-            //     state.errorMsg == "500") {
-            //   snackMsg(context, msg: "Plese submit city name");
-            // } else if (state.stateStatus == WeatherStateStatus.failure &&
-            //     state.errorMsg == "450") {
-            //   snackMsg(context, msg: "Something went wrong");
-            // }
           },
           builder: (context, state) {
             if (state.stateStatus.isInitial) {

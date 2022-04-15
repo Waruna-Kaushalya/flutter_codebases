@@ -92,6 +92,8 @@ class OpenweathermapWeatherApi implements Api {
       throw "Bad response format 👎";
       // throw const Failure(message: "Bad response format 👎");
       // throw ResposeFormatFailure();
+    } catch (e) {
+      throw "something went wrong 👎";
     }
   }
 

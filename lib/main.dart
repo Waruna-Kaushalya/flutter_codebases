@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_codebase/injection.dart';
 import 'package:flutter_codebase/app/app_bloc_observer.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import '../routes/routes.dart';
@@ -11,7 +12,9 @@ Future<void> main() async {
   //?call notice codes
   WidgetsFlutterBinding.ensureInitialized();
 
-  configureDependencies(Env.prod);
+  configureDependencies(Environment.prod);
+
+  // configureDependencies(Env.prod);
 
   //?Select storage for store data using hydrated bloc package
   //?data storing location selection is very important.

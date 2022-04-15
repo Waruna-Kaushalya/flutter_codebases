@@ -69,7 +69,7 @@ class InitialInputTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _controller = TextEditingController();
+    // final TextEditingController _controller = TextEditingController();
 
     return Padding(
       padding: const EdgeInsets.all(50.0),
@@ -77,7 +77,7 @@ class InitialInputTextField extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextField(
-            controller: _controller,
+            // controller: _controller,
             //Submit city name to fetch weather data
 
             onSubmitted: (value) {

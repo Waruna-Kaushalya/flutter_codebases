@@ -6,6 +6,20 @@ The command "flutter run --release" compiles to release mode.
 The command "flutter run --profile" compiles to profile mode.
 
 
+## How to make relese apk with smaller size apk
+flutter clean
+flutter build apk --target-platform=android-arm
+
+
+## Weather API s
+https://www.weatherapi.com/pricing.aspx
+https://openweathermap.org/price
+
+
+## Correct way of storing API Keys in flutter following best practises - Firebase config
+https://stackoverflow.com/questions/51895194/correct-way-of-storing-api-keys-in-flutter-following-best-practises
+
+
 # Downloading ios tools...   issue
 with propper network connectio
 cd ios
