@@ -16,6 +16,10 @@ https://www.weatherapi.com/pricing.aspx
 https://openweathermap.org/price
 
 
+## Firebase Remote config tutorial
+https://mobikul.com/integrate-firebase-remote-config-in-flutter/
+
+
 ## Correct way of storing API Keys in flutter following best practises - Firebase config
 https://stackoverflow.com/questions/51895194/correct-way-of-storing-api-keys-in-flutter-following-best-practises
 
