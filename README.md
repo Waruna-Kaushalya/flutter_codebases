@@ -8,7 +8,9 @@ The command "flutter run --profile" compiles to profile mode.
 
 ## How to make relese apk with smaller size apk
 flutter clean
-flutter build apk --target-platform=android-arm
+flutter build appbundle --target-platform android-arm,android-arm64,android-x64
+flutter build apk --target-platform android-arm,android-arm64,android-x64
+https://stackoverflow.com/questions/49064969/flutter-apps-are-too-big-in-size
 https://stackoverflow.com/questions/70431428/how-to-decrease-flutter-app-size-in-android
 
 

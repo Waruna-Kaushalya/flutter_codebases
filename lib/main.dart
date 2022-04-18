@@ -24,7 +24,8 @@ Future<void> main() async {
   );
 
   // runApp will run, but not be shown until initialization completes:
-  FlutterNativeSplash.removeAfter(initialization);
+  // FlutterNativeSplash.removeAfter(initialization);
+  FlutterNativeSplash.remove();
 
   final observer = AppBlocObserver();
 

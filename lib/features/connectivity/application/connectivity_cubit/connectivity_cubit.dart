@@ -67,92 +67,92 @@
 
 // //????
 
-// // import 'dart:async';
-// // import 'dart:convert';
-// // import 'dart:io';
-// // import 'package:connectivity_plus/connectivity_plus.dart';
-// // import 'package:equatable/equatable.dart';
-// // import 'package:flutter_bloc/flutter_bloc.dart';
-// // import 'package:meta/meta.dart';
-// // import 'package:json_annotation/json_annotation.dart';
+// import 'dart:async';
+// import 'dart:convert';
+// import 'dart:io';
+// import 'package:connectivity_plus/connectivity_plus.dart';
+// import 'package:equatable/equatable.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:meta/meta.dart';
+// import 'package:json_annotation/json_annotation.dart';
 
-// // part 'connectivity_cubit.g.dart';
-// // part 'connectivity_state.dart';
+// part 'connectivity_cubit.g.dart';
+// part 'connectivity_state.dart';
 
-// // enum ConnectionType { wifi, mobile, none }
+// enum ConnectionType { wifi, mobile, none }
 
-// // class ConnectivityCubit extends Cubit<ConnectivityState> {
+// class ConnectivityCubit extends Cubit<ConnectivityState> {
 // //   //? final Connectivity connectivity = Connectivity();
 
 // //   //?connectivity_plus plugin dependency and pasing it
 // //   //?required parramerter as constructor
-// //   final Connectivity connectivity;
+//   final Connectivity connectivity;
 
 // //   //? You can also listen for network state changes by subscribing to the stream exposed by connectivity plugin
 // //   //? Be sure to cancel subscription after you are done
-// //   late StreamSubscription connectivityStreamSubscription;
+//   late StreamSubscription connectivityStreamSubscription;
 
-// //   ConnectivityCubit({required this.connectivity})
-// //       : super(const ConnectivityState(connectionType: ConnectionType.none)) {
+//   ConnectivityCubit({required this.connectivity})
+//       : super(const ConnectivityState(connectionType: ConnectionType.none)) {
 // //     //? Got a new connectivity status!
-// //     connectivityStreamSubscription =
-// //         connectivity.onConnectivityChanged.listen((connectivityResult) {
-// //       if (connectivityResult == ConnectivityResult.wifi) {
-// //         emitInternetConnectedWiFi(ConnectionType.wifi);
-// //         // emit(InternetConnected(connectionType: ConnectionType.wifi));
-// //       } else if (connectivityResult == ConnectivityResult.mobile) {
-// //         emitInternetConnectedMobile(ConnectionType.mobile);
-// //         // emit(InternetConnected(connectionType: ConnectionType.mobile));
-// //       } else if (connectivityResult == ConnectivityResult.none) {
-// //         emitInternetDisconnected();
-// //         // emit(InternetDisconnected());
-// //       }
-// //     });
-// //   }
+//     connectivityStreamSubscription =
+//         connectivity.onConnectivityChanged.listen((connectivityResult) {
+//       if (connectivityResult == ConnectivityResult.wifi) {
+//         emitInternetConnectedWiFi(ConnectionType.wifi);
+//         // emit(InternetConnected(connectionType: ConnectionType.wifi));
+//       } else if (connectivityResult == ConnectivityResult.mobile) {
+//         emitInternetConnectedMobile(ConnectionType.mobile);
+//         // emit(InternetConnected(connectionType: ConnectionType.mobile));
+//       } else if (connectivityResult == ConnectivityResult.none) {
+//         emitInternetDisconnected();
+//         // emit(InternetDisconnected());
+//       }
+//     });
+//   }
 
-// //   Future<void> emitInternetConnectedWiFi(ConnectionType connectionType) async {
-// //     try {
-// //       await InternetAddress.lookup('www.google.com');
-// //       emit(state.copyWith(
-// //           status: ConnectivityStatus.connected,
-// //           connectionType: connectionType));
-// //       // emit(NetworkConnected(connectionType: connectionType));
-// //     } on SocketException {
-// //       emit(state.copyWith(
-// //           status: ConnectivityStatus.connectedWithoutInternet,
-// //           connectionType: connectionType));
-// //       // emit(NetworkConnectedWithoutInternet());
-// //     }
-// //   }
+//   Future<void> emitInternetConnectedWiFi(ConnectionType connectionType) async {
+//     try {
+//       await InternetAddress.lookup('www.google.com');
+//       emit(state.copyWith(
+//           status: ConnectivityStatus.connected,
+//           connectionType: connectionType));
+//       // emit(NetworkConnected(connectionType: connectionType));
+//     } on SocketException {
+//       emit(state.copyWith(
+//           status: ConnectivityStatus.connectedWithoutInternet,
+//           connectionType: connectionType));
+//       // emit(NetworkConnectedWithoutInternet());
+//     }
+//   }
 
-// //   Future<void> emitInternetConnectedMobile(
-// //       ConnectionType connectionType) async {
-// //     try {
+//   Future<void> emitInternetConnectedMobile(
+//       ConnectionType connectionType) async {
+//     try {
 // //       //? This line is for check weather Network connected without internet
-// //       await InternetAddress.lookup('www.google.com');
-// //       emit(state.copyWith(
-// //           status: ConnectivityStatus.connected,
-// //           connectionType: connectionType));
-// //       // emit(NetworkConnected(connectionType: connectionType));
+//       await InternetAddress.lookup('www.google.com');
+//       emit(state.copyWith(
+//           status: ConnectivityStatus.connected,
+//           connectionType: connectionType));
+//       // emit(NetworkConnected(connectionType: connectionType));
 
-// //     } on SocketException {
-// //       emit(state.copyWith(
-// //           status: ConnectivityStatus.connectedWithoutInternet,
-// //           connectionType: connectionType));
-// //       // emit(NetworkConnectedWithoutInternet());
-// //     }
-// //   }
+//     } on SocketException {
+//       emit(state.copyWith(
+//           status: ConnectivityStatus.connectedWithoutInternet,
+//           connectionType: connectionType));
+//       // emit(NetworkConnectedWithoutInternet());
+//     }
+//   }
 
-// //   void emitInternetDisconnected() {
-// //     emit(state.copyWith(
-// //       status: ConnectivityStatus.disconnected,
-// //     ));
-// //   }
+//   void emitInternetDisconnected() {
+//     emit(state.copyWith(
+//       status: ConnectivityStatus.disconnected,
+//     ));
+//   }
 
 // //   //?Be sure to cancel subscription after you are done
-// //   @override
-// //   Future<void> close() {
-// //     connectivityStreamSubscription.cancel();
-// //     return super.close();
-// //   }
-// // }
+//   @override
+//   Future<void> close() {
+//     connectivityStreamSubscription.cancel();
+//     return super.close();
+//   }
+// }
